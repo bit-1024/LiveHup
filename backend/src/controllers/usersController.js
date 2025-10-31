@@ -1,0 +1,381 @@
+const db = require('../config/database');
+const logger = require('../config/logger');
+
+class UsersController {
+  /**
+   * 获取用户列表
+   */
+  async getUsers(req, res) {
+    try {
+      const { 
+        page = 1, 
+        pageSize = 20, 
+        is_new_user, 
+        keyword,
+        sort_by = 'created_at',
+        sort_order = 'DESC'
+      } = req.query;
+
+      let sql = 'SELECT * FROM users WHERE 1=1';
+      const params = [];
+
+      // 筛选条件
+      if (is_new_user !== undefined) {
+        sql += ' AND is_new_user = ?';
+        params.push(is_new_user === 'true' || is_new_user === '1');
+      }
+
+      if (keyword) {
+        sql += ' AND (user_id LIKE ? OR username LIKE ?)';
+        params.push(`%${keyword}%`, `%${keyword}%`);
+      }
+
+      // 排序
+      const allowedSortFields = ['user_id', 'username', 'total_points', 'available_points', 'created_at'];
+      const sortField = allowedSortFields.includes(sort_by) ? sort_by : 'created_at';
+      const sortDirection = sort_order.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
+      
+      sql += ` ORDER BY ${sortField} ${sortDirection}`;
+
+      const result = await db.paginate(sql, params, parseInt(page), parseInt(pageSize));
+
+      res.json({
+        success: true,
+        data: result.data,
+        pagination: result.pagination
+      });
+    } catch (error) {
+      logger.error('获取用户列表失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '获取用户列表失败'
+      });
+    }
+  }
+
+  /**
+   * 获取用户详情
+   */
+  async getUserDetail(req, res) {
+    try {
+      const { userId } = req.params;
+
+      // 获取用户基本信息
+      const [user] = await db.query(
+        'SELECT * FROM users WHERE user_id = ?',
+        [userId]
+      );
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: '用户不存在'
+        });
+      }
+
+      // 获取积分记录
+      const records = await db.query(
+        `SELECT * FROM point_records 
+         WHERE user_id = ? 
+         ORDER BY created_at DESC 
+         LIMIT 100`,
+        [userId]
+      );
+
+      // 获取兑换记录
+      const exchanges = await db.query(
+        `SELECT e.*, p.name as product_name 
+         FROM exchanges e
+         LEFT JOIN products p ON e.product_id = p.id
+         WHERE e.user_id = ?
+         ORDER BY e.exchange_date DESC
+         LIMIT 50`,
+        [userId]
+      );
+
+      // 获取统计信息
+      const [stats] = await db.query(
+        `SELECT 
+          COUNT(DISTINCT pr.id) as total_records,
+          SUM(CASE WHEN pr.points > 0 THEN pr.points ELSE 0 END) as total_earned,
+          SUM(CASE WHEN pr.points < 0 THEN ABS(pr.points) ELSE 0 END) as total_used,
+          COUNT(DISTINCT CASE WHEN pr.is_expired = true THEN pr.id END) as expired_count
+         FROM point_records pr
+         WHERE pr.user_id = ?`,
+        [userId]
+      );
+
+      res.json({
+        success: true,
+        data: {
+          user,
+          records,
+          exchanges,
+          stats: stats || {}
+        }
+      });
+    } catch (error) {
+      logger.error('获取用户详情失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '获取用户详情失败'
+      });
+    }
+  }
+
+  /**
+   * 获取用户积分详情（用于手机端查询）
+   */
+  async getUserPoints(req, res) {
+    try {
+      const { userId } = req.params;
+
+      const [user] = await db.query(
+        'SELECT user_id, username, total_points, available_points, used_points, expired_points, is_new_user FROM users WHERE user_id = ?',
+        [userId]
+      );
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: '用户不存在'
+        });
+      }
+
+      // 获取最近的积分记录
+      const records = await db.query(
+        `SELECT id, points, source, description, created_at, expire_date, is_expired 
+         FROM point_records 
+         WHERE user_id = ? 
+         ORDER BY created_at DESC 
+         LIMIT 50`,
+        [userId]
+      );
+
+      // 获取即将过期的积分
+      const expiringPoints = await db.query(
+        `SELECT SUM(points) as expiring_points, expire_date
+         FROM point_records
+         WHERE user_id = ? 
+           AND is_expired = false 
+           AND expire_date IS NOT NULL
+           AND expire_date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)
+         GROUP BY expire_date
+         ORDER BY expire_date ASC`,
+        [userId]
+      );
+
+      res.json({
+        success: true,
+        data: {
+          user,
+          records,
+          expiringPoints
+        }
+      });
+    } catch (error) {
+      logger.error('获取用户积分失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '获取用户积分失败'
+      });
+    }
+  }
+
+  /**
+   * 手动调整用户积分（管理员功能）
+   */
+  async adjustPoints(req, res) {
+    try {
+      const { userId } = req.params;
+      const { points, description, validity_days } = req.body;
+
+      if (!points || points === 0) {
+        return res.status(400).json({
+          success: false,
+          message: '请输入调整积分数'
+        });
+      }
+
+      // 检查用户是否存在
+      const [user] = await db.query(
+        'SELECT available_points FROM users WHERE user_id = ?',
+        [userId]
+      );
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: '用户不存在'
+        });
+      }
+
+      // 如果是扣除积分，检查余额是否足够
+      if (points < 0 && user.available_points + points < 0) {
+        return res.status(400).json({
+          success: false,
+          message: '用户积分余额不足'
+        });
+      }
+
+      await db.transaction(async (connection) => {
+        // 计算过期日期
+        const moment = require('moment');
+        const expireDate = validity_days 
+          ? moment().add(validity_days, 'days').format('YYYY-MM-DD')
+          : null;
+
+        const balanceAfter = user.available_points + points;
+
+        // 记录积分变动
+        await connection.execute(
+          `INSERT INTO point_records (user_id, points, balance_after, source, expire_date, description) 
+           VALUES (?, ?, ?, 'manual', ?, ?)`,
+          [
+            userId,
+            points,
+            balanceAfter,
+            expireDate,
+            description || `管理员${points > 0 ? '增加' : '扣除'}积分`
+          ]
+        );
+
+        // 更新用户积分
+        if (points > 0) {
+          await connection.execute(
+            'UPDATE users SET total_points = total_points + ?, available_points = available_points + ? WHERE user_id = ?',
+            [points, points, userId]
+          );
+        } else {
+          await connection.execute(
+            'UPDATE users SET used_points = used_points + ?, available_points = available_points + ? WHERE user_id = ?',
+            [Math.abs(points), points, userId]
+          );
+        }
+      });
+
+      logger.info(`管理员调整用户积分: ${userId}, 积分: ${points}, 操作人: ${req.user.username}`);
+
+      res.json({
+        success: true,
+        message: '积分调整成功'
+      });
+    } catch (error) {
+      logger.error('调整积分失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '调整积分失败'
+      });
+    }
+  }
+
+  /**
+   * 获取用户统计概况
+   */
+  async getUserStats(req, res) {
+    try {
+      // 总用户数
+      const [totalUsers] = await db.query(
+        'SELECT COUNT(*) as count FROM users'
+      );
+
+      // 新用户数
+      const [newUsers] = await db.query(
+        'SELECT COUNT(*) as count FROM users WHERE is_new_user = true'
+      );
+
+      // 活跃用户数（最近30天有积分变动）
+      const [activeUsers] = await db.query(
+        `SELECT COUNT(DISTINCT user_id) as count 
+         FROM point_records 
+         WHERE created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)`
+      );
+
+      // 总积分统计
+      const [pointsStats] = await db.query(
+        `SELECT 
+          SUM(total_points) as total_points,
+          SUM(available_points) as available_points,
+          SUM(used_points) as used_points,
+          SUM(expired_points) as expired_points
+         FROM users`
+      );
+
+      // 近7天新增用户趋势
+      const userTrend = await db.query(
+        `SELECT 
+          DATE(first_import_date) as date,
+          COUNT(*) as count
+         FROM users
+         WHERE first_import_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+         GROUP BY DATE(first_import_date)
+         ORDER BY date ASC`
+      );
+
+      res.json({
+        success: true,
+        data: {
+          total: totalUsers.count,
+          newUsers: newUsers.count,
+          oldUsers: totalUsers.count - newUsers.count,
+          activeUsers: activeUsers.count,
+          pointsStats: pointsStats || {},
+          userTrend
+        }
+      });
+    } catch (error) {
+      logger.error('获取用户统计失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '获取统计信息失败'
+      });
+    }
+  }
+
+  /**
+   * 导出用户数据
+   */
+  async exportUsers(req, res) {
+    try {
+      const { is_new_user, keyword } = req.query;
+
+      let sql = 'SELECT user_id, username, total_points, available_points, used_points, expired_points, is_new_user, first_import_date, created_at FROM users WHERE 1=1';
+      const params = [];
+
+      if (is_new_user !== undefined) {
+        sql += ' AND is_new_user = ?';
+        params.push(is_new_user === 'true' || is_new_user === '1');
+      }
+
+      if (keyword) {
+        sql += ' AND (user_id LIKE ? OR username LIKE ?)';
+        params.push(`%${keyword}%`, `%${keyword}%`);
+      }
+
+      sql += ' ORDER BY created_at DESC LIMIT 10000';
+
+      const users = await db.query(sql, params);
+
+      // 生成Excel
+      const xlsx = require('xlsx');
+      const ws = xlsx.utils.json_to_sheet(users);
+      const wb = xlsx.utils.book_new();
+      xlsx.utils.book_append_sheet(wb, ws, '用户数据');
+
+      const buffer = xlsx.write(wb, { type: 'buffer', bookType: 'xlsx' });
+
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      res.setHeader('Content-Disposition', `attachment; filename=users_${Date.now()}.xlsx`);
+
+      res.send(buffer);
+    } catch (error) {
+      logger.error('导出用户数据失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '导出失败'
+      });
+    }
+  }
+}
+
+module.exports = new UsersController();

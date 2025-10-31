@@ -1,0 +1,370 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f8fa;
+  color: #323233;
+}
+
+/* 统一配色方案 */
+:root {
+  --primary-color: #1989fa;
+  --success-color: #07c160;
+  --warning-color: #ff976a;
+  --danger-color: #ee0a24;
+  --text-color: #323233;
+  --text-color-secondary: #646566;
+  --text-color-placeholder: #969799;
+  --border-color: #ebedf0;
+  --background-color: #f7f8fa;
+  --white: #ffffff;
+}
+
+/* 页面容器 */
+.page-container {
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+.page-content {
+  padding: 16px;
+  padding-bottom: calc(50px + env(safe-area-inset-bottom));
+}
+
+/* 卡片样式 */
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--white);
+}
+
+.card-body {
+  padding: 16px;
+}
+
+/* 统计卡片 */
+.stats-card {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--white);
+}
+
+.stats-number {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--primary-color);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stats-label {
+  color: var(--text-color-secondary);
+  font-size: 14px;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--text-color-secondary);
+}
+
+/* 空状态 */
+.empty-container {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-color-secondary);
+}
+
+/* 按钮样式覆盖 */
+.van-button--primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.van-button--success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.van-button--warning {
+  background-color: var(--warning-color);
+  border-color: var(--warning-color);
+}
+
+.van-button--danger {
+  background-color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+/* 标签样式覆盖 */
+.van-tag--primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.van-tag--success {
+  background-color: var(--success-color);
+  color: var(--white);
+}
+
+.van-tag--warning {
+  background-color: var(--warning-color);
+  color: var(--white);
+}
+
+.van-tag--danger {
+  background-color: var(--danger-color);
+  color: var(--white);
+}
+
+/* 导航栏样式 */
+.van-nav-bar {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.van-nav-bar__title {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* 底部导航样式 */
+.van-tabbar {
+  background-color: var(--white);
+  border-top: 1px solid var(--border-color);
+}
+
+.van-tabbar-item--active {
+  color: var(--primary-color);
+}
+
+/* 卡片组件样式 */
+.van-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+/* 单元格样式 */
+.van-cell {
+  background-color: var(--white);
+}
+
+.van-cell__title {
+  color: var(--text-color);
+}
+
+.van-cell__value {
+  color: var(--text-color-secondary);
+}
+
+.van-cell__label {
+  color: var(--text-color-placeholder);
+}
+
+/* 字段输入样式 */
+.van-field__label {
+  color: var(--text-color);
+}
+
+.van-field__control {
+  color: var(--text-color);
+}
+
+.van-field__control::placeholder {
+  color: var(--text-color-placeholder);
+}
+
+/* 网格样式 */
+.van-grid-item__content {
+  background-color: var(--white);
+  border-radius: 8px;
+}
+
+.van-grid-item__text {
+  color: var(--text-color);
+}
+
+/* 列表样式 */
+.van-list {
+  background-color: var(--white);
+}
+
+/* 图片样式 */
+.van-image {
+  border-radius: 4px;
+}
+
+/* 安全区域适配 */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .page-content {
+    padding: 12px;
+  }
+  
+  .stats-card {
+    padding: 20px 12px;
+  }
+  
+  .stats-number {
+    font-size: 28px;
+  }
+}
+
+/* 自定义动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 触摸反馈 */
+.touch-feedback {
+  transition: all 0.2s ease;
+}
+
+.touch-feedback:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+/* 禁用选择 */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 文本省略 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 分割线 */
+.divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 16px 0;
+}
+
+/* 居中布局 */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 间距工具类 */
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+
+.mb-8 { margin-bottom: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+
+.ml-8 { margin-left: 8px; }
+.ml-12 { margin-left: 12px; }
+.ml-16 { margin-left: 16px; }
+
+.mr-8 { margin-right: 8px; }
+.mr-12 { margin-right: 12px; }
+.mr-16 { margin-right: 16px; }
+
+.p-8 { padding: 8px; }
+.p-12 { padding: 12px; }
+.p-16 { padding: 16px; }
+.p-24 { padding: 24px; }
+
+/* 字体大小工具类 */
+.text-xs { font-size: 12px; }
+.text-sm { font-size: 14px; }
+.text-base { font-size: 16px; }
+.text-lg { font-size: 18px; }
+.text-xl { font-size: 20px; }
+.text-2xl { font-size: 24px; }
+
+/* 字体粗细工具类 */
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* 颜色工具类 */
+.text-primary { color: var(--primary-color); }
+.text-success { color: var(--success-color); }
+.text-warning { color: var(--warning-color); }
+.text-danger { color: var(--danger-color); }
+.text-secondary { color: var(--text-color-secondary); }
+.text-placeholder { color: var(--text-color-placeholder); }

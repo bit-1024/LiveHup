@@ -1,0 +1,24 @@
+const express = require('express');
+const router = express.Router();
+const usersController = require('../controllers/usersController');
+const { authMiddleware, requireAdmin } = require('../middleware/auth');
+
+// 获取用户列表（管理员）
+router.get('/', authMiddleware, usersController.getUsers);
+
+// 获取用户统计
+router.get('/stats', authMiddleware, usersController.getUserStats);
+
+// 导出用户数据
+router.get('/export', authMiddleware, requireAdmin, usersController.exportUsers);
+
+// 获取用户详情（管理员）
+router.get('/:userId/detail', authMiddleware, usersController.getUserDetail);
+
+// 获取用户积分（可公开访问，用于手机端查询）
+router.get('/:userId/points', usersController.getUserPoints);
+
+// 手动调整用户积分（管理员）
+router.post('/:userId/adjust', authMiddleware, requireAdmin, usersController.adjustPoints);
+
+module.exports = router;

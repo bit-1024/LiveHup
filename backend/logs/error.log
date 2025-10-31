@@ -1,0 +1,8 @@
+2025-10-31 09:52:26 [ERROR]: 服务器启动失败: 数据库连接失败
+Error: 数据库连接失败
+    at startServer (F:\tsethup\backend\src\app.js:94:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-10-31 09:55:51 [ERROR]: 服务器启动失败: 数据库连接失败
+Error: 数据库连接失败
+    at startServer (F:\tsethup\backend\src\app.js:94:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

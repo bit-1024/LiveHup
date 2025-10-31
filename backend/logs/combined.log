@@ -1,0 +1,18 @@
+2025-10-31 09:52:26 [ERROR]: 服务器启动失败: 数据库连接失败
+Error: 数据库连接失败
+    at startServer (F:\tsethup\backend\src\app.js:94:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-10-31 09:55:51 [ERROR]: 服务器启动失败: 数据库连接失败
+Error: 数据库连接失败
+    at startServer (F:\tsethup\backend\src\app.js:94:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-10-31 10:00:00 [INFO]: 🚀 服务器启动成功
+2025-10-31 10:00:00 [INFO]: 📍 地址: http://localhost:3000
+2025-10-31 10:00:00 [INFO]: 🌍 环境: development
+2025-10-31 10:00:00 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-10-31 11:06:10 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-10-31 11:06:59 [INFO]: 🚀 服务器启动成功
+2025-10-31 11:06:59 [INFO]: 📍 地址: http://localhost:3000
+2025-10-31 11:06:59 [INFO]: 🌍 环境: development
+2025-10-31 11:06:59 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-10-31 11:08:05 [INFO]: 管理员登录成功: admin
