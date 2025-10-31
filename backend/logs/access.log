@@ -66,3 +66,9 @@ Error: 数据库连接失败
 2025-10-31 11:12:54 [HTTP]: ::1 - - [31/Oct/2025:03:12:54 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-10-31 11:12:54 [HTTP]: ::1 - - [31/Oct/2025:03:12:54 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-10-31 11:13:33 [HTTP]: ::1 - - [31/Oct/2025:03:13:33 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:3002/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 13:49:04 [INFO]: 🚀 服务器启动成功
+2025-10-31 13:49:04 [INFO]: 📍 地址: http://localhost:3000
+2025-10-31 13:49:04 [INFO]: 🌍 环境: development
+2025-10-31 13:49:04 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-10-31 13:51:09 [HTTP]: ::1 - - [31/Oct/2025:05:51:09 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 13:51:09 [HTTP]: ::1 - - [31/Oct/2025:05:51:09 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"

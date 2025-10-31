@@ -16,3 +16,7 @@ Error: 数据库连接失败
 2025-10-31 11:06:59 [INFO]: 🌍 环境: development
 2025-10-31 11:06:59 [INFO]: 📊 健康检查: http://localhost:3000/health
 2025-10-31 11:08:05 [INFO]: 管理员登录成功: admin
+2025-10-31 13:49:04 [INFO]: 🚀 服务器启动成功
+2025-10-31 13:49:04 [INFO]: 📍 地址: http://localhost:3000
+2025-10-31 13:49:04 [INFO]: 🌍 环境: development
+2025-10-31 13:49:04 [INFO]: 📊 健康检查: http://localhost:3000/health
