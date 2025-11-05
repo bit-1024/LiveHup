@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   NavBar,
   Field,
   Button,
   Card,
-  List,
   Cell,
   Tag,
   Empty,
-  Loading,
   Divider,
   Toast
-} from 'vant';
-import { ArrowLeft, Search, PointGiftO, ClockO } from '@vant/icons';
+} from 'react-vant';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { userAPI, pointsAPI, utils } from '../services/api';
+import Icon from '../components/Icon';
 
 const PointsQuery = () => {
   const navigate = useNavigate();
@@ -25,32 +23,22 @@ const PointsQuery = () => {
   const [pointsRecords, setPointsRecords] = useState([]);
   const [hasQueried, setHasQueried] = useState(false);
 
-  useEffect(() => {
-    // 检查URL参数中是否有用户ID
-    const userIdFromUrl = searchParams.get('userId');
-    if (userIdFromUrl) {
-      setUserId(userIdFromUrl);
-      // 自动查询
-      handleQuery(userIdFromUrl);
-    }
-  }, [searchParams]);
-
-  const handleQuery = async (queryUserId = null) => {
-    const targetUserId = queryUserId || userId.trim();
+  const handleQuery = useCallback(async (rawUserId) => {
+    const targetUserId = (rawUserId || '').trim();
     
     if (!targetUserId) {
-      Toast.fail('请输入用户ID');
+      Toast.fail('�������û�ID');
       return;
     }
-
+    
     try {
       setLoading(true);
       
-      // 获取用户积分信息
+      // ��ȡ�û�������Ϣ
       const userResponse = await userAPI.getPoints(targetUserId);
       setUserInfo(userResponse.data);
       
-      // 获取积分记录
+      // ��ȡ���ּ�¼
       const recordsResponse = await pointsAPI.getRecords(targetUserId, {
         page: 1,
         pageSize: 20
@@ -59,14 +47,25 @@ const PointsQuery = () => {
       
       setHasQueried(true);
     } catch (error) {
-      console.error('查询失败:', error);
+      console.error('��ѯʧ��:', error);
       setUserInfo(null);
       setPointsRecords([]);
       setHasQueried(true);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    // ���URL�������Ƿ����û�ID
+    const userIdFromUrl = searchParams.get('userId');
+    if (userIdFromUrl) {
+      setUserId(userIdFromUrl);
+      // �Զ���ѯ
+      handleQuery(userIdFromUrl);
+    }
+  }, [searchParams, handleQuery]);
+
 
   const handleReset = () => {
     setUserId('');
@@ -83,16 +82,6 @@ const PointsQuery = () => {
       expire: '积分过期'
     };
     return sourceMap[source] || source;
-  };
-
-  const getSourceColor = (source) => {
-    const colorMap = {
-      import: '#1989fa',
-      exchange: '#ee0a24',
-      manual: '#07c160',
-      expire: '#969799'
-    };
-    return colorMap[source] || '#969799';
   };
 
   return (
@@ -122,8 +111,8 @@ const PointsQuery = () => {
                 type="primary"
                 block
                 loading={loading}
-                onClick={() => handleQuery()}
-                icon={<Search />}
+                onClick={() => handleQuery(userId)}
+                icon={<Icon name="search" />}
               >
                 查询积分
               </Button>
@@ -166,7 +155,7 @@ const PointsQuery = () => {
                       alignItems: 'center',
                       gap: '8px'
                     }}>
-                      <PointGiftO style={{ color: '#1989fa' }} />
+                      <Icon name="point-gift-o" color="#1989fa" />
                       积分详情
                     </div>
                     
@@ -223,12 +212,12 @@ const PointsQuery = () => {
                       alignItems: 'center',
                       gap: '8px'
                     }}>
-                      <ClockO style={{ color: '#1989fa' }} />
+                      <Icon name="clock-o" color="#1989fa" />
                       积分记录
                     </div>
                     
                     {pointsRecords.length > 0 ? (
-                      <List>
+                      <Cell.Group inset={false}>
                         {pointsRecords.map((record, index) => (
                           <Cell
                             key={record.id || index}
@@ -260,7 +249,7 @@ const PointsQuery = () => {
                             border={index < pointsRecords.length - 1}
                           />
                         ))}
-                      </List>
+                      </Cell.Group>
                     ) : (
                       <Empty 
                         description="暂无积分记录" 
@@ -323,3 +312,5 @@ const PointsQuery = () => {
 };
 
 export default PointsQuery;
+
+

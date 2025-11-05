@@ -4,14 +4,14 @@
   "description": "社群直播数据积分管理系统 - 手机端",
   "private": true,
   "dependencies": {
-    "@vant/icons": "^1.8.0",
+    "@react-vant/icons": "^0.1.0",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
     "react-scripts": "5.0.1",
-    "vant": "^3.6.16"
+    "react-vant": "^3.3.5"
   },
   "scripts": {
     "start": "react-scripts start",

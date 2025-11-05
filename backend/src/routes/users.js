@@ -15,7 +15,10 @@ router.get('/export', authMiddleware, requireAdmin, usersController.exportUsers)
 // 获取用户详情（管理员）
 router.get('/:userId/detail', authMiddleware, usersController.getUserDetail);
 
-// 获取用户积分（可公开访问，用于手机端查询）
+// 获取用户基本信息（移动端公开接口）
+router.get('/:userId', usersController.getUserPoints);
+
+// 获取用户积分（可公开访问，用于手机端查询，兼容旧路由）
 router.get('/:userId/points', usersController.getUserPoints);
 
 // 手动调整用户积分（管理员）

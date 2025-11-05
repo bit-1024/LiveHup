@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  NavBar, 
-  Search, 
-  Tabs, 
-  Tab,
-  Card,
-  Button,
-  Tag,
-  Image,
-  Empty,
-  Loading,
-  PullRefresh,
-  List
-} from 'vant';
-import { ShopO, FireO, NewO } from '@vant/icons';
+import { NavBar, Search, Tabs, Card, Tag, Image, Empty, PullRefresh, List } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
 import { productAPI, utils } from '../services/api';
+import Icon from '../components/Icon';
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -23,21 +10,21 @@ const Shop = () => {
   const [searchValue, setSearchValue] = useState('');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
   const [finished, setFinished] = useState(false);
   const [page, setPage] = useState(1);
 
   const categories = [
     { key: 'all', name: '全部' },
-    { key: '生活用品', name: '生活用品' },
-    { key: '数码产品', name: '数码产品' },
-    { key: '服饰', name: '服饰' },
-    { key: '娱乐', name: '娱乐' },
+    { key: '热门商品', name: '热门商品' },
+    { key: '最新商品', name: '最新商品' },
+    { key: '周边', name: '周边' },
+    { key: '实物', name: '实物' },
     { key: '优惠券', name: '优惠券' }
   ];
 
   useEffect(() => {
     loadProducts(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, searchValue]);
 
   const loadProducts = async (reset = false) => {
@@ -46,7 +33,7 @@ const Shop = () => {
     try {
       setLoading(true);
       const currentPage = reset ? 1 : page;
-      
+
       const params = {
         page: currentPage,
         pageSize: 10,
@@ -67,22 +54,24 @@ const Shop = () => {
 
       setFinished(newProducts.length < params.pageSize);
     } catch (error) {
-      console.error('加载商品失败:', error);
+      console.error('获取商品失败:', error);
+      if (reset) {
+        setProducts([]);
+      }
     } finally {
       setLoading(false);
-      setRefreshing(false);
     }
   };
 
-  const handleRefresh = () => {
-    setRefreshing(true);
-    loadProducts(true);
+  const handleRefresh = async () => {
+    setFinished(false);
+    setPage(1);
+    await loadProducts(true);
   };
 
-  const handleLoadMore = () => {
-    if (!finished && !loading) {
-      loadProducts(false);
-    }
+  const handleLoadMore = async () => {
+    if (loading || finished) return;
+    await loadProducts(false);
   };
 
   const handleSearch = (value) => {
@@ -95,7 +84,7 @@ const Shop = () => {
   };
 
   const ProductCard = ({ product }) => (
-    <Card 
+    <Card
       className="product-card"
       onClick={() => handleProductClick(product)}
       style={{ cursor: 'pointer' }}
@@ -107,12 +96,12 @@ const Shop = () => {
           width="100%"
           height="200px"
           fit="cover"
-          lazy
-          errorIcon={<ShopO />}
+          lazyload
+          errorIcon={<Icon name="shop-o" />}
         />
-        
+
         {/* 商品标签 */}
-        <div style={{ 
+        <div style={{
           position: 'absolute',
           top: '8px',
           left: '8px',
@@ -121,13 +110,13 @@ const Shop = () => {
         }}>
           {product.is_hot && (
             <Tag color="#ee0a24" size="small">
-              <FireO style={{ marginRight: '2px' }} />
-              热门
+              <Icon name="fire-o" style={{ marginRight: '2px' }} />
+              热销
             </Tag>
           )}
           {product.is_new && (
             <Tag color="#ff976a" size="small">
-              <NewO style={{ marginRight: '2px' }} />
+              <Icon name="new-o" style={{ marginRight: '2px' }} />
               新品
             </Tag>
           )}
@@ -156,7 +145,7 @@ const Shop = () => {
 
       <div className="product-info">
         <div className="product-name">{product.name}</div>
-        
+
         {product.description && (
           <div className="product-desc">{product.description}</div>
         )}
@@ -168,13 +157,13 @@ const Shop = () => {
             </span>
             {product.original_price && (
               <span className="product-original-price">
-                ¥{product.original_price}
+                ￥{product.original_price}
               </span>
             )}
           </div>
-          
+
           <div style={{ fontSize: '12px', color: '#969799' }}>
-            {product.stock === -1 ? '库存充足' : `库存${product.stock}`}
+            {product.stock === -1 ? '无限库存' : `库存${product.stock}`}
           </div>
         </div>
       </div>
@@ -183,12 +172,12 @@ const Shop = () => {
 
   return (
     <div className="page-container">
-      <NavBar 
-        title="积分商城" 
-        fixed 
+      <NavBar
+        title="积分商城"
+        fixed
         placeholder
       />
-      
+
       <div style={{ background: '#fff', padding: '12px 16px' }}>
         <Search
           value={searchValue}
@@ -199,30 +188,27 @@ const Shop = () => {
         />
       </div>
 
-      <Tabs 
-        active={activeTab} 
+      <Tabs
+        active={activeTab}
         onChange={setActiveTab}
         sticky
         offsetTop={46}
         swipeThreshold={4}
       >
         {categories.map(category => (
-          <Tab key={category.key} title={category.name} name={category.key}>
+          <Tabs.TabPane key={category.key} title={category.name} name={category.key}>
             <div style={{ padding: '0 16px' }}>
-              <PullRefresh
-                value={refreshing}
-                onRefresh={handleRefresh}
-              >
+              <PullRefresh onRefresh={handleRefresh}>
                 <List
-                  value={loading}
+                  loading={loading}
                   finished={finished}
                   onLoad={handleLoadMore}
                   finishedText="没有更多商品了"
                   loadingText="加载中..."
                 >
                   {products.length > 0 ? (
-                    <div style={{ 
-                      display: 'grid', 
+                    <div style={{
+                      display: 'grid',
                       gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
                       gap: '12px',
                       paddingTop: '12px'
@@ -231,22 +217,22 @@ const Shop = () => {
                         <ProductCard key={product.id} product={product} />
                       ))}
                     </div>
-                  ) : !loading && (
+                  ) : !loading ? (
                     <div style={{ paddingTop: '60px' }}>
-                      <Empty 
-                        description={searchValue ? "没有找到相关商品" : "暂无商品"} 
+                      <Empty
+                        description={searchValue ? '未找到相关商品' : '暂无商品'}
                         imageSize={80}
                       />
                     </div>
-                  )}
+                  ) : null}
                 </List>
               </PullRefresh>
             </div>
-          </Tab>
+          </Tabs.TabPane>
         ))}
       </Tabs>
 
-      {/* 底部安全区域 */}
+      {/* 底部预留空间 */}
       <div style={{ height: '20px' }} />
     </div>
   );

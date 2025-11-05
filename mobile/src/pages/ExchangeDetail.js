@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  NavBar, 
-  Card,
-  Cell,
-  CellGroup,
-  Tag,
-  Image,
-  Steps,
-  Step,
-  Empty,
-  Button
-} from 'vant';
-import { ArrowLeft, OrdersO, PhoneO, LocationO } from '@vant/icons';
+import React, { useState, useEffect, useCallback } from 'react';
+import { NavBar, Card, Cell, Tag, Image, Steps, Empty, Button } from 'react-vant';
 import { useNavigate, useParams } from 'react-router-dom';
 import { exchangeAPI, utils } from '../services/api';
+import Icon from '../components/Icon';
 
 const ExchangeDetail = () => {
   const navigate = useNavigate();
@@ -21,11 +10,7 @@ const ExchangeDetail = () => {
   const [exchange, setExchange] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadExchangeDetail();
-  }, [id]);
-
-  const loadExchangeDetail = async () => {
+  const loadExchangeDetail = useCallback(async () => {
     try {
       setLoading(true);
       const response = await exchangeAPI.getDetail(id);
@@ -35,7 +20,7 @@ const ExchangeDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   const getStatusTag = (status) => {
     const statusMap = {
@@ -48,6 +33,10 @@ const ExchangeDetail = () => {
     const config = statusMap[status] || { color: '#969799', text: status };
     return <Tag color={config.color}>{config.text}</Tag>;
   };
+
+  useEffect(() => {
+    loadExchangeDetail();
+  }, [loadExchangeDetail]);
 
   const getStatusStep = (status) => {
     const statusSteps = {
@@ -136,24 +125,24 @@ const ExchangeDetail = () => {
               direction="vertical"
               activeColor={exchange.status === 'cancelled' ? '#ee0a24' : '#1989fa'}
             >
-              <Step>
+              <Steps.Item>
                 <div style={{ fontSize: '14px', fontWeight: '500' }}>订单提交</div>
                 <div style={{ fontSize: '12px', color: '#969799', marginTop: '2px' }}>
                   {utils.formatDate(exchange.exchange_date, 'YYYY-MM-DD HH:mm')}
                 </div>
-              </Step>
+              </Steps.Item>
               
               {exchange.confirmed_at && (
-                <Step>
+                <Steps.Item>
                   <div style={{ fontSize: '14px', fontWeight: '500' }}>订单确认</div>
                   <div style={{ fontSize: '12px', color: '#969799', marginTop: '2px' }}>
                     {utils.formatDate(exchange.confirmed_at, 'YYYY-MM-DD HH:mm')}
                   </div>
-                </Step>
+                </Steps.Item>
               )}
               
               {exchange.shipped_at && (
-                <Step>
+                <Steps.Item>
                   <div style={{ fontSize: '14px', fontWeight: '500' }}>商品发货</div>
                   <div style={{ fontSize: '12px', color: '#969799', marginTop: '2px' }}>
                     {utils.formatDate(exchange.shipped_at, 'YYYY-MM-DD HH:mm')}
@@ -163,20 +152,20 @@ const ExchangeDetail = () => {
                       物流单号: {exchange.tracking_number}
                     </div>
                   )}
-                </Step>
+                </Steps.Item>
               )}
               
               {exchange.completed_at && (
-                <Step>
+                <Steps.Item>
                   <div style={{ fontSize: '14px', fontWeight: '500' }}>兑换完成</div>
                   <div style={{ fontSize: '12px', color: '#969799', marginTop: '2px' }}>
                     {utils.formatDate(exchange.completed_at, 'YYYY-MM-DD HH:mm')}
                   </div>
-                </Step>
+                </Steps.Item>
               )}
               
               {exchange.status === 'cancelled' && (
-                <Step>
+                <Steps.Item>
                   <div style={{ fontSize: '14px', fontWeight: '500', color: '#ee0a24' }}>
                     订单取消
                   </div>
@@ -190,7 +179,7 @@ const ExchangeDetail = () => {
                       取消原因: {exchange.cancel_reason}
                     </div>
                   )}
-                </Step>
+                </Steps.Item>
               )}
             </Steps>
           </div>
@@ -215,7 +204,7 @@ const ExchangeDetail = () => {
                 height="80px"
                 fit="cover"
                 round
-                errorIcon={<OrdersO />}
+                errorIcon={<Icon name="orders-o" />}
               />
               <div style={{ flex: 1 }}>
                 <div style={{ 
@@ -258,7 +247,7 @@ const ExchangeDetail = () => {
               订单信息
             </div>
             
-            <CellGroup inset={false}>
+            <Cell.Group inset={false}>
               <Cell 
                 title="订单号" 
                 value={exchange.exchange_no}
@@ -272,7 +261,7 @@ const ExchangeDetail = () => {
               />
               <Cell title="用户ID" value={exchange.user_id} />
               <Cell title="兑换时间" value={utils.formatDate(exchange.exchange_date, 'YYYY-MM-DD HH:mm:ss')} />
-            </CellGroup>
+            </Cell.Group>
           </div>
         </Card>
 
@@ -287,16 +276,16 @@ const ExchangeDetail = () => {
               alignItems: 'center',
               gap: '8px'
             }}>
-              <LocationO style={{ color: '#1989fa' }} />
+              <Icon name="location-o" color="#1989fa" />
               收货信息
             </div>
             
-            <CellGroup inset={false}>
+            <Cell.Group inset={false}>
               <Cell title="收货人" value={exchange.contact_name || '-'} />
-              <Cell 
-                title="联系电话" 
+              <Cell
+                title="联系电话"
                 value={exchange.contact_phone || '-'}
-                rightIcon={exchange.contact_phone && <PhoneO />}
+                rightIcon={exchange.contact_phone && <Icon name="phone-o" />}
                 isLink={!!exchange.contact_phone}
                 onClick={() => {
                   if (exchange.contact_phone) {
@@ -315,7 +304,7 @@ const ExchangeDetail = () => {
                   }
                 }}
               />
-            </CellGroup>
+            </Cell.Group>
           </div>
         </Card>
 
@@ -352,3 +341,5 @@ const ExchangeDetail = () => {
 };
 
 export default ExchangeDetail;
+
+

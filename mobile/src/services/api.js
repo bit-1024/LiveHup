@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Toast } from 'vant';
+import { Toast } from 'react-vant';
 
 // 创建axios实例
 const api = axios.create({

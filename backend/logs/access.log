@@ -72,3 +72,54 @@ Error: 数据库连接失败
 2025-10-31 13:49:04 [INFO]: 📊 健康检查: http://localhost:3000/health
 2025-10-31 13:51:09 [HTTP]: ::1 - - [31/Oct/2025:05:51:09 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-10-31 13:51:09 [HTTP]: ::1 - - [31/Oct/2025:05:51:09 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:04:06 [INFO]: 🚀 服务器启动成功
+2025-10-31 16:04:06 [INFO]: 📍 地址: http://localhost:3000
+2025-10-31 16:04:06 [INFO]: 🌍 环境: development
+2025-10-31 16:04:06 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-10-31 16:04:42 [INFO]: 管理员登录成功: admin
+2025-10-31 16:04:42 [HTTP]: ::1 - - [31/Oct/2025:08:04:42 +0000] "POST /api/auth/login HTTP/1.1" 200 575 "http://localhost:3002/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:04:43 [HTTP]: ::1 - - [31/Oct/2025:08:04:43 +0000] "GET /api/dashboard/stats HTTP/1.1" 200 412 "http://localhost:3002/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:04:43 [HTTP]: ::1 - - [31/Oct/2025:08:04:43 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3002/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:10:55 [HTTP]: ::1 - - [31/Oct/2025:08:10:55 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:3003/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:16:07 [HTTP]: ::1 - - [31/Oct/2025:08:16:07 +0000] "GET /api/rules HTTP/1.1" 200 89 "http://localhost:3002/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:16:07 [HTTP]: ::1 - - [31/Oct/2025:08:16:07 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3002/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:17:45 [INFO]: 创建积分规则成功: 观看时长达标 (ID: 1)
+2025-10-31 16:17:45 [HTTP]: ::1 - - [31/Oct/2025:08:17:45 +0000] "POST /api/rules HTTP/1.1" 200 63 "http://localhost:3002/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:17:45 [HTTP]: ::1 - - [31/Oct/2025:08:17:45 +0000] "GET /api/rules HTTP/1.1" 200 386 "http://localhost:3002/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:17:58 [HTTP]: ::1 - - [31/Oct/2025:08:17:58 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 89 "http://localhost:3002/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:17:58 [HTTP]: ::1 - - [31/Oct/2025:08:17:58 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3002/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:20:45 [INFO]: 开始导入文件: å°å¼ æµè¯.xlsx, 大小: 28894 字节
+2025-10-31 16:20:45 [ERROR]: 导入失败: Cannot read properties of undefined (reading 'parseExcel')
+TypeError: Cannot read properties of undefined (reading 'parseExcel')
+    at importFile (F:\tsethup\backend\src\controllers\importController.js:35:27)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at done (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:47:7)
+    at indicateDone (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:51:68)
+    at F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:157:11
+    at WriteStream.<anonymous> (F:\tsethup\backend\node_modules\multer\storage\disk.js:43:9)
+    at WriteStream.emit (node:events:519:35)
+    at finish (node:internal/streams/writable:953:10)
+    at node:internal/streams/writable:934:13
+2025-10-31 16:20:45 [HTTP]: ::1 - - [31/Oct/2025:08:20:45 +0000] "POST /api/import/upload HTTP/1.1" 500 102 "http://localhost:3002/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:20:54 [INFO]: 开始导入文件: å°å¼ æµè¯.xlsx, 大小: 28894 字节
+2025-10-31 16:20:54 [ERROR]: 导入失败: Cannot read properties of undefined (reading 'parseExcel')
+TypeError: Cannot read properties of undefined (reading 'parseExcel')
+    at importFile (F:\tsethup\backend\src\controllers\importController.js:35:27)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at done (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:47:7)
+    at indicateDone (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:51:68)
+    at F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:157:11
+    at WriteStream.<anonymous> (F:\tsethup\backend\node_modules\multer\storage\disk.js:43:9)
+    at WriteStream.emit (node:events:519:35)
+    at finish (node:internal/streams/writable:953:10)
+    at node:internal/streams/writable:934:13
+2025-10-31 16:20:54 [HTTP]: ::1 - - [31/Oct/2025:08:20:54 +0000] "POST /api/import/upload HTTP/1.1" 500 102 "http://localhost:3002/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:36:58 [INFO]: 🚀 服务器启动成功
+2025-10-31 16:36:58 [INFO]: 📍 地址: http://localhost:3000
+2025-10-31 16:36:58 [INFO]: 🌍 环境: development
+2025-10-31 16:36:58 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-10-31 16:39:20 [HTTP]: ::1 - - [31/Oct/2025:08:39:20 +0000] "GET /main.a90ebae812d35b5ffbfb.hot-update.json HTTP/1.1" 404 45 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-10-31 16:40:49 [HTTP]: ::1 - - [31/Oct/2025:08:40:49 +0000] "GET /main.b5d4331060e860b69e41.hot-update.json HTTP/1.1" 404 45 "http://localhost:3001/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-10-31 16:40:54 [HTTP]: ::1 - - [31/Oct/2025:08:40:54 +0000] "GET /main.b5d4331060e860b69e41.hot-update.json HTTP/1.1" 404 45 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"

@@ -1,40 +1,32 @@
 import React from 'react';
-import { NavBar, Cell, CellGroup, Grid, GridItem, Image, Divider } from 'vant';
-import {
-  Search,
-  ShopO,
-  PointGiftO,
-  OrdersO,
-  QuestionO,
-  ServiceO,
-  ScanO
-} from '@vant/icons';
+import { NavBar, Cell, Grid } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
+import Icon from '../components/Icon';
 
 const Home = () => {
   const navigate = useNavigate();
 
   const quickActions = [
     {
-      icon: <ScanO />,
+      icon: 'scan',
       text: '扫码查询',
       color: '#1989fa',
       path: '/qr-scanner'
     },
     {
-      icon: <Search />,
+      icon: 'search',
       text: '积分查询',
       color: '#07c160',
       path: '/points-query'
     },
     {
-      icon: <ShopO />,
+      icon: 'shop-o',
       text: '积分商城',
       color: '#ff976a',
       path: '/shop'
     },
     {
-      icon: <OrdersO />,
+      icon: 'orders-o',
       text: '兑换记录',
       color: '#ee0a24',
       path: '/exchange-record'
@@ -76,7 +68,7 @@ const Home = () => {
           <div className="card-header">快捷操作</div>
           <Grid columnNum={2} gutter={16} style={{ padding: '16px' }}>
             {quickActions.map((action, index) => (
-              <GridItem 
+              <Grid.Item 
                 key={index}
                 onClick={() => handleQuickAction(action.path)}
                 style={{ cursor: 'pointer' }}
@@ -85,13 +77,12 @@ const Home = () => {
                   textAlign: 'center',
                   padding: '20px 0'
                 }}>
-                  <div style={{ 
-                    fontSize: '32px', 
-                    color: action.color,
-                    marginBottom: '8px'
-                  }}>
-                    {action.icon}
-                  </div>
+                  <Icon
+                    name={action.icon}
+                    size="32px"
+                    color={action.color}
+                    style={{ marginBottom: '8px' }}
+                  />
                   <div style={{ 
                     fontSize: '14px',
                     color: '#323233'
@@ -99,7 +90,7 @@ const Home = () => {
                     {action.text}
                   </div>
                 </div>
-              </GridItem>
+              </Grid.Item>
             ))}
           </Grid>
         </div>
@@ -107,36 +98,36 @@ const Home = () => {
         {/* 功能介绍 */}
         <div className="card">
           <div className="card-header">功能介绍</div>
-          <CellGroup inset={false}>
+          <Cell.Group inset={false}>
             <Cell
               title="扫码查询"
               label="扫描管理员分享的二维码快速查询积分"
-              icon={<ScanO style={{ color: '#1989fa' }} />}
+              icon={<Icon name="scan" />}
               isLink
               onClick={() => navigate('/qr-scanner')}
             />
             <Cell
               title="积分查询"
               label="输入用户ID即可查询个人积分余额和明细"
-              icon={<Search style={{ color: '#07c160' }} />}
+              icon={<Icon name="search" />}
               isLink
               onClick={() => navigate('/points-query')}
             />
             <Cell
               title="积分商城"
               label="使用积分兑换心仪商品，享受专属优惠"
-              icon={<ShopO style={{ color: '#ff976a' }} />}
+              icon={<Icon name="shop-o" />}
               isLink
               onClick={() => navigate('/shop')}
             />
             <Cell
               title="兑换记录"
               label="查看历史兑换记录和订单状态"
-              icon={<OrdersO style={{ color: '#ee0a24' }} />}
+              icon={<Icon name="orders-o" />}
               isLink
               onClick={() => navigate('/exchange-record')}
             />
-          </CellGroup>
+          </Cell.Group>
         </div>
 
         {/* 使用说明 */}
@@ -181,7 +172,7 @@ const Home = () => {
           </div>
           <div style={{ padding: '0 16px 16px' }}>
             <Grid columnNum={2} gutter={12}>
-              <GridItem>
+              <Grid.Item>
                 <div style={{ 
                   background: '#f7f8fa',
                   borderRadius: '8px',
@@ -209,8 +200,8 @@ const Home = () => {
                     200积分起
                   </div>
                 </div>
-              </GridItem>
-              <GridItem>
+              </Grid.Item>
+              <Grid.Item>
                 <div style={{ 
                   background: '#f7f8fa',
                   borderRadius: '8px',
@@ -238,7 +229,7 @@ const Home = () => {
                     50积分起
                   </div>
                 </div>
-              </GridItem>
+              </Grid.Item>
             </Grid>
           </div>
         </div>

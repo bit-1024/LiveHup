@@ -1,12 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Tabbar, TabbarItem } from 'vant';
-import { 
-  HomeO, 
-  ShopO, 
-  UserO,
-  PointGiftO
-} from '@vant/icons';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Tabbar } from 'react-vant';
 
 // 页面组件
 import Home from './pages/Home';
@@ -18,76 +12,83 @@ import ExchangeRecord from './pages/ExchangeRecord';
 import ExchangeDetail from './pages/ExchangeDetail';
 import QRScanner from './pages/QRScanner';
 
-function App() {
+function AppContent() {
   const [activeTab, setActiveTab] = React.useState('home');
-  const location = window.location.pathname;
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // 需要隐藏底部导航的页面
   const hideTabbarPages = ['/product/', '/exchange/', '/points-query', '/qr-scanner'];
-  const shouldHideTabbar = hideTabbarPages.some(page => location.includes(page));
+  const shouldHideTabbar = hideTabbarPages.some(page => location.pathname.includes(page));
 
   React.useEffect(() => {
     // 根据路径设置当前激活的tab
-    if (location === '/' || location === '/home') {
+    if (location.pathname === '/' || location.pathname === '/home') {
       setActiveTab('home');
-    } else if (location === '/shop') {
+    } else if (location.pathname === '/shop') {
       setActiveTab('shop');
-    } else if (location === '/profile') {
+    } else if (location.pathname === '/profile') {
       setActiveTab('profile');
     }
-  }, [location]);
+  }, [location.pathname]);
+
+  const handleTabChange = (name) => {
+    setActiveTab(name);
+    navigate(`/${name}`);
+  };
 
   return (
-    <Router>
-      <div className="page-container">
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/points-query" element={<PointsQuery />} />
-          <Route path="/exchange-record" element={<ExchangeRecord />} />
-          <Route path="/exchange/:id" element={<ExchangeDetail />} />
-          <Route path="/qr-scanner" element={<QRScanner />} />
-          <Route path="*" element={<Navigate to="/home" replace />} />
-        </Routes>
+    <div className="page-container">
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/points-query" element={<PointsQuery />} />
+        <Route path="/exchange-record" element={<ExchangeRecord />} />
+        <Route path="/exchange/:id" element={<ExchangeDetail />} />
+        <Route path="/qr-scanner" element={<QRScanner />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
+      </Routes>
 
-        {/* 底部导航 */}
-        {!shouldHideTabbar && (
-          <Tabbar 
-            value={activeTab} 
-            onChange={setActiveTab}
-            fixed
-            placeholder
-            safeAreaInsetBottom
+      {/* 底部导航 */}
+      {!shouldHideTabbar && (
+        <Tabbar
+          value={activeTab}
+          onChange={handleTabChange}
+          fixed
+          placeholder
+          safeAreaInsetBottom
+        >
+          <Tabbar.Item
+            name="home"
+            icon="wap-home-o"
           >
-            <TabbarItem 
-              name="home" 
-              icon={<HomeO />}
-              to="/home"
-            >
-              首页
-            </TabbarItem>
-            <TabbarItem 
-              name="shop" 
-              icon={<ShopO />}
-              to="/shop"
-            >
-              积分商城
-            </TabbarItem>
-            <TabbarItem 
-              name="profile" 
-              icon={<UserO />}
-              to="/profile"
-            >
-              我的
-            </TabbarItem>
-          </Tabbar>
-        )}
-      </div>
-    </Router>
+            首页
+          </Tabbar.Item>
+          <Tabbar.Item
+            name="shop"
+            icon="shop-o"
+          >
+            积分商城
+          </Tabbar.Item>
+          <Tabbar.Item
+            name="profile"
+            icon="contact"
+          >
+            我的
+          </Tabbar.Item>
+        </Tabbar>
+      )}
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}

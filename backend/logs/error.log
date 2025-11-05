@@ -6,3 +6,27 @@ Error: 数据库连接失败
 Error: 数据库连接失败
     at startServer (F:\tsethup\backend\src\app.js:94:13)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-10-31 16:20:45 [ERROR]: 导入失败: Cannot read properties of undefined (reading 'parseExcel')
+TypeError: Cannot read properties of undefined (reading 'parseExcel')
+    at importFile (F:\tsethup\backend\src\controllers\importController.js:35:27)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at done (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:47:7)
+    at indicateDone (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:51:68)
+    at F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:157:11
+    at WriteStream.<anonymous> (F:\tsethup\backend\node_modules\multer\storage\disk.js:43:9)
+    at WriteStream.emit (node:events:519:35)
+    at finish (node:internal/streams/writable:953:10)
+    at node:internal/streams/writable:934:13
+2025-10-31 16:20:54 [ERROR]: 导入失败: Cannot read properties of undefined (reading 'parseExcel')
+TypeError: Cannot read properties of undefined (reading 'parseExcel')
+    at importFile (F:\tsethup\backend\src\controllers\importController.js:35:27)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at done (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:47:7)
+    at indicateDone (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:51:68)
+    at F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:157:11
+    at WriteStream.<anonymous> (F:\tsethup\backend\node_modules\multer\storage\disk.js:43:9)
+    at WriteStream.emit (node:events:519:35)
+    at finish (node:internal/streams/writable:953:10)
+    at node:internal/streams/writable:934:13

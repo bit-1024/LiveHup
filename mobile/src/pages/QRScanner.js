@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  NavBar, 
+import {
+  NavBar,
   Card,
   Button,
   Toast,
   Dialog
-} from 'vant';
-import { ArrowLeft, ScanO } from '@vant/icons';
+} from 'react-vant';
 import { useNavigate } from 'react-router-dom';
+import Icon from '../components/Icon';
 
 const QRScanner = () => {
   const navigate = useNavigate();
@@ -232,7 +232,7 @@ const QRScanner = () => {
                 alignItems: 'center',
                 color: '#969799'
               }}>
-                <ScanO size="48px" style={{ marginBottom: '12px' }} />
+                <Icon name="scan" size="48px" style={{ marginBottom: '12px' }} />
                 <div style={{ fontSize: '14px' }}>
                   {error || '点击下方按钮开始扫描'}
                 </div>
@@ -254,7 +254,7 @@ const QRScanner = () => {
                   type="primary" 
                   size="large"
                   onClick={startCamera}
-                  icon={<ScanO />}
+                  icon={<Icon name="scan" />}
                 >
                   开始扫描
                 </Button>

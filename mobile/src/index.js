@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ConfigProvider } from 'vant';
-import zhCN from 'vant/es/locale/lang/zh-CN';
+import { ConfigProvider } from 'react-vant';
+import zhCN from 'react-vant/es/locale/lang/zh-CN';
+import 'react-vant/lib/index.css';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import 'vant/lib/index.css';
-import App from './App';
+import MainApp from './App';
 import './index.css';
 
 // 设置dayjs中文
@@ -25,7 +25,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ConfigProvider locale={zhCN}>
-      <App />
+      <MainApp />
     </ConfigProvider>
   </React.StrictMode>
 );

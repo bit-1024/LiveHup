@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  NavBar, 
+import React, { useState, useEffect, useCallback } from 'react';
+import {
+  NavBar,
   Image,
   Button,
   Tag,
   Cell,
-  CellGroup,
   Dialog,
   Field,
   Toast,
   ActionSheet
-} from 'vant';
-import { ArrowLeft, ShopO, FireO, NewO } from '@vant/icons';
+} from 'react-vant';
 import { useNavigate, useParams } from 'react-router-dom';
 import { productAPI, exchangeAPI, utils } from '../services/api';
+import Icon from '../components/Icon';
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -31,9 +30,9 @@ const ProductDetail = () => {
 
   useEffect(() => {
     loadProduct();
-  }, [id]);
+  }, [loadProduct]);
 
-  const loadProduct = async () => {
+  const loadProduct = useCallback(async () => {
     try {
       setLoading(true);
       const response = await productAPI.getDetail(id);
@@ -45,7 +44,7 @@ const ProductDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   const handleExchange = () => {
     if (!product || product.stock === 0) {
@@ -153,7 +152,7 @@ const ProductDetail = () => {
             width="100%"
             height="300px"
             fit="cover"
-            errorIcon={<ShopO />}
+            errorIcon="shop-o"
           />
           
           {/* 商品标签 */}
@@ -166,13 +165,13 @@ const ProductDetail = () => {
           }}>
             {product.is_hot && (
               <Tag color="#ee0a24">
-                <FireO style={{ marginRight: '4px' }} />
+                <Icon name="fire-o" style={{ marginRight: '4px' }} />
                 热门
               </Tag>
             )}
             {product.is_new && (
               <Tag color="#ff976a">
-                <NewO style={{ marginRight: '4px' }} />
+                <Icon name="new-o" style={{ marginRight: '4px' }} />
                 新品
               </Tag>
             )}
@@ -249,7 +248,7 @@ const ProductDetail = () => {
 
         {/* 商品详情 */}
         <div style={{ marginTop: '12px', background: '#fff' }}>
-          <CellGroup>
+          <Cell.Group>
             <Cell title="商品分类" value={product.category} />
             <Cell title="已售数量" value={`${product.sold_count}件`} />
             {product.start_time && product.end_time && (
@@ -259,7 +258,7 @@ const ProductDetail = () => {
                 label="限时兑换"
               />
             )}
-          </CellGroup>
+          </Cell.Group>
         </div>
       </div>
 
@@ -278,7 +277,8 @@ const ProductDetail = () => {
 
       {/* 兑换弹窗 */}
       <ActionSheet
-        value={exchangeVisible}
+        visible={exchangeVisible}
+        onClose={() => setExchangeVisible(false)}
         onCancel={() => setExchangeVisible(false)}
         title="填写兑换信息"
         closeable
@@ -341,3 +341,6 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
+
+

@@ -1,15 +1,7 @@
 import React from 'react';
-import { NavBar, Cell, CellGroup, Button } from 'vant';
-import { 
-  UserO, 
-  OrdersO, 
-  PointGiftO, 
-  QuestionO, 
-  ServiceO,
-  PhoneO,
-  InfoO
-} from '@vant/icons';
+import { NavBar, Cell, Button } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
+import Icon from '../components/Icon';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -17,13 +9,13 @@ const Profile = () => {
   const menuItems = [
     {
       title: '积分查询',
-      icon: <PointGiftO style={{ color: '#1989fa' }} />,
+      icon: <Icon name="point-gift-o" color="#1989fa" />,
       path: '/points-query',
       desc: '查询个人积分余额和明细'
     },
     {
       title: '兑换记录',
-      icon: <OrdersO style={{ color: '#07c160' }} />,
+      icon: <Icon name="orders-o" color="#07c160" />,
       path: '/exchange-record',
       desc: '查看历史兑换记录'
     }
@@ -32,17 +24,17 @@ const Profile = () => {
   const helpItems = [
     {
       title: '使用帮助',
-      icon: <QuestionO style={{ color: '#ff976a' }} />,
+      icon: <Icon name="question-o" color="#ff976a" />,
       path: '/help'
     },
     {
       title: '联系客服',
-      icon: <ServiceO style={{ color: '#ee0a24' }} />,
+      icon: <Icon name="service-o" color="#ee0a24" />,
       path: '/contact'
     },
     {
       title: '关于我们',
-      icon: <InfoO style={{ color: '#969799' }} />,
+      icon: <Icon name="info-o" color="#969799" />,
       path: '/about'
     }
   ];
@@ -79,7 +71,7 @@ const Profile = () => {
               marginRight: '16px',
               fontSize: '24px'
             }}>
-              <UserO />
+              <Icon name="user-o" />
             </div>
             <div>
               <div style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>
@@ -118,7 +110,7 @@ const Profile = () => {
         {/* 主要功能 */}
         <div className="card">
           <div className="card-header">主要功能</div>
-          <CellGroup inset={false}>
+          <Cell.Group inset={false}>
             {menuItems.map((item, index) => (
               <Cell
                 key={index}
@@ -129,13 +121,13 @@ const Profile = () => {
                 onClick={() => navigate(item.path)}
               />
             ))}
-          </CellGroup>
+          </Cell.Group>
         </div>
 
         {/* 帮助与支持 */}
         <div className="card">
           <div className="card-header">帮助与支持</div>
-          <CellGroup inset={false}>
+          <Cell.Group inset={false}>
             {helpItems.map((item, index) => (
               <Cell
                 key={index}
@@ -157,16 +149,16 @@ const Profile = () => {
                 }}
               />
             ))}
-          </CellGroup>
+          </Cell.Group>
         </div>
 
         {/* 系统信息 */}
         <div className="card">
           <div className="card-header">系统信息</div>
-          <CellGroup inset={false}>
+          <Cell.Group inset={false}>
             <Cell title="当前版本" value="v1.0.0" />
             <Cell title="更新时间" value="2024-01-01" />
-          </CellGroup>
+          </Cell.Group>
         </div>
 
         {/* 底部安全区域 */}
