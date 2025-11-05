@@ -89,3 +89,57 @@ TypeError: Cannot read properties of undefined (reading 'parseExcel')
     at Multipart.emit (node:events:507:28)
     at emitCloseNT (node:internal/streams/destroy:148:10)
     at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+2025-11-05 16:52:34 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 16:52:34 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 16:52:39 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 16:52:39 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 16:59:10 [ERROR]: 未捕获的异常: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at GetAddrInfoReqWrap.callback (node:net:2205:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)

@@ -62,15 +62,8 @@ const ProductManagement = () => {
 
   const buildPreviewUrl = useCallback((url) => {
     if (!url) return '';
-    if (/^https?:\/\//i.test(url)) {
-      return url;
-    }
-    if (process.env.REACT_APP_FILE_BASE_URL) {
-      return `${process.env.REACT_APP_FILE_BASE_URL.replace(/\/$/, '')}${url}`;
-    }
-    if (url.startsWith('/')) {
-      return `${window.location.origin}${url}`;
-    }
+    if (url.startsWith('blob:')) return url;
+    if (url.startsWith('/')) return url;
     return url;
   }, []);
 
@@ -209,27 +202,22 @@ const ProductManagement = () => {
       setUploading(true);
       const response = await productsAPI.upload(formData);
       const uploadData = response?.data || {};
-      const storedUrl = uploadData.path || uploadData.url || '';
-      const previewSource = uploadData.url || uploadData.path || storedUrl;
+      const storedPath = uploadData.path || '';
 
-      if (storedUrl || previewSource) {
-        if (storedUrl) {
-          setImageUrl(storedUrl);
-          form.setFieldsValue({ image_url: storedUrl });
-        } else {
-          setImageUrl(previewSource);
-          form.setFieldsValue({ image_url: previewSource });
-        }
-
+      if (storedPath) {
+        setImageUrl(storedPath);
+        form.setFieldsValue({ image_url: storedPath });
         clearPreviewObjectUrl();
-        setPreviewUrl(buildPreviewUrl(previewSource));
+        setPreviewUrl(storedPath);
+        message.success('图片上传成功');
+      } else {
+        throw new Error('上传响应数据异常');
       }
-
-      message.success('图片上传成功');
     } catch (error) {
       console.error('图片上传失败:', error);
+      message.error('图片上传失败');
       clearPreviewObjectUrl();
-      setPreviewUrl(buildPreviewUrl(imageUrl));
+      setPreviewUrl(imageUrl ? buildPreviewUrl(imageUrl) : '');
     } finally {
       setUploading(false);
     }
@@ -252,30 +240,32 @@ const ProductManagement = () => {
       dataIndex: 'image_url',
       key: 'image_url',
       width: 80,
-      render: (url) => (
-        url ? (
+      render: (url) => {
+        const imageUrl = buildPreviewUrl(url);
+        return imageUrl ? (
           <Image
-            src={url}
+            src={imageUrl}
             alt="商品图片"
             width={50}
             height={50}
             style={{ objectFit: 'cover', borderRadius: 4 }}
+            preview={{ src: imageUrl }}
             fallback="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAADDCAYAAADQvc6UAAABRWlDQ1BJQ0MgUHJvZmlsZQAAKJFjYGASSSwoyGFhYGDIzSspCnJ3UoiIjFJgf8LAwSDCIMogwMCcmFxc4BgQ4ANUwgCjUcG3awyMIPqyLsis7PPOq3QdDFcvjV3jOD1boQVTPQrgSkktTgbSf4A4LbmgqISBgTEFyFYuLykAsTuAbJEioKOA7DkgdjqEvQHEToKwj4DVhAQ5A9k3gGyB5IxEoBmML4BsnSQk8XQkNtReEOBxcfXxUQg1Mjc0dyHgXNJBSWpFCYh2zi+oLMpMzyhRcASGUqqCZ16yno6CkYGRAQMDKMwhqj/fAIcloxgHQqxAjIHBEugw5sUIsSQpBobtQPdLciLEVJYzMPBHMDBsayhILEqEO4DxG0txmrERhM29nYGBddr//5/DGRjYNRkY/l7////39v///y4Dmn+LgeHANwDrkl1AuO+pmgAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAwqADAAQAAAABAAAAwwAAAAD9b/HnAAAHlklEQVR4Ae3dP3Ik1RnG4W+FgYxN"
           />
         ) : (
-          <div style={{ 
-            width: 50, 
-            height: 50, 
-            background: '#f5f5f5', 
-            display: 'flex', 
-            alignItems: 'center', 
+          <div style={{
+            width: 50,
+            height: 50,
+            background: '#f5f5f5',
+            display: 'flex',
+            alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 4
           }}>
             <EyeOutlined style={{ color: '#ccc' }} />
           </div>
-        )
-      ),
+        );
+      },
     },
     {
       title: '商品名称',

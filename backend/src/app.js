@@ -14,16 +14,18 @@ dotenv.config();
 // 创建Express应用
 const app = express();
 
-// 安全中间件
-app.use(helmet());
-
-// 跨域配置
+// 跨域配置（必须在helmet之前）
 const corsOptions = {
   origin: process.env.CORS_ORIGIN?.split(',') || '*',
   credentials: true,
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
+// 安全中间件
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 
 // 压缩响应
 app.use(compression());

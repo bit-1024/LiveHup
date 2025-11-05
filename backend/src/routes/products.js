@@ -71,6 +71,9 @@ router.post('/', authMiddleware, requireAdmin, productsController.createProduct)
 // 更新商品（管理员）
 router.put('/:id', authMiddleware, requireAdmin, productsController.updateProduct);
 
+// 切换商品上下架状态（管理员）
+router.put('/:id/toggle', authMiddleware, requireAdmin, productsController.updateProduct);
+
 // 删除商品（管理员）
 router.delete('/:id', authMiddleware, requireAdmin, productsController.deleteProduct);
 

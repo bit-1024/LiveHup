@@ -49,8 +49,7 @@ class ProductsController {
 
       const products = (result.data || []).map((item) => ({
         ...item,
-        image_path: item.image_url,
-        image_url: buildFileUrl(req, item.image_url)
+        image_url: item.image_url
       }));
 
       res.json({
@@ -90,9 +89,7 @@ class ProductsController {
       }
 
       const formattedProduct = {
-        ...product,
-        image_path: product.image_url,
-        image_url: buildFileUrl(req, product.image_url)
+        ...product
       };
 
       // 获取兑换统计

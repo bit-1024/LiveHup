@@ -91,7 +91,7 @@ const Shop = () => {
     >
       <div style={{ position: 'relative' }}>
         <Image
-          src={product.image_url}
+          src={utils.buildImageUrl(product.image_url)}
           alt={product.name}
           width="100%"
           height="200px"

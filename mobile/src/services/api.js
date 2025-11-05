@@ -109,6 +109,14 @@ export const pointsAPI = {
 
 // 工具函数
 export const utils = {
+  // 构建图片URL
+  buildImageUrl: (path) => {
+    if (!path) return '';
+    if (/^https?:\/\//i.test(path)) return path;
+    const baseUrl = process.env.REACT_APP_API_URL || window.location.origin;
+    return `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
+  },
+  
   // 格式化数字
   formatNumber: (num) => {
     if (num === null || num === undefined) return '0';
