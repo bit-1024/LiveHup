@@ -7,6 +7,57 @@ const db = require('../config/database');
 const logger = require('../config/logger');
 
 class ImportController {
+  constructor() {
+    // 绑定到实例，确保作为 Express 处理函数时 this 指向正确
+    this.importFile = this.importFile.bind(this);
+    this.getImportHistory = this.getImportHistory.bind(this);
+    this.getImportDetail = this.getImportDetail.bind(this);
+    this.downloadTemplate = this.downloadTemplate.bind(this);
+  }
+
+    /**
+   * 标准化字段名
+   */
+  normalizeKey(key) {
+    if (key === undefined || key === null) {
+      return '';
+    }
+    return String(key)
+      .replace(/\uFEFF/g, '')
+      .replace(/\s+/g, '')
+      .replace(/　/g, '')
+      .trim()
+      .toLowerCase();
+  }
+
+  /**
+   * 获取数据行中的字段值
+   */
+  getRowValue(row, keys) {
+    if (!row || typeof row !== 'object') {
+      return undefined;
+    }
+
+    const normalizedMap = new Map();
+    for (const [rawKey, value] of Object.entries(row)) {
+      const normalizedKey = this.normalizeKey(rawKey);
+      if (normalizedKey) {
+        normalizedMap.set(normalizedKey, value);
+      }
+    }
+
+    const targets = Array.isArray(keys) ? keys : [keys];
+    for (const key of targets) {
+      const normalizedKey = this.normalizeKey(key);
+      if (!normalizedKey) continue;
+      if (normalizedMap.has(normalizedKey)) {
+        return normalizedMap.get(normalizedKey);
+      }
+    }
+
+    return undefined;
+  }
+
   /**
    * 上传并导入数据文件
    */
@@ -173,23 +224,27 @@ class ImportController {
 
     // 获取所有已存在的用户ID
     const existingUsers = await db.query('SELECT user_id FROM users');
-    const existingUserIds = new Set(existingUsers.map(u => u.user_id));
+    const existingUserIds = new Set(existingUsers.map(u => String(u.user_id)));
 
     // 使用事务处理数据
     await db.transaction(async (connection) => {
       for (const row of data) {
         try {
-          // 获取用户ID（支持多种列名）
-          const userId = row['用户ID'] || row['user_id'] || row['userId'] || row['UserID'];
+          // 获取用户ID，支持原始字段名和英文字段
+          const userIdRaw = this.getRowValue(row, ['用户ID', 'user_id', 'userid', 'UserID', '用户编号', '会员ID', '用户id']);
+          const userId = userIdRaw !== undefined && userIdRaw !== null ? String(userIdRaw).replace(/\s+/g, '').trim() : '';
           
           if (!userId) {
-            logger.warn('数据行缺少用户ID，跳过');
+            logger.warn('数据行缺少用户ID，跳过', {
+              row: JSON.stringify(row),
+              rawValue: userIdRaw
+            });
             failedRows++;
             continue;
           }
 
           // 判断是否是新用户
-          const isNewUser = !existingUserIds.has(String(userId));
+          const isNewUser = !existingUserIds.has(userId);
           
           if (isNewUser) {
             // 创建新用户
@@ -198,10 +253,10 @@ class ImportController {
                VALUES (?, ?, true, NOW(), NOW())`,
               [
                 userId,
-                row['用户名'] || row['username'] || row['姓名'] || row['name'] || ''
+                (this.getRowValue(row, ['用户昵称', 'username', '昵称', '用户名称', 'name']) || '').toString().trim()
               ]
             );
-            existingUserIds.add(String(userId));
+            existingUserIds.add(userId);
             newUsersCount++;
           } else {
             // 更新老用户活跃时间
@@ -217,7 +272,11 @@ class ImportController {
           const appliedRules = [];
           
           for (const rule of rules) {
-            const columnValue = row[rule.column_name];
+            const columnKeys = rule.column_name
+              ? String(rule.column_name).split(/[,|]/).map(key => key.trim()).filter(Boolean)
+              : [];
+            const columnValueRaw = this.getRowValue(row, columnKeys.length ? columnKeys : rule.column_name);
+            const columnValue = typeof columnValueRaw === "string" ? columnValueRaw.trim() : columnValueRaw;
             
             // 如果列不存在，跳过该规则
             if (columnValue === undefined || columnValue === null || columnValue === '') {
@@ -465,3 +524,10 @@ class ImportController {
 }
 
 module.exports = new ImportController();
+
+
+
+
+
+
+

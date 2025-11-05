@@ -123,3 +123,976 @@ TypeError: Cannot read properties of undefined (reading 'parseExcel')
 2025-10-31 16:39:20 [HTTP]: ::1 - - [31/Oct/2025:08:39:20 +0000] "GET /main.a90ebae812d35b5ffbfb.hot-update.json HTTP/1.1" 404 45 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-10-31 16:40:49 [HTTP]: ::1 - - [31/Oct/2025:08:40:49 +0000] "GET /main.b5d4331060e860b69e41.hot-update.json HTTP/1.1" 404 45 "http://localhost:3001/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
 2025-10-31 16:40:54 [HTTP]: ::1 - - [31/Oct/2025:08:40:54 +0000] "GET /main.b5d4331060e860b69e41.hot-update.json HTTP/1.1" 404 45 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:17:30 [INFO]: 🚀 服务器启动成功
+2025-11-05 10:17:30 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 10:17:30 [INFO]: 🌍 环境: development
+2025-11-05 10:17:30 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 10:18:02 [HTTP]: ::1 - - [05/Nov/2025:02:18:02 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:18:03 [HTTP]: ::1 - - [05/Nov/2025:02:18:03 +0000] "GET /api/dashboard/stats HTTP/1.1" 200 412 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:18:03 [HTTP]: ::1 - - [05/Nov/2025:02:18:03 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:18:44 [HTTP]: ::1 - - [05/Nov/2025:02:18:44 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:3002/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:49 [HTTP]: ::1 - - [05/Nov/2025:02:19:49 +0000] "GET /api/qrcode/generate?size=300 HTTP/1.1" 400 48 "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:49 [HTTP]: ::1 - - [05/Nov/2025:02:19:49 +0000] "GET /api/qrcode/generate?size=300 HTTP/1.1" 400 48 "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:51 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:64:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 10:19:51 [HTTP]: ::1 - - [05/Nov/2025:02:19:51 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 500 54 "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:51 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:64:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 10:19:51 [HTTP]: ::1 - - [05/Nov/2025:02:19:51 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 500 54 "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:54 [HTTP]: ::1 - - [05/Nov/2025:02:19:54 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 200 89 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:54 [HTTP]: ::1 - - [05/Nov/2025:02:19:54 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:57 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:64:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 10:19:57 [HTTP]: ::1 - - [05/Nov/2025:02:19:57 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 500 54 "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:57 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:64:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-05 10:19:57 [HTTP]: ::1 - - [05/Nov/2025:02:19:57 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 500 54 "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:59 [HTTP]: ::1 - - [05/Nov/2025:02:19:59 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:19:59 [HTTP]: ::1 - - [05/Nov/2025:02:19:59 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:00 [HTTP]: ::1 - - [05/Nov/2025:02:20:00 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 200 89 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:00 [HTTP]: ::1 - - [05/Nov/2025:02:20:00 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:03 [HTTP]: ::1 - - [05/Nov/2025:02:20:03 +0000] "GET /api/rules HTTP/1.1" 200 386 "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:03 [HTTP]: ::1 - - [05/Nov/2025:02:20:03 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:06 [HTTP]: ::1 - - [05/Nov/2025:02:20:06 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 89 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:06 [HTTP]: ::1 - - [05/Nov/2025:02:20:06 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:09 [HTTP]: ::1 - - [05/Nov/2025:02:20:09 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:20:09 [HTTP]: ::1 - - [05/Nov/2025:02:20:09 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:21:38 [HTTP]: ::1 - - [05/Nov/2025:02:21:38 +0000] "GET /main.8bb443addda4d2f814b0.hot-update.json HTTP/1.1" 404 45 "http://localhost:3002/home" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:20 [HTTP]: ::1 - - [05/Nov/2025:02:28:20 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:20 [HTTP]: ::1 - - [05/Nov/2025:02:28:20 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:20 [HTTP]: ::1 - - [05/Nov/2025:02:28:20 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:23 [HTTP]: ::1 - - [05/Nov/2025:02:28:23 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:23 [HTTP]: ::1 - - [05/Nov/2025:02:28:23 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:23 [HTTP]: ::1 - - [05/Nov/2025:02:28:23 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:24 [HTTP]: ::1 - - [05/Nov/2025:02:28:24 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:24 [HTTP]: ::1 - - [05/Nov/2025:02:28:24 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:28:25 [HTTP]: ::1 - - [05/Nov/2025:02:28:25 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:18 [HTTP]: ::1 - - [05/Nov/2025:02:29:18 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:18 [HTTP]: ::1 - - [05/Nov/2025:02:29:18 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:18 [HTTP]: ::1 - - [05/Nov/2025:02:29:18 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:23 [HTTP]: ::1 - - [05/Nov/2025:02:29:23 +0000] "GET /api/products?page=1&pageSize=10&category=%E7%83%AD%E9%97%A8%E5%95%86%E5%93%81&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:24 [HTTP]: ::1 - - [05/Nov/2025:02:29:24 +0000] "GET /api/products?page=1&pageSize=10&category=%E6%9C%80%E6%96%B0%E5%95%86%E5%93%81&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:24 [HTTP]: ::1 - - [05/Nov/2025:02:29:24 +0000] "GET /api/products?page=1&pageSize=10&category=%E5%91%A8%E8%BE%B9&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:25 [HTTP]: ::1 - - [05/Nov/2025:02:29:25 +0000] "GET /api/products?page=1&pageSize=10&category=%E5%AE%9E%E7%89%A9&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:25 [HTTP]: ::1 - - [05/Nov/2025:02:29:25 +0000] "GET /api/products?page=1&pageSize=10&category=%E4%BC%98%E6%83%A0%E5%88%B8&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:43 [HTTP]: ::1 - - [05/Nov/2025:02:29:43 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:43 [HTTP]: ::1 - - [05/Nov/2025:02:29:43 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:29:43 [HTTP]: ::1 - - [05/Nov/2025:02:29:43 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:30:21 [HTTP]: ::1 - - [05/Nov/2025:02:30:21 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:30:21 [HTTP]: ::1 - - [05/Nov/2025:02:30:21 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:30:21 [HTTP]: ::1 - - [05/Nov/2025:02:30:21 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:40 [HTTP]: ::1 - - [05/Nov/2025:02:32:40 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:40 [HTTP]: ::1 - - [05/Nov/2025:02:32:40 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:40 [HTTP]: ::1 - - [05/Nov/2025:02:32:40 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:41 [HTTP]: ::1 - - [05/Nov/2025:02:32:41 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:41 [HTTP]: ::1 - - [05/Nov/2025:02:32:41 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:41 [HTTP]: ::1 - - [05/Nov/2025:02:32:41 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:57 [HTTP]: ::1 - - [05/Nov/2025:02:32:57 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:57 [HTTP]: ::1 - - [05/Nov/2025:02:32:57 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:57 [HTTP]: ::1 - - [05/Nov/2025:02:32:57 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:58 [HTTP]: ::1 - - [05/Nov/2025:02:32:58 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:59 [HTTP]: ::1 - - [05/Nov/2025:02:32:59 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:32:59 [HTTP]: ::1 - - [05/Nov/2025:02:32:59 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 89 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 10:33:03 [HTTP]: ::1 - - [05/Nov/2025:02:33:03 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:33:03 [HTTP]: ::1 - - [05/Nov/2025:02:33:03 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:34:20 [HTTP]: ::1 - - [05/Nov/2025:02:34:20 +0000] "POST /api/products/upload HTTP/1.1" 404 45 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:35:45 [HTTP]: ::1 - - [05/Nov/2025:02:35:45 +0000] "POST /api/products/upload HTTP/1.1" 404 45 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:20 [HTTP]: ::1 - - [05/Nov/2025:02:43:20 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:20 [HTTP]: ::1 - - [05/Nov/2025:02:43:20 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:21 [HTTP]: ::1 - - [05/Nov/2025:02:43:21 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:21 [HTTP]: ::1 - - [05/Nov/2025:02:43:21 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:23 [HTTP]: ::1 - - [05/Nov/2025:02:43:23 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:23 [HTTP]: ::1 - - [05/Nov/2025:02:43:23 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:26 [HTTP]: ::1 - - [05/Nov/2025:02:43:26 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:26 [HTTP]: ::1 - - [05/Nov/2025:02:43:26 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:30 [HTTP]: ::1 - - [05/Nov/2025:02:43:30 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:43:30 [HTTP]: ::1 - - [05/Nov/2025:02:43:30 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:55:13 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 10:55:19 [INFO]: 🚀 服务器启动成功
+2025-11-05 10:55:19 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 10:55:19 [INFO]: 🌍 环境: development
+2025-11-05 10:55:19 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 10:55:24 [HTTP]: ::1 - - [05/Nov/2025:02:55:24 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:55:25 [HTTP]: ::1 - - [05/Nov/2025:02:55:25 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:55:33 [INFO]: 商品图片上传成功
+2025-11-05 10:55:33 [HTTP]: ::1 - - [05/Nov/2025:02:55:33 +0000] "POST /api/products/upload HTTP/1.1" 200 242 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:55:33 [HTTP]: ::1 - - [05/Nov/2025:02:55:33 +0000] "GET /uploads/products/file-1762311333294-534191687.png HTTP/1.1" 200 185999 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:59:39 [HTTP]: ::1 - - [05/Nov/2025:02:59:39 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 10:59:39 [HTTP]: ::1 - - [05/Nov/2025:02:59:39 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:00:25 [HTTP]: ::1 - - [05/Nov/2025:03:00:25 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:00:42 [HTTP]: ::1 - - [05/Nov/2025:03:00:42 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:00:43 [HTTP]: ::1 - - [05/Nov/2025:03:00:43 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:01:03 [HTTP]: ::1 - - [05/Nov/2025:03:01:03 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:01:04 [HTTP]: ::1 - - [05/Nov/2025:03:01:04 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:01:11 [HTTP]: ::1 - - [05/Nov/2025:03:01:11 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:02:24 [HTTP]: ::1 - - [05/Nov/2025:03:02:24 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:02:44 [HTTP]: ::1 - - [05/Nov/2025:03:02:44 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:02:54 [HTTP]: ::1 - - [05/Nov/2025:03:02:54 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:03:52 [HTTP]: ::1 - - [05/Nov/2025:03:03:52 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:04:19 [HTTP]: ::1 - - [05/Nov/2025:03:04:19 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:04:37 [HTTP]: ::1 - - [05/Nov/2025:03:04:37 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:05:19 [HTTP]: ::1 - - [05/Nov/2025:03:05:19 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:07:04 [HTTP]: ::1 - - [05/Nov/2025:03:07:04 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:07:30 [HTTP]: ::1 - - [05/Nov/2025:03:07:30 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:07:48 [HTTP]: ::1 - - [05/Nov/2025:03:07:48 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:08:20 [HTTP]: ::1 - - [05/Nov/2025:03:08:20 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:11:35 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 11:11:43 [INFO]: 🚀 服务器启动成功
+2025-11-05 11:11:43 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 11:11:43 [INFO]: 🌍 环境: development
+2025-11-05 11:11:43 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 11:11:49 [HTTP]: ::1 - - [05/Nov/2025:03:11:49 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:11:49 [HTTP]: ::1 - - [05/Nov/2025:03:11:49 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:11:56 [INFO]: 商品图片上传成功
+2025-11-05 11:11:56 [HTTP]: ::1 - - [05/Nov/2025:03:11:56 +0000] "POST /api/products/upload HTTP/1.1" 200 242 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:11:56 [HTTP]: ::1 - - [05/Nov/2025:03:11:56 +0000] "GET /uploads/products/file-1762312316279-484882635.png HTTP/1.1" 200 241926 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:12:18 [HTTP]: ::1 - - [05/Nov/2025:03:12:18 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:12:18 [HTTP]: ::1 - - [05/Nov/2025:03:12:18 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:12:25 [INFO]: 开始导入文件: å°å¼ æµè¯.xlsx, 大小: 28894 字节
+2025-11-05 11:12:25 [ERROR]: 导入失败: Cannot read properties of undefined (reading 'parseExcel')
+TypeError: Cannot read properties of undefined (reading 'parseExcel')
+    at importFile (F:\tsethup\backend\src\controllers\importController.js:35:27)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at done (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:47:7)
+    at indicateDone (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:51:68)
+    at Multipart.<anonymous> (F:\tsethup\backend\node_modules\multer\lib\make-middleware.js:168:7)
+    at Multipart.emit (node:events:507:28)
+    at emitCloseNT (node:internal/streams/destroy:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+2025-11-05 11:12:25 [HTTP]: ::1 - - [05/Nov/2025:03:12:25 +0000] "POST /api/import/upload HTTP/1.1" 500 102 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 11:13:41 [HTTP]: ::1 - - [05/Nov/2025:03:13:41 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:21:45 [INFO]: 🚀 服务器启动成功
+2025-11-05 15:21:45 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 15:21:46 [INFO]: 🌍 环境: development
+2025-11-05 15:21:46 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 15:22:00 [INFO]: 开始导入文件: å°å¼ æµè¯.xlsx, 大小: 28894 字节
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:22:01 [INFO]: 文件导入完成: å°å¼ æµè¯.xlsx, 耗时: 685ms, 成功: 0/207
+2025-11-05 15:22:01 [HTTP]: ::1 - - [05/Nov/2025:07:22:01 +0000] "POST /api/import/upload HTTP/1.1" 200 262 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:22:02 [HTTP]: ::1 - - [05/Nov/2025:07:22:02 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 463 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:23:55 [INFO]: 开始导入文件: å°å¼ æµè¯.xlsx, 大小: 29166 字节
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 15:23:55 [INFO]: 文件导入完成: å°å¼ æµè¯.xlsx, 耗时: 224ms, 成功: 0/207
+2025-11-05 15:23:55 [HTTP]: ::1 - - [05/Nov/2025:07:23:55 +0000] "POST /api/import/upload HTTP/1.1" 200 262 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:23:56 [HTTP]: ::1 - - [05/Nov/2025:07:23:56 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 838 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:24:04 [HTTP]: ::1 - - [05/Nov/2025:07:24:04 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:24:51 [INFO]: 开始导入文件: å°å¼ æµè¯.xlsx, 大小: 29155 字节
+2025-11-05 15:24:51 [INFO]: 文件导入完成: å°å¼ æµè¯.xlsx, 耗时: 638ms, 成功: 207/207
+2025-11-05 15:24:51 [HTTP]: ::1 - - [05/Nov/2025:07:24:51 +0000] "POST /api/import/upload HTTP/1.1" 200 264 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:24:53 [HTTP]: ::1 - - [05/Nov/2025:07:24:53 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:25:12 [HTTP]: ::1 - - [05/Nov/2025:07:25:12 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:25:13 [HTTP]: ::1 - - [05/Nov/2025:07:25:13 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:26:59 [HTTP]: ::1 - - [05/Nov/2025:07:26:59 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 108 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 15:26:59 [HTTP]: ::1 - - [05/Nov/2025:07:26:59 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 108 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 15:26:59 [HTTP]: ::1 - - [05/Nov/2025:07:26:59 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 108 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 15:27:14 [HTTP]: ::1 - - [05/Nov/2025:07:27:14 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 108 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 15:27:14 [HTTP]: ::1 - - [05/Nov/2025:07:27:14 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 108 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 15:27:14 [HTTP]: ::1 - - [05/Nov/2025:07:27:14 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 108 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 15:55:02 [HTTP]: ::1 - - [05/Nov/2025:07:55:02 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:55:02 [HTTP]: ::1 - - [05/Nov/2025:07:55:02 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:55:04 [HTTP]: ::1 - - [05/Nov/2025:07:55:04 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 15:55:04 [HTTP]: ::1 - - [05/Nov/2025:07:55:04 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:20:56 [HTTP]: ::1 - - [05/Nov/2025:08:20:56 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:20:56 [HTTP]: ::1 - - [05/Nov/2025:08:20:56 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:03 [INFO]: 开始导入文件: å°å¼ æµè¯.xlsx, 大小: 29155 字节
+2025-11-05 16:21:04 [INFO]: 文件导入完成: å°å¼ æµè¯.xlsx, 耗时: 831ms, 成功: 207/207
+2025-11-05 16:21:04 [HTTP]: ::1 - - [05/Nov/2025:08:21:04 +0000] "POST /api/import/upload HTTP/1.1" 200 264 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:05 [HTTP]: ::1 - - [05/Nov/2025:08:21:05 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:09 [HTTP]: ::1 - - [05/Nov/2025:08:21:09 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:10 [HTTP]: ::1 - - [05/Nov/2025:08:21:10 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:21 [HTTP]: ::1 - - [05/Nov/2025:08:21:21 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:22 [HTTP]: ::1 - - [05/Nov/2025:08:21:22 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:22 [HTTP]: ::1 - - [05/Nov/2025:08:21:22 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:23 [HTTP]: ::1 - - [05/Nov/2025:08:21:23 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:26 [HTTP]: ::1 - - [05/Nov/2025:08:21:26 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:27 [HTTP]: ::1 - - [05/Nov/2025:08:21:27 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:29 [HTTP]: ::1 - - [05/Nov/2025:08:21:29 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:29 [HTTP]: ::1 - - [05/Nov/2025:08:21:29 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:31 [HTTP]: ::1 - - [05/Nov/2025:08:21:31 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:34 [HTTP]: ::1 - - [05/Nov/2025:08:21:34 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:34 [HTTP]: ::1 - - [05/Nov/2025:08:21:34 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:36 [HTTP]: ::1 - - [05/Nov/2025:08:21:36 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:36 [HTTP]: ::1 - - [05/Nov/2025:08:21:36 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:37 [HTTP]: ::1 - - [05/Nov/2025:08:21:37 +0000] "GET /api/dashboard/stats HTTP/1.1" 200 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:37 [HTTP]: ::1 - - [05/Nov/2025:08:21:37 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:46 [HTTP]: ::1 - - [05/Nov/2025:08:21:46 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:46 [HTTP]: ::1 - - [05/Nov/2025:08:21:46 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:50 [HTTP]: ::1 - - [05/Nov/2025:08:21:50 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:50 [HTTP]: ::1 - - [05/Nov/2025:08:21:50 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:53 [HTTP]: ::1 - - [05/Nov/2025:08:21:53 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:53 [HTTP]: ::1 - - [05/Nov/2025:08:21:53 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:55 [HTTP]: ::1 - - [05/Nov/2025:08:21:55 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:55 [HTTP]: ::1 - - [05/Nov/2025:08:21:55 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:21:57 [HTTP]: ::1 - - [05/Nov/2025:08:21:57 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:00 [HTTP]: ::1 - - [05/Nov/2025:08:22:00 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:00 [HTTP]: ::1 - - [05/Nov/2025:08:22:00 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:01 [HTTP]: ::1 - - [05/Nov/2025:08:22:01 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:01 [HTTP]: ::1 - - [05/Nov/2025:08:22:01 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:09 [HTTP]: ::1 - - [05/Nov/2025:08:22:09 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:09 [HTTP]: ::1 - - [05/Nov/2025:08:22:09 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:13 [HTTP]: ::1 - - [05/Nov/2025:08:22:13 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:22:14 [HTTP]: ::1 - - [05/Nov/2025:08:22:14 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:23:24 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 16:24:41 [INFO]: 🚀 服务器启动成功
+2025-11-05 16:24:41 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 16:24:41 [INFO]: 🌍 环境: development
+2025-11-05 16:24:41 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 16:24:46 [HTTP]: ::1 - - [05/Nov/2025:08:24:46 +0000] "GET /api/dashboard/stats HTTP/1.1" 200 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:24:46 [HTTP]: ::1 - - [05/Nov/2025:08:24:46 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:24:52 [HTTP]: ::1 - - [05/Nov/2025:08:24:52 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:24:52 [HTTP]: ::1 - - [05/Nov/2025:08:24:52 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:24:58 [INFO]: 开始导入文件: 小张测试.xlsx, 大小: 29155 字节
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [WARN]: 数据行缺少用户ID，跳过
+2025-11-05 16:24:58 [INFO]: 文件导入完成: 小张测试.xlsx, 耗时: 400ms, 成功: 0/207
+2025-11-05 16:24:58 [HTTP]: ::1 - - [05/Nov/2025:08:24:58 +0000] "POST /api/import/upload HTTP/1.1" 200 250 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:24:59 [HTTP]: ::1 - - [05/Nov/2025:08:24:59 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:28:08 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 16:30:48 [INFO]: 🚀 服务器启动成功
+2025-11-05 16:30:48 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 16:30:48 [INFO]: 🌍 环境: development
+2025-11-05 16:30:48 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 16:30:54 [HTTP]: ::1 - - [05/Nov/2025:08:30:54 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:30:54 [HTTP]: ::1 - - [05/Nov/2025:08:30:54 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:30:59 [INFO]: 开始导入文件: 小张测试.xlsx, 大小: 29155 字节
+2025-11-05 16:31:00 [INFO]: 文件导入完成: 小张测试.xlsx, 耗时: 407ms, 成功: 207/207
+2025-11-05 16:31:00 [HTTP]: ::1 - - [05/Nov/2025:08:31:00 +0000] "POST /api/import/upload HTTP/1.1" 200 252 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:01 [HTTP]: ::1 - - [05/Nov/2025:08:31:01 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:09 [HTTP]: ::1 - - [05/Nov/2025:08:31:09 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:09 [HTTP]: ::1 - - [05/Nov/2025:08:31:09 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:11 [HTTP]: ::1 - - [05/Nov/2025:08:31:11 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:11 [HTTP]: ::1 - - [05/Nov/2025:08:31:11 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:13 [HTTP]: ::1 - - [05/Nov/2025:08:31:13 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:13 [HTTP]: ::1 - - [05/Nov/2025:08:31:13 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:15 [HTTP]: ::1 - - [05/Nov/2025:08:31:15 +0000] "GET /api/dashboard/stats HTTP/1.1" 200 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:15 [HTTP]: ::1 - - [05/Nov/2025:08:31:15 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:21 [HTTP]: ::1 - - [05/Nov/2025:08:31:21 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:21 [HTTP]: ::1 - - [05/Nov/2025:08:31:21 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:35 [HTTP]: ::1 - - [05/Nov/2025:08:31:35 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 200 108 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:35 [HTTP]: ::1 - - [05/Nov/2025:08:31:35 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:38 [HTTP]: ::1 - - [05/Nov/2025:08:31:38 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:38 [HTTP]: ::1 - - [05/Nov/2025:08:31:38 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:39 [HTTP]: ::1 - - [05/Nov/2025:08:31:39 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:31:39 [HTTP]: ::1 - - [05/Nov/2025:08:31:39 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:00 [HTTP]: ::1 - - [05/Nov/2025:08:34:00 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:00 [HTTP]: ::1 - - [05/Nov/2025:08:34:00 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:03 [HTTP]: ::1 - - [05/Nov/2025:08:34:03 +0000] "GET /api/dashboard/stats HTTP/1.1" 200 412 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:03 [HTTP]: ::1 - - [05/Nov/2025:08:34:03 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:06 [HTTP]: ::1 - - [05/Nov/2025:08:34:06 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 89 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:06 [HTTP]: ::1 - - [05/Nov/2025:08:34:06 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:13 [INFO]: 开始导入文件: 小张测试.xlsx, 大小: 29155 字节
+2025-11-05 16:34:13 [INFO]: 文件导入完成: 小张测试.xlsx, 耗时: 457ms, 成功: 207/207
+2025-11-05 16:34:13 [HTTP]: ::1 - - [05/Nov/2025:08:34:13 +0000] "POST /api/import/upload HTTP/1.1" 200 252 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:15 [HTTP]: ::1 - - [05/Nov/2025:08:34:15 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 453 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:22 [HTTP]: ::1 - - [05/Nov/2025:08:34:22 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:22 [HTTP]: ::1 - - [05/Nov/2025:08:34:22 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:24 [HTTP]: ::1 - - [05/Nov/2025:08:34:24 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:24 [HTTP]: ::1 - - [05/Nov/2025:08:34:24 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:26 [HTTP]: ::1 - - [05/Nov/2025:08:34:26 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:28 [HTTP]: ::1 - - [05/Nov/2025:08:34:28 +0000] "GET /api/dashboard/stats HTTP/1.1" 200 633 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:28 [HTTP]: ::1 - - [05/Nov/2025:08:34:28 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:39 [HTTP]: ::1 - - [05/Nov/2025:08:34:39 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:34:39 [HTTP]: ::1 - - [05/Nov/2025:08:34:39 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:36:25 [HTTP]: ::1 - - [05/Nov/2025:08:36:25 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:40:28 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 16:40:35 [INFO]: 🚀 服务器启动成功
+2025-11-05 16:40:35 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 16:40:35 [INFO]: 🌍 环境: development
+2025-11-05 16:40:35 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 16:40:40 [HTTP]: ::1 - - [05/Nov/2025:08:40:40 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:40:49 [HTTP]: ::1 - - [05/Nov/2025:08:40:49 +0000] "GET /api/users/458310960/points HTTP/1.1" 200 198 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:41:02 [HTTP]: ::1 - - [05/Nov/2025:08:41:02 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:41:02 [HTTP]: ::1 - - [05/Nov/2025:08:41:02 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:41:04 [HTTP]: ::1 - - [05/Nov/2025:08:41:04 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:41:04 [HTTP]: ::1 - - [05/Nov/2025:08:41:04 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:41:16 [HTTP]: ::1 - - [05/Nov/2025:08:41:16 +0000] "GET /api/users?page=2&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:41:32 [HTTP]: ::1 - - [05/Nov/2025:08:41:32 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:41:32 [HTTP]: ::1 - - [05/Nov/2025:08:41:32 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:42:09 [INFO]: 商品图片上传成功
+2025-11-05 16:42:09 [HTTP]: ::1 - - [05/Nov/2025:08:42:09 +0000] "POST /api/products/upload HTTP/1.1" 200 242 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:42:09 [HTTP]: ::1 - - [05/Nov/2025:08:42:09 +0000] "GET /uploads/products/file-1762332129834-702992443.png HTTP/1.1" 200 185999 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:43:46 [HTTP]: ::1 - - [05/Nov/2025:08:43:46 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:46:49 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 16:46:54 [INFO]: 🚀 服务器启动成功
+2025-11-05 16:46:54 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 16:46:54 [INFO]: 🌍 环境: development
+2025-11-05 16:46:54 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 16:47:00 [HTTP]: ::1 - - [05/Nov/2025:08:47:00 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:47:00 [HTTP]: ::1 - - [05/Nov/2025:08:47:00 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:47:25 [INFO]: 商品图片上传成功
+2025-11-05 16:47:25 [HTTP]: ::1 - - [05/Nov/2025:08:47:25 +0000] "POST /api/products/upload HTTP/1.1" 200 242 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:47:25 [HTTP]: ::1 - - [05/Nov/2025:08:47:25 +0000] "GET /uploads/products/file-1762332445547-518379385.png HTTP/1.1" 200 185999 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:47:54 [INFO]: 创建商品成功: 红包 (ID: 1)
+2025-11-05 16:47:54 [HTTP]: ::1 - - [05/Nov/2025:08:47:54 +0000] "POST /api/products HTTP/1.1" 200 63 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:47:54 [HTTP]: ::1 - - [05/Nov/2025:08:47:54 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 200 568 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:47:54 [HTTP]: ::1 - - [05/Nov/2025:08:47:54 +0000] "GET /uploads/products/file-1762332445547-518379385.png HTTP/1.1" 200 185999 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:47:58 [HTTP]: ::1 - - [05/Nov/2025:08:47:58 +0000] "GET /uploads/products/file-1762332445547-518379385.png HTTP/1.1" 200 185999 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:48:15 [HTTP]: ::1 - - [05/Nov/2025:08:48:15 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 568 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:15 [HTTP]: ::1 - - [05/Nov/2025:08:48:15 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 568 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:15 [HTTP]: ::1 - - [05/Nov/2025:08:48:15 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 568 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:15 [HTTP]: ::1 - - [05/Nov/2025:08:48:15 +0000] "GET /uploads/products/file-1762332445547-518379385.png HTTP/1.1" 200 185999 "http://localhost:3002/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:35 [HTTP]: ::1 - - [05/Nov/2025:08:48:35 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 568 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:35 [HTTP]: ::1 - - [05/Nov/2025:08:48:35 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 568 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:35 [HTTP]: ::1 - - [05/Nov/2025:08:48:35 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 200 568 "http://localhost:3002/shop" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:35 [HTTP]: ::1 - - [05/Nov/2025:08:48:35 +0000] "GET /uploads/products/file-1762332445547-518379385.png HTTP/1.1" 200 185999 "http://localhost:3002/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:48:35 [HTTP]: ::1 - - [05/Nov/2025:08:48:35 +0000] "GET /uploads/products/file-1762332445547-518379385.png HTTP/1.1" 200 185999 "http://localhost:3002/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2025-11-05 16:50:01 [HTTP]: ::1 - - [05/Nov/2025:08:50:01 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-05 16:50:44 [INFO]: 收到SIGINT信号，正在关闭服务器...

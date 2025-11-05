@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { 
   Card, 
   Table, 
@@ -49,7 +49,30 @@ const ProductManagement = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [form] = Form.useForm();
   const [imageUrl, setImageUrl] = useState('');
+  const [previewUrl, setPreviewUrl] = useState('');
   const [uploading, setUploading] = useState(false);
+  const previewObjectUrlRef = useRef(null);
+
+  const clearPreviewObjectUrl = useCallback(() => {
+    if (previewObjectUrlRef.current) {
+      URL.revokeObjectURL(previewObjectUrlRef.current);
+      previewObjectUrlRef.current = null;
+    }
+  }, []);
+
+  const buildPreviewUrl = useCallback((url) => {
+    if (!url) return '';
+    if (/^https?:\/\//i.test(url)) {
+      return url;
+    }
+    if (process.env.REACT_APP_FILE_BASE_URL) {
+      return `${process.env.REACT_APP_FILE_BASE_URL.replace(/\/$/, '')}${url}`;
+    }
+    if (url.startsWith('/')) {
+      return `${window.location.origin}${url}`;
+    }
+    return url;
+  }, []);
 
   // Fixed: Wrap fetchProducts in useCallback
   const fetchProducts = useCallback(async () => {
@@ -75,11 +98,20 @@ const ProductManagement = () => {
     fetchProducts();
   }, [fetchProducts]);
 
+  useEffect(() => {
+    return () => {
+      clearPreviewObjectUrl();
+    };
+  }, [clearPreviewObjectUrl]);
+
   const handleAdd = () => {
     setEditingProduct(null);
     setImageUrl('');
+    setPreviewUrl('');
+    clearPreviewObjectUrl();
     form.resetFields();
     form.setFieldsValue({
+      image_url: '',
       stock: 0,
       sort_order: 0,
       is_active: true,
@@ -92,6 +124,8 @@ const ProductManagement = () => {
   const handleEdit = (record) => {
     setEditingProduct(record);
     setImageUrl(record.image_url || '');
+    clearPreviewObjectUrl();
+    setPreviewUrl(buildPreviewUrl(record.image_url || ''));
     form.setFieldsValue({
       ...record,
       time_range: record.start_time && record.end_time ? [
@@ -140,6 +174,10 @@ const ProductManagement = () => {
         message.success('创建成功');
       }
       setModalVisible(false);
+      clearPreviewObjectUrl();
+      setImageUrl('');
+      setPreviewUrl('');
+      form.resetFields();
       fetchProducts();
     } catch (error) {
       console.error('保存失败:', error);
@@ -149,31 +187,54 @@ const ProductManagement = () => {
   const handleImageUpload = async (file) => {
     const isImage = file.type.startsWith('image/');
     if (!isImage) {
-      message.error('只能上传图片文件');
-      return false;
+      message.error('仅支持上传图片文件');
+      return Upload.LIST_IGNORE;
     }
 
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
       message.error('图片大小不能超过 2MB');
-      return false;
+      return Upload.LIST_IGNORE;
     }
 
     const formData = new FormData();
     formData.append('file', file);
 
+    clearPreviewObjectUrl();
+    const localPreview = URL.createObjectURL(file);
+    previewObjectUrlRef.current = localPreview;
+    setPreviewUrl(localPreview);
+
     try {
       setUploading(true);
       const response = await productsAPI.upload(formData);
-      setImageUrl(response.data.url);
+      const uploadData = response?.data || {};
+      const storedUrl = uploadData.path || uploadData.url || '';
+      const previewSource = uploadData.url || uploadData.path || storedUrl;
+
+      if (storedUrl || previewSource) {
+        if (storedUrl) {
+          setImageUrl(storedUrl);
+          form.setFieldsValue({ image_url: storedUrl });
+        } else {
+          setImageUrl(previewSource);
+          form.setFieldsValue({ image_url: previewSource });
+        }
+
+        clearPreviewObjectUrl();
+        setPreviewUrl(buildPreviewUrl(previewSource));
+      }
+
       message.success('图片上传成功');
     } catch (error) {
       console.error('图片上传失败:', error);
+      clearPreviewObjectUrl();
+      setPreviewUrl(buildPreviewUrl(imageUrl));
     } finally {
       setUploading(false);
     }
 
-    return false;
+    return Upload.LIST_IGNORE;
   };
 
   const categories = [
@@ -407,7 +468,13 @@ const ProductManagement = () => {
       <Modal
         title={editingProduct ? '编辑商品' : '新增商品'}
         open={modalVisible}
-        onCancel={() => setModalVisible(false)}
+        onCancel={() => {
+          setModalVisible(false);
+          clearPreviewObjectUrl();
+          setImageUrl('');
+          setPreviewUrl('');
+          form.resetFields();
+        }}
         footer={null}
         width={800}
       >
@@ -507,11 +574,14 @@ const ProductManagement = () => {
               name="file"
               listType="picture-card"
               className="avatar-uploader"
+              accept="image/*"
+              maxCount={1}
+              disabled={uploading}
               showUploadList={false}
               beforeUpload={handleImageUpload}
             >
-              {imageUrl ? (
-                <img src={imageUrl} alt="商品图片" style={{ width: '100%' }} />
+              {previewUrl ? (
+                <img src={previewUrl} alt="商品图片" style={{ width: '100%' }} />
               ) : (
                 <div>
                   <UploadOutlined />
@@ -596,3 +666,10 @@ const ProductManagement = () => {
 };
 
 export default ProductManagement;
+
+
+
+
+
+
+

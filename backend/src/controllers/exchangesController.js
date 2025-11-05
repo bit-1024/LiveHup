@@ -1,6 +1,7 @@
 const db = require('../config/database');
 const logger = require('../config/logger');
 const moment = require('moment');
+const { buildFileUrl } = require('../utils/file');
 
 class ExchangesController {
   /**
@@ -63,10 +64,15 @@ class ExchangesController {
 
       const result = await db.paginate(sql, params, parseInt(page), parseInt(pageSize));
 
+      const list = (result.data || []).map((item) => ({
+        ...item,
+        product_image: buildFileUrl(req, item.product_image)
+      }));
+
       res.json({
         success: true,
         data: {
-          list: result.data,
+          list,
           total: result.pagination.total
         },
         pagination: result.pagination
@@ -102,9 +108,14 @@ class ExchangesController {
         });
       }
 
+      const formattedExchange = {
+        ...exchange,
+        product_image: buildFileUrl(req, exchange.product_image)
+      };
+
       res.json({
         success: true,
-        data: exchange
+        data: formattedExchange
       });
     } catch (error) {
       logger.error('获取兑换详情失败:', error);

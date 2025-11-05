@@ -1,5 +1,7 @@
+const path = require('path');
 const db = require('../config/database');
 const logger = require('../config/logger');
+const { buildFileUrl, extractStoragePath } = require('../utils/file');
 
 class ProductsController {
   /**
@@ -45,9 +47,18 @@ class ProductsController {
 
       const result = await db.paginate(sql, params, parseInt(page), parseInt(pageSize));
 
+      const products = (result.data || []).map((item) => ({
+        ...item,
+        image_path: item.image_url,
+        image_url: buildFileUrl(req, item.image_url)
+      }));
+
       res.json({
         success: true,
-        data: result.data,
+        data: {
+          list: products,
+          total: result.pagination?.total || products.length
+        },
         pagination: result.pagination
       });
     } catch (error) {
@@ -60,7 +71,7 @@ class ProductsController {
   }
 
   /**
-   * 获取商品详情
+   * 获取产品详情
    */
   async getProductById(req, res) {
     try {
@@ -78,6 +89,12 @@ class ProductsController {
         });
       }
 
+      const formattedProduct = {
+        ...product,
+        image_path: product.image_url,
+        image_url: buildFileUrl(req, product.image_url)
+      };
+
       // 获取兑换统计
       const [stats] = await db.query(
         `SELECT 
@@ -92,15 +109,15 @@ class ProductsController {
       res.json({
         success: true,
         data: {
-          ...product,
+          ...formattedProduct,
           stats: stats || { total_exchanges: 0, total_quantity: 0, total_points: 0 }
         }
       });
     } catch (error) {
-      logger.error('获取商品详情失败:', error);
+      logger.error('获取产品详情失败:', error);
       res.status(500).json({
         success: false,
-        message: '获取商品详情失败'
+        message: '获取产品详情失败'
       });
     }
   }
@@ -130,6 +147,8 @@ class ProductsController {
         });
       }
 
+      const storedImagePath = extractStoragePath(image_url);
+
       const result = await db.query(
         `INSERT INTO products 
          (name, description, points_required, original_price, stock, image_url, category, sort_order, is_hot, is_new) 
@@ -140,7 +159,7 @@ class ProductsController {
           points_required,
           original_price || null,
           stock || 0,
-          image_url || null,
+          storedImagePath || null,
           category || null,
           sort_order || 0,
           is_hot || false,
@@ -171,6 +190,10 @@ class ProductsController {
     try {
       const { id } = req.params;
       const updates = req.body;
+
+      if (updates.image_url !== undefined) {
+        updates.image_url = extractStoragePath(updates.image_url);
+      }
 
       // 检查商品是否存在
       const [product] = await db.query(
@@ -300,6 +323,63 @@ class ProductsController {
       res.status(500).json({
         success: false,
         message: '批量操作失败'
+      });
+    }
+  }
+
+  /**
+   * 商品图片上传
+   */
+  async uploadProductImage(req, res) {
+    try {
+      if (!req.file) {
+        return res.status(400).json({
+          success: false,
+          message: '未接收到上传文件'
+        });
+      }
+
+      const uploadsRoot = process.env.UPLOAD_PATH
+        ? path.resolve(process.env.UPLOAD_PATH)
+        : path.resolve(__dirname, '../../uploads');
+
+      const relativePath = path.relative(uploadsRoot, req.file.path).replace(/\\/g, '/');
+
+      if (!relativePath || relativePath.startsWith('..')) {
+        logger.error('商品图片路径解析异常:', {
+          uploadsRoot,
+          filePath: req.file.path,
+          relativePath
+        });
+        return res.status(500).json({
+          success: false,
+          message: '图片保存路径异常，请联系管理员'
+        });
+      }
+
+      const baseUrl = process.env.FILE_BASE_URL || `${req.protocol}://${req.get('host')}`;
+      const fileUrl = `${baseUrl}/uploads/${relativePath}`;
+
+      logger.info('商品图片上传成功', {
+        filename: req.file.filename,
+        size: req.file.size,
+        mimetype: req.file.mimetype
+      });
+
+      res.json({
+        success: true,
+        message: '图片上传成功',
+        data: {
+          filename: req.file.filename,
+          url: fileUrl,
+          path: `/uploads/${relativePath}`
+        }
+      });
+    } catch (error) {
+      logger.error('商品图片上传失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '图片上传失败，请稍后重试'
       });
     }
   }

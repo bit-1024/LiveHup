@@ -64,10 +64,10 @@ const UserManagement = () => {
       };
       
       const response = await usersAPI.getList(params);
-      setUsers(response.data.list);
+      setUsers(response.data);
       setPagination(prev => ({
         ...prev,
-        total: response.data.total,
+        total: response.pagination.total,
       }));
     } catch (error) {
       console.error('获取用户列表失败:', error);
