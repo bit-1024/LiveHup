@@ -336,9 +336,9 @@ class ImportController {
             existingUserIds.add(userId);
             newUsersCount++;
           } else {
-            // 更新老用户活跃时间
+            // 更新老用户活跃时间，并标记为老用户
             await connection.execute(
-              'UPDATE users SET last_active_date = NOW() WHERE user_id = ?',
+              'UPDATE users SET last_active_date = NOW(), is_new_user = false WHERE user_id = ?',
               [userId]
             );
             existingUsersCount++;
