@@ -98,9 +98,10 @@ const UserManagement = () => {
     try {
       setPointsLoading(true);
       const response = await usersAPI.getPoints(user.user_id);
-      setUserPoints(response.data);
+      setUserPoints(response.data.records || []);
     } catch (error) {
       console.error('获取用户积分详情失败:', error);
+      setUserPoints([]);
     } finally {
       setPointsLoading(false);
     }
