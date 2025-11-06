@@ -6,19 +6,15 @@ const logger = require('../config/logger');
 // 生成二维码
 router.get('/generate', async (req, res) => {
   try {
-    const { url, userId } = req.query;
+    const { text, url, userId, size } = req.query;
     
-    if (!url) {
-      return res.status(400).json({
-        success: false,
-        message: '请提供URL参数'
-      });
-    }
+    const content = text || url || 'http://localhost:3000/points-query';
+    const qrSize = parseInt(size) || 300;
 
     // 生成查询链接
-    const queryUrl = userId 
-      ? `${url}?userId=${userId}`
-      : url;
+    const queryUrl = userId
+      ? `${content}?userId=${userId}`
+      : content;
 
     // 生成二维码
     const qrCodeDataURL = await QRCode.toDataURL(queryUrl, {
@@ -26,14 +22,14 @@ router.get('/generate', async (req, res) => {
       type: 'image/png',
       quality: 0.92,
       margin: 1,
-      width: 300
+      width: qrSize
     });
 
     res.json({
       success: true,
       data: {
         url: queryUrl,
-        qrCode: qrCodeDataURL
+        qrcode: qrCodeDataURL
       }
     });
   } catch (error) {

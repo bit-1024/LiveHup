@@ -14659,3 +14659,156 @@ Error: Field 'balance_after' doesn't have a default value
 2025-11-06 14:58:33 [HTTP]: ::1 - - [06/Nov/2025:06:58:33 +0000] "GET /api/users?page=3&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-11-06 14:58:36 [HTTP]: ::1 - - [06/Nov/2025:06:58:36 +0000] "GET /api/users?page=2&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-11-06 15:01:10 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-06 15:01:24 [INFO]: 🚀 服务器启动成功
+2025-11-06 15:01:24 [INFO]: 📍 地址: http://localhost:3000
+2025-11-06 15:01:24 [INFO]: 🌍 环境: development
+2025-11-06 15:01:24 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-06 15:02:31 [HTTP]: ::1 - - [06/Nov/2025:07:02:31 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:31 [HTTP]: ::1 - - [06/Nov/2025:07:02:31 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:36 [HTTP]: ::1 - - [06/Nov/2025:07:02:36 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:36 [HTTP]: ::1 - - [06/Nov/2025:07:02:36 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:38 [HTTP]: ::1 - - [06/Nov/2025:07:02:38 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:44 [INFO]: 开始导入文件: 小张测试2.xlsx, 大小: 10933 字节
+2025-11-06 15:02:44 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时4分30秒" (64.5分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:44 [INFO]: ✓ 规则匹配成功！用户 488343111, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:44 [INFO]: 累计积分: 用户 488343111 当前累计 1 积分
+2025-11-06 15:02:44 [INFO]: ✓ 积分记录已保存: 记录ID=2043, 用户=488343111, 积分=1, 余额=3
+2025-11-06 15:02:44 [INFO]: 用户 488343111 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:44 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时4分34秒" (64.56666666666666分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:44 [INFO]: ✓ 规则匹配成功！用户 473424271, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:44 [INFO]: 累计积分: 用户 473424271 当前累计 1 积分
+2025-11-06 15:02:44 [INFO]: ✓ 积分记录已保存: 记录ID=2044, 用户=473424271, 积分=1, 余额=3
+2025-11-06 15:02:44 [INFO]: 用户 473424271 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时4分22秒" (64.36666666666666分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 344130380, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 344130380 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2045, 用户=344130380, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 344130380 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时4分30秒" (64.5分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 458035214, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 458035214 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2046, 用户=458035214, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 458035214 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时4分25秒" (64.41666666666667分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 251086779, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 251086779 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2047, 用户=251086779, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 251086779 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时2分32秒" (62.53333333333333分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 485816131, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 485816131 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2048, 用户=485816131, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 485816131 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时4分40秒" (64.66666666666667分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 297249425, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 297249425 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2049, 用户=297249425, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 297249425 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="0小时58分19秒" (58.31666666666667分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 337464051, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 337464051 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2050, 用户=337464051, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 337464051 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时3分43秒" (63.71666666666667分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 306352686, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 306352686 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2051, 用户=306352686, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 306352686 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时4分40秒" (64.66666666666667分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 470792309, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 470792309 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2052, 用户=470792309, 积分=1, 余额=3
+2025-11-06 15:02:45 [INFO]: 用户 470792309 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="2小时15分30秒" (135.5分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 102847593, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 102847593 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2053, 用户=102847593, 积分=1, 余额=2
+2025-11-06 15:02:45 [INFO]: 用户 102847593 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="5小时02分05秒" (302.0833333333333分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 880219475, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 880219475 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2054, 用户=880219475, 积分=1, 余额=2
+2025-11-06 15:02:45 [INFO]: 用户 880219475 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="0小时45分12秒" (45.2分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 501992481, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 501992481 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2055, 用户=501992481, 积分=1, 余额=2
+2025-11-06 15:02:45 [INFO]: 用户 501992481 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="0小时08分55秒" (8.916666666666666分钟) >= 条件值="40" (40分钟) = false
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="1小时58分00秒" (118分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 692850174, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 692850174 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2056, 用户=692850174, 积分=1, 余额=2
+2025-11-06 15:02:45 [INFO]: 用户 692850174 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="0小时00分48秒" (0.8分钟) >= 条件值="40" (40分钟) = false
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="0小时16分23秒" (16.383333333333333分钟) >= 条件值="40" (40分钟) = false
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="0小时27分00秒" (27分钟) >= 条件值="40" (40分钟) = false
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="3小时40分10秒" (220.16666666666666分钟) >= 条件值="40" (40分钟) = true
+2025-11-06 15:02:45 [INFO]: ✓ 规则匹配成功！用户 759201833, 规则 4 (观看时长达标积分规则), 将获得 1 积分
+2025-11-06 15:02:45 [INFO]: 累计积分: 用户 759201833 当前累计 1 积分
+2025-11-06 15:02:45 [INFO]: ✓ 积分记录已保存: 记录ID=2057, 用户=759201833, 积分=1, 余额=2
+2025-11-06 15:02:45 [INFO]: 用户 759201833 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
+2025-11-06 15:02:45 [INFO]: 规则 4 (观看时长达标积分规则) greater_or_equal: 列值="0小时00分00秒" (0分钟) >= 条件值="40" (40分钟) = false
+2025-11-06 15:02:45 [INFO]: 文件导入完成: 小张测试2.xlsx, 耗时: 438ms, 成功: 20/20
+2025-11-06 15:02:45 [HTTP]: ::1 - - [06/Nov/2025:07:02:45 +0000] "POST /api/import/upload HTTP/1.1" 200 251 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:46 [HTTP]: ::1 - - [06/Nov/2025:07:02:46 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:49 [HTTP]: ::1 - - [06/Nov/2025:07:02:49 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:50 [HTTP]: ::1 - - [06/Nov/2025:07:02:50 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:53 [HTTP]: ::1 - - [06/Nov/2025:07:02:53 +0000] "GET /api/import/detail/ce0eb913-d4f8-41b5-a79d-6378dd0273fe HTTP/1.1" 200 388 "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:57 [HTTP]: ::1 - - [06/Nov/2025:07:02:57 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:02:57 [HTTP]: ::1 - - [06/Nov/2025:07:02:57 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:02 [HTTP]: ::1 - - [06/Nov/2025:07:03:02 +0000] "GET /api/users?page=2&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:04 [HTTP]: ::1 - - [06/Nov/2025:07:03:04 +0000] "GET /api/users?page=3&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:06 [HTTP]: ::1 - - [06/Nov/2025:07:03:06 +0000] "GET /api/users?page=4&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:08 [HTTP]: ::1 - - [06/Nov/2025:07:03:08 +0000] "GET /api/users?page=5&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:09 [HTTP]: ::1 - - [06/Nov/2025:07:03:09 +0000] "GET /api/users?page=6&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:10 [HTTP]: ::1 - - [06/Nov/2025:07:03:10 +0000] "GET /api/users?page=7&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:11 [HTTP]: ::1 - - [06/Nov/2025:07:03:11 +0000] "GET /api/users?page=8&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:13 [HTTP]: ::1 - - [06/Nov/2025:07:03:13 +0000] "GET /api/users?page=9&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:14 [HTTP]: ::1 - - [06/Nov/2025:07:03:14 +0000] "GET /api/users?page=10&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:15 [HTTP]: ::1 - - [06/Nov/2025:07:03:15 +0000] "GET /api/users?page=11&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:16 [HTTP]: ::1 - - [06/Nov/2025:07:03:16 +0000] "GET /api/users?page=12&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:18 [HTTP]: ::1 - - [06/Nov/2025:07:03:18 +0000] "GET /api/users?page=13&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:18 [HTTP]: ::1 - - [06/Nov/2025:07:03:18 +0000] "GET /api/users?page=14&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:20 [HTTP]: ::1 - - [06/Nov/2025:07:03:20 +0000] "GET /api/users?page=15&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:20 [HTTP]: ::1 - - [06/Nov/2025:07:03:20 +0000] "GET /api/users?page=16&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:22 [HTTP]: ::1 - - [06/Nov/2025:07:03:22 +0000] "GET /api/users?page=17&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:22 [HTTP]: ::1 - - [06/Nov/2025:07:03:22 +0000] "GET /api/users?page=18&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:23 [HTTP]: ::1 - - [06/Nov/2025:07:03:23 +0000] "GET /api/users?page=19&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:26 [HTTP]: ::1 - - [06/Nov/2025:07:03:26 +0000] "GET /api/users?page=20&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:28 [HTTP]: ::1 - - [06/Nov/2025:07:03:28 +0000] "GET /api/users?page=21&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:29 [HTTP]: ::1 - - [06/Nov/2025:07:03:29 +0000] "GET /api/users?page=22&pageSize=10 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:31 [HTTP]: ::1 - - [06/Nov/2025:07:03:31 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:33 [HTTP]: ::1 - - [06/Nov/2025:07:03:33 +0000] "GET /api/users?page=2&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:36 [HTTP]: ::1 - - [06/Nov/2025:07:03:36 +0000] "GET /api/users?page=3&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:39 [HTTP]: ::1 - - [06/Nov/2025:07:03:39 +0000] "GET /api/users?page=4&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:41 [HTTP]: ::1 - - [06/Nov/2025:07:03:41 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:48 [HTTP]: ::1 - - [06/Nov/2025:07:03:48 +0000] "GET /api/users?page=1&pageSize=10&keyword=l HTTP/1.1" 200 443 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:49 [HTTP]: ::1 - - [06/Nov/2025:07:03:49 +0000] "GET /api/users?page=1&pageSize=10&keyword=li HTTP/1.1" 200 89 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:49 [HTTP]: ::1 - - [06/Nov/2025:07:03:49 +0000] "GET /api/users?page=1&pageSize=10&keyword=liu HTTP/1.1" 200 89 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:03:49 [HTTP]: ::1 - - [06/Nov/2025:07:03:49 +0000] "GET /api/users?page=1&pageSize=10&keyword=%E5%88%98 HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:29 [HTTP]: ::1 - - [06/Nov/2025:07:04:29 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:30 [HTTP]: ::1 - - [06/Nov/2025:07:04:30 +0000] "GET /api/users?page=2&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:37 [HTTP]: ::1 - - [06/Nov/2025:07:04:37 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:38 [HTTP]: ::1 - - [06/Nov/2025:07:04:38 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:40 [HTTP]: ::1 - - [06/Nov/2025:07:04:40 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:40 [HTTP]: ::1 - - [06/Nov/2025:07:04:40 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:40 [HTTP]: ::1 - - [06/Nov/2025:07:04:40 +0000] "GET /uploads/products/file-1762393558989-831730670.png HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:40 [HTTP]: ::1 - - [06/Nov/2025:07:04:40 +0000] "GET /uploads/products/file-1762335102754-403907079.png HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:42 [HTTP]: ::1 - - [06/Nov/2025:07:04:42 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:04:42 [HTTP]: ::1 - - [06/Nov/2025:07:04:42 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:07 [HTTP]: ::1 - - [06/Nov/2025:07:06:07 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:07 [HTTP]: ::1 - - [06/Nov/2025:07:06:07 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:07 [HTTP]: ::1 - - [06/Nov/2025:07:06:07 +0000] "GET /uploads/products/file-1762393558989-831730670.png HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:07 [HTTP]: ::1 - - [06/Nov/2025:07:06:07 +0000] "GET /uploads/products/file-1762335102754-403907079.png HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:14 [HTTP]: ::1 - - [06/Nov/2025:07:06:14 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:25 [HTTP]: ::1 - - [06/Nov/2025:07:06:25 +0000] "GET /api/qrcode/generate?size=300 HTTP/1.1" 400 48 "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:25 [HTTP]: ::1 - - [06/Nov/2025:07:06:25 +0000] "GET /api/qrcode/generate?size=300 HTTP/1.1" 400 48 "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:42 [HTTP]: ::1 - - [06/Nov/2025:07:06:42 +0000] "GET /api/qrcode/generate?text=%E6%89%AB%E7%A0%81%E6%9F%A5%E8%AF%A2%E6%82%A8%E7%9A%84%E7%A7%AF%E5%88%86&size=300 HTTP/1.1" 400 48 "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:06:52 [HTTP]: ::1 - - [06/Nov/2025:07:06:52 +0000] "GET /api/qrcode/generate?text=%E6%89%AB%E7%A0%81%E6%9F%A5%E8%AF%A2%E6%82%A8%E7%9A%84%E7%A7%AF%E5%88%86&size=300 HTTP/1.1" 400 48 "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:07:12 [HTTP]: ::1 - - [06/Nov/2025:07:07:12 +0000] "GET /api/qrcode/generate?text=%E6%89%AB%E7%A0%81%E6%9F%A5%E8%AF%A2%E6%82%A8%E7%9A%84%E7%A7%AF%E5%88%86&size=300 HTTP/1.1" 400 48 "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:08:10 [HTTP]: ::1 - - [06/Nov/2025:07:08:10 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:08:10 [HTTP]: ::1 - - [06/Nov/2025:07:08:10 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:08:13 [HTTP]: ::1 - - [06/Nov/2025:07:08:13 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:08:16 [HTTP]: ::1 - - [06/Nov/2025:07:08:16 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-06 15:19:10 [INFO]: 收到SIGINT信号，正在关闭服务器...
