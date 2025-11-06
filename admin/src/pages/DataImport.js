@@ -16,12 +16,13 @@ import {
   Col,
   Statistic
 } from 'antd';
-import { 
-  UploadOutlined, 
-  FileExcelOutlined, 
+import {
+  UploadOutlined,
+  FileExcelOutlined,
   EyeOutlined,
   ReloadOutlined,
-  InfoCircleOutlined
+  InfoCircleOutlined,
+  DeleteOutlined
 } from '@ant-design/icons';
 import { importAPI } from '../services/api';
 import dayjs from 'dayjs';
@@ -115,6 +116,25 @@ const DataImport = () => {
     } catch (error) {
       console.error('获取详情失败:', error);
     }
+  };
+
+  const handleClearHistory = () => {
+    Modal.confirm({
+      title: '确认清空',
+      content: '确定要清空所有导入历史记录吗？此操作不可恢复。',
+      okText: '确定',
+      cancelText: '取消',
+      okType: 'danger',
+      onOk: async () => {
+        try {
+          await importAPI.clearHistory();
+          message.success('导入历史已清空');
+          fetchHistory();
+        } catch (error) {
+          console.error('清空失败:', error);
+        }
+      },
+    });
   };
 
   const getStatusTag = (status) => {
@@ -297,17 +317,27 @@ const DataImport = () => {
       </Card>
 
       {/* 导入历史 */}
-      <Card 
-        title="导入历史" 
+      <Card
+        title="导入历史"
         className="content-card"
         extra={
-          <Button
-            icon={<ReloadOutlined />}
-            onClick={fetchHistory}
-            loading={loading}
-          >
-            刷新
-          </Button>
+          <Space>
+            <Button
+              icon={<ReloadOutlined />}
+              onClick={fetchHistory}
+              loading={loading}
+            >
+              刷新
+            </Button>
+            <Button
+              danger
+              icon={<DeleteOutlined />}
+              onClick={handleClearHistory}
+              disabled={history.length === 0}
+            >
+              清空历史
+            </Button>
+          </Space>
         }
       >
         <Table

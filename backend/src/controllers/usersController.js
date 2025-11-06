@@ -270,6 +270,85 @@ class UsersController {
   }
 
   /**
+   * 重置用户积分（管理员功能）
+   */
+  async resetPoints(req, res) {
+    try {
+      const { userId } = req.params;
+
+      // 检查用户是否存在
+      const [user] = await db.query(
+        'SELECT user_id FROM users WHERE user_id = ?',
+        [userId]
+      );
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: '用户不存在'
+        });
+      }
+
+      await db.transaction(async (connection) => {
+        // 删除该用户的所有积分记录
+        await connection.execute(
+          'DELETE FROM point_records WHERE user_id = ?',
+          [userId]
+        );
+
+        // 重置用户积分为0
+        await connection.execute(
+          'UPDATE users SET total_points = 0, available_points = 0, used_points = 0, expired_points = 0 WHERE user_id = ?',
+          [userId]
+        );
+      });
+
+      logger.info(`管理员重置用户积分: ${userId}, 操作人: ${req.user.username}`);
+
+      res.json({
+        success: true,
+        message: '积分重置成功'
+      });
+    } catch (error) {
+      logger.error('重置积分失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '重置积分失败'
+      });
+    }
+  }
+
+  /**
+   * 重置所有用户积分（管理员功能）
+   */
+  async resetAllPoints(req, res) {
+    try {
+      await db.transaction(async (connection) => {
+        // 删除所有积分记录
+        await connection.execute('DELETE FROM point_records');
+
+        // 重置所有用户积分为0
+        await connection.execute(
+          'UPDATE users SET total_points = 0, available_points = 0, used_points = 0, expired_points = 0'
+        );
+      });
+
+      logger.info(`管理员重置所有用户积分, 操作人: ${req.user.username}`);
+
+      res.json({
+        success: true,
+        message: '所有用户积分重置成功'
+      });
+    } catch (error) {
+      logger.error('重置所有用户积分失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '重置所有用户积分失败'
+      });
+    }
+  }
+
+  /**
    * 获取用户统计概况
    */
   async getUserStats(req, res) {
@@ -337,19 +416,30 @@ class UsersController {
    */
   async exportUsers(req, res) {
     try {
-      const { is_new_user, keyword } = req.query;
+      const { userType, keyword, startDate, endDate } = req.query;
 
-      let sql = 'SELECT user_id, username, total_points, available_points, used_points, expired_points, is_new_user, first_import_date, created_at FROM users WHERE 1=1';
+      let sql = 'SELECT user_id, username, phone, total_points, available_points, used_points, expired_points, is_new_user, first_import_date, last_active_date, created_at FROM users WHERE 1=1';
       const params = [];
 
-      if (is_new_user !== undefined) {
-        sql += ' AND is_new_user = ?';
-        params.push(is_new_user === 'true' || is_new_user === '1');
+      if (userType === 'new') {
+        sql += ' AND is_new_user = true';
+      } else if (userType === 'old') {
+        sql += ' AND is_new_user = false';
       }
 
       if (keyword) {
         sql += ' AND (user_id LIKE ? OR username LIKE ?)';
         params.push(`%${keyword}%`, `%${keyword}%`);
+      }
+
+      if (startDate) {
+        sql += ' AND DATE(created_at) >= ?';
+        params.push(startDate);
+      }
+
+      if (endDate) {
+        sql += ' AND DATE(created_at) <= ?';
+        params.push(endDate);
       }
 
       sql += ' ORDER BY created_at DESC LIMIT 10000';
@@ -374,6 +464,58 @@ class UsersController {
         success: false,
         message: '导出失败'
       });
+    }
+  }
+
+  /**
+   * 删除用户（管理员功能）
+   */
+  async deleteUser(req, res) {
+    try {
+      const { userId } = req.params;
+
+      const [user] = await db.query('SELECT user_id FROM users WHERE user_id = ?', [userId]);
+      if (!user) {
+        return res.status(404).json({ success: false, message: '用户不存在' });
+      }
+
+      await db.transaction(async (connection) => {
+        await connection.execute('DELETE FROM point_records WHERE user_id = ?', [userId]);
+        await connection.execute('DELETE FROM exchanges WHERE user_id = ?', [userId]);
+        await connection.execute('DELETE FROM users WHERE user_id = ?', [userId]);
+      });
+
+      logger.info(`管理员删除用户: ${userId}, 操作人: ${req.user.username}`);
+      res.json({ success: true, message: '用户删除成功' });
+    } catch (error) {
+      logger.error('删除用户失败:', error);
+      res.status(500).json({ success: false, message: '删除用户失败' });
+    }
+  }
+
+  /**
+   * 批量删除用户（管理员功能）
+   */
+  async batchDeleteUsers(req, res) {
+    try {
+      const { userIds } = req.body;
+
+      if (!userIds || !Array.isArray(userIds) || userIds.length === 0) {
+        return res.status(400).json({ success: false, message: '请选择要删除的用户' });
+      }
+
+      await db.transaction(async (connection) => {
+        const placeholders = userIds.map(() => '?').join(',');
+        await connection.execute(`DELETE FROM point_records WHERE user_id IN (${placeholders})`, userIds);
+        await connection.execute(`DELETE FROM exchanges WHERE user_id IN (${placeholders})`, userIds);
+        await connection.execute(`DELETE FROM users WHERE user_id IN (${placeholders})`, userIds);
+      });
+
+      logger.info(`管理员批量删除用户: ${userIds.join(',')}, 操作人: ${req.user.username}`);
+      res.json({ success: true, message: `成功删除 ${userIds.length} 个用户` });
+    } catch (error) {
+      logger.error('批量删除用户失败:', error);
+      res.status(500).json({ success: false, message: '批量删除用户失败' });
     }
   }
 }

@@ -22,9 +22,8 @@ class ExchangesController {
       } = req.query;
 
       let sql = `
-        SELECT e.*, p.name as product_name, p.image_url as product_image
+        SELECT e.*
         FROM exchanges e
-        LEFT JOIN products p ON e.product_id = p.id
         WHERE 1=1
       `;
       const params = [];

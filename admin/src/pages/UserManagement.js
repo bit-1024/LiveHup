@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { 
-  Card, 
-  Table, 
-  Button, 
-  Input, 
-  Select, 
-  Space, 
-  Typography, 
-  Tag, 
+import {
+  Card,
+  Table,
+  Button,
+  Input,
+  Select,
+  Space,
+  Typography,
+  Tag,
   Modal,
   Descriptions,
   Statistic,
@@ -17,13 +17,15 @@ import {
   Tooltip,
   DatePicker
 } from 'antd';
-import { 
-  SearchOutlined, 
-  EyeOutlined, 
+import {
+  SearchOutlined,
+  EyeOutlined,
   DownloadOutlined,
   UserOutlined,
   TrophyOutlined,
-  ReloadOutlined
+  ReloadOutlined,
+  ClearOutlined,
+  DeleteOutlined
 } from '@ant-design/icons';
 import { usersAPI } from '../services/api';
 import dayjs from 'dayjs';
@@ -31,6 +33,12 @@ import dayjs from 'dayjs';
 const { Title, Text } = Typography;
 const { Option } = Select;
 const { RangePicker } = DatePicker;
+
+const INITIAL_FILTERS = {
+  keyword: '',
+  userType: '',
+  dateRange: null,
+};
 
 const UserManagement = () => {
   const [loading, setLoading] = useState(false);
@@ -40,27 +48,29 @@ const UserManagement = () => {
     pageSize: 10,
     total: 0,
   });
-  const [filters, setFilters] = useState({
-    keyword: '',
-    userType: '',
-    dateRange: null,
-  });
+  const [filters, setFilters] = useState(() => ({ ...INITIAL_FILTERS }));
   const [detailVisible, setDetailVisible] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [userPoints, setUserPoints] = useState([]);
   const [pointsLoading, setPointsLoading] = useState(false);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
-  // Fixed: Wrap fetchUsers in useCallback
-  const fetchUsers = useCallback(async () => {
+  // 拉取用户列表，允许传入覆盖参数以支撑重置逻辑
+  const fetchUsers = useCallback(async (options = {}) => {
     try {
       setLoading(true);
+      const { page, pageSize, filters: overrideFilters } = options;
+      const currentPage = page ?? pagination.current;
+      const currentPageSize = pageSize ?? pagination.pageSize;
+      const activeFilters = overrideFilters ?? filters;
+      
       const params = {
-        page: pagination.current,
-        pageSize: pagination.pageSize,
-        keyword: filters.keyword || undefined,
-        userType: filters.userType || undefined,
-        startDate: filters.dateRange?.[0]?.format('YYYY-MM-DD'),
-        endDate: filters.dateRange?.[1]?.format('YYYY-MM-DD'),
+        page: currentPage,
+        pageSize: currentPageSize,
+        keyword: activeFilters.keyword || undefined,
+        userType: activeFilters.userType || undefined,
+        startDate: activeFilters.dateRange?.[0]?.format('YYYY-MM-DD'),
+        endDate: activeFilters.dateRange?.[1]?.format('YYYY-MM-DD'),
       };
       
       const response = await usersAPI.getList(params);
@@ -98,16 +108,26 @@ const UserManagement = () => {
 
   const handleSearch = () => {
     setPagination(prev => ({ ...prev, current: 1 }));
-    fetchUsers();
+    fetchUsers({ page: 1 });
   };
 
   const handleReset = () => {
-    setFilters({
-      keyword: '',
-      userType: '',
-      dateRange: null,
+    Modal.confirm({
+      title: '确认重置所有用户积分',
+      content: '此操作将清空所有用户的积分记录，是否继续？',
+      okText: '确认',
+      cancelText: '取消',
+      okType: 'danger',
+      onOk: async () => {
+        try {
+          await usersAPI.resetAllPoints();
+          message.success('所有用户积分重置成功');
+          fetchUsers();
+        } catch (error) {
+          console.error('重置所有用户积分失败:', error);
+        }
+      },
     });
-    setPagination(prev => ({ ...prev, current: 1 }));
   };
 
   const handleExport = async () => {
@@ -135,6 +155,72 @@ const UserManagement = () => {
     } catch (error) {
       console.error('导出失败:', error);
     }
+  };
+
+  const handleResetPoints = async (userId) => {
+    Modal.confirm({
+      title: '确认重置积分',
+      content: '此操作将清空该用户的所有积分记录，是否继续？',
+      okText: '确认',
+      cancelText: '取消',
+      okType: 'danger',
+      onOk: async () => {
+        try {
+          await usersAPI.resetPoints(userId);
+          message.success('积分重置成功');
+          fetchUsers();
+          if (detailVisible && selectedUser?.user_id === userId) {
+            setDetailVisible(false);
+          }
+        } catch (error) {
+          console.error('重置积分失败:', error);
+        }
+      },
+    });
+  };
+
+  const handleDelete = async (userId) => {
+    Modal.confirm({
+      title: '确认删除用户',
+      content: '此操作将删除该用户及其所有积分和兑换记录，是否继续？',
+      okText: '确认',
+      cancelText: '取消',
+      okType: 'danger',
+      onOk: async () => {
+        try {
+          await usersAPI.delete(userId);
+          message.success('用户删除成功');
+          fetchUsers();
+        } catch (error) {
+          console.error('删除用户失败:', error);
+        }
+      },
+    });
+  };
+
+  const handleBatchDelete = async () => {
+    if (selectedRowKeys.length === 0) {
+      message.warning('请选择要删除的用户');
+      return;
+    }
+
+    Modal.confirm({
+      title: '确认批量删除用户',
+      content: `此操作将删除 ${selectedRowKeys.length} 个用户及其所有积分和兑换记录，是否继续？`,
+      okText: '确认',
+      cancelText: '取消',
+      okType: 'danger',
+      onOk: async () => {
+        try {
+          await usersAPI.batchDelete(selectedRowKeys);
+          message.success(`成功删除 ${selectedRowKeys.length} 个用户`);
+          setSelectedRowKeys([]);
+          fetchUsers();
+        } catch (error) {
+          console.error('批量删除用户失败:', error);
+        }
+      },
+    });
   };
 
   const columns = [
@@ -243,7 +329,7 @@ const UserManagement = () => {
     {
       title: '操作',
       key: 'actions',
-      width: 100,
+      width: 150,
       render: (_, record) => (
         <Space>
           <Tooltip title="查看详情">
@@ -252,6 +338,24 @@ const UserManagement = () => {
               size="small"
               icon={<EyeOutlined />}
               onClick={() => showUserDetail(record)}
+            />
+          </Tooltip>
+          <Tooltip title="重置积分">
+            <Button
+              type="link"
+              size="small"
+              danger
+              icon={<ClearOutlined />}
+              onClick={() => handleResetPoints(record.user_id)}
+            />
+          </Tooltip>
+          <Tooltip title="删除用户">
+            <Button
+              type="link"
+              size="small"
+              danger
+              icon={<DeleteOutlined />}
+              onClick={() => handleDelete(record.user_id)}
             />
           </Tooltip>
         </Space>
@@ -366,7 +470,7 @@ const UserManagement = () => {
             />
           </Col>
           <Col xs={24} sm={24} md={8}>
-            <Space>
+            <Space wrap>
               <Button
                 type="primary"
                 icon={<SearchOutlined />}
@@ -389,6 +493,14 @@ const UserManagement = () => {
               >
                 导出
               </Button>
+              <Button
+                danger
+                icon={<DeleteOutlined />}
+                onClick={handleBatchDelete}
+                disabled={selectedRowKeys.length === 0}
+              >
+                批量删除 {selectedRowKeys.length > 0 && `(${selectedRowKeys.length})`}
+              </Button>
             </Space>
           </Col>
         </Row>
@@ -409,6 +521,10 @@ const UserManagement = () => {
           dataSource={users}
           rowKey="user_id"
           loading={loading}
+          rowSelection={{
+            selectedRowKeys,
+            onChange: setSelectedRowKeys,
+          }}
           pagination={{
             ...pagination,
             showSizeChanger: true,

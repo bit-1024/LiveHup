@@ -82,7 +82,8 @@ export const importAPI = {
     headers: { 'Content-Type': 'multipart/form-data' },
   }),
   getHistory: (params) => api.get('/import/history', { params }),
-  getDetail: (batchId) => api.get(`/import/history/${batchId}`),
+  getDetail: (batchId) => api.get(`/import/detail/${batchId}`),
+  clearHistory: () => api.delete('/import/history'),
 };
 
 // 积分规则API
@@ -100,7 +101,11 @@ export const usersAPI = {
   getDetail: (userId) => api.get(`/users/${userId}`),
   getPoints: (userId) => api.get(`/users/${userId}/points`),
   updatePoints: (userId, data) => api.post(`/users/${userId}/points`, data),
+  resetPoints: (userId) => api.post(`/users/${userId}/reset`),
+  resetAllPoints: () => api.post('/users/reset-all/points'),
   export: (params) => api.get('/users/export', { params, responseType: 'blob' }),
+  delete: (userId) => api.delete(`/users/${userId}`),
+  batchDelete: (userIds) => api.post('/users/batch/delete', { userIds }),
 };
 
 // 商品管理API

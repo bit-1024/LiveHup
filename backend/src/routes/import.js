@@ -56,4 +56,7 @@ router.get('/detail/:batchId', authMiddleware, importController.getImportDetail)
 // 下载导入模板
 router.get('/template', importController.downloadTemplate);
 
+// 清空导入历史
+router.delete('/history', authMiddleware, requireAdmin, importController.clearHistory);
+
 module.exports = router;

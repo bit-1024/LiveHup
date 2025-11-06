@@ -882,3 +882,147 @@ Error: listen EADDRINUSE: address already in use ::1:3000
 2025-11-05 17:31:42 [INFO]: 商品图片上传成功
 2025-11-05 17:31:44 [INFO]: 更新商品成功: ID 1
 2025-11-05 17:34:31 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 17:34:36 [INFO]: 🚀 服务器启动成功
+2025-11-05 17:34:36 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 17:34:36 [INFO]: 🌍 环境: development
+2025-11-05 17:34:36 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 17:42:56 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-05 17:43:01 [INFO]: 🚀 服务器启动成功
+2025-11-05 17:43:01 [INFO]: 📍 地址: http://localhost:3000
+2025-11-05 17:43:01 [INFO]: 🌍 环境: development
+2025-11-05 17:43:01 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-05 17:43:16 [INFO]: 开始导入文件: 小张测试.xlsx, 大小: 29155 字节
+2025-11-05 17:43:18 [INFO]: 文件导入完成: 小张测试.xlsx, 耗时: 2032ms, 成功: 207/207
+2025-11-05 18:23:01 [INFO]: 开始导入文件: 小张测试.xlsx, 大小: 29155 字节
+2025-11-05 18:23:03 [INFO]: 文件导入完成: 小张测试.xlsx, 耗时: 2086ms, 成功: 207/207
+2025-11-05 18:40:17 [INFO]: 开始导入文件: 小张测试.xlsx, 大小: 29155 字节
+2025-11-05 18:40:19 [INFO]: 文件导入完成: 小张测试.xlsx, 耗时: 1710ms, 成功: 207/207
+2025-11-06 09:10:03 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-06 09:10:47 [INFO]: 🚀 服务器启动成功
+2025-11-06 09:10:47 [INFO]: 📍 地址: http://localhost:3000
+2025-11-06 09:10:47 [INFO]: 🌍 环境: development
+2025-11-06 09:10:47 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-06 09:23:15 [INFO]: 管理员重置用户积分: 470792309, 操作人: admin
+2025-11-06 09:23:18 [INFO]: 管理员重置用户积分: 306352686, 操作人: admin
+2025-11-06 09:23:22 [INFO]: 管理员重置用户积分: 337464051, 操作人: admin
+2025-11-06 09:23:26 [INFO]: 管理员重置用户积分: 297249425, 操作人: admin
+2025-11-06 09:23:29 [INFO]: 管理员重置用户积分: 485816131, 操作人: admin
+2025-11-06 09:23:32 [INFO]: 管理员重置用户积分: 251086779, 操作人: admin
+2025-11-06 09:23:49 [INFO]: 管理员重置用户积分: 458035214, 操作人: admin
+2025-11-06 09:23:53 [INFO]: 管理员重置用户积分: 344130380, 操作人: admin
+2025-11-06 09:23:57 [INFO]: 管理员重置用户积分: 473424271, 操作人: admin
+2025-11-06 09:24:00 [INFO]: 管理员重置用户积分: 488343111, 操作人: admin
+2025-11-06 09:24:07 [INFO]: 管理员重置用户积分: 500418178, 操作人: admin
+2025-11-06 09:24:10 [INFO]: 管理员重置用户积分: 121792459, 操作人: admin
+2025-11-06 09:24:12 [INFO]: 管理员重置用户积分: 297908630, 操作人: admin
+2025-11-06 09:24:15 [INFO]: 管理员重置用户积分: 371937705, 操作人: admin
+2025-11-06 09:30:06 [INFO]: 管理员重置用户积分: 280814401, 操作人: admin
+2025-11-06 09:38:16 [ERROR]: 未捕获的异常: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at GetAddrInfoReqWrap.callback (node:net:2205:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-11-06 09:40:43 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-06 09:40:48 [INFO]: 🚀 服务器启动成功
+2025-11-06 09:40:48 [INFO]: 📍 地址: http://localhost:3000
+2025-11-06 09:40:48 [INFO]: 🌍 环境: development
+2025-11-06 09:40:48 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-06 09:41:02 [INFO]: 管理员重置所有用户积分, 操作人: admin
+2025-11-06 09:43:47 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-06 09:43:51 [INFO]: 🚀 服务器启动成功
+2025-11-06 09:43:51 [INFO]: 📍 地址: http://localhost:3000
+2025-11-06 09:43:51 [INFO]: 🌍 环境: development
+2025-11-06 09:43:51 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-06 09:45:00 [INFO]: 管理员重置用户积分: 470792309, 操作人: admin
+2025-11-06 09:45:58 [INFO]: 商品图片上传成功
+2025-11-06 09:46:16 [INFO]: 创建商品成功: 100优惠卷 (ID: 2)
+2025-11-06 09:47:31 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-06 09:47:31 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-06 09:49:23 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-06 09:49:23 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-06 09:49:28 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-06 09:49:28 [ERROR]: 获取兑换列表失败: Duplicate column name 'product_name'
+Error: Duplicate column name 'product_name'
+    at PromisePool.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at Object.paginate (F:\tsethup\backend\src\config\database.js:73:43)
+    at getExchanges (F:\tsethup\backend\src\controllers\exchangesController.js:65:31)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\tsethup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\tsethup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-06 09:51:30 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-06 09:51:34 [INFO]: 🚀 服务器启动成功
+2025-11-06 09:51:34 [INFO]: 📍 地址: http://localhost:3000
+2025-11-06 09:51:34 [INFO]: 🌍 环境: development
+2025-11-06 09:51:34 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-06 09:54:04 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-06 09:54:07 [INFO]: 🚀 服务器启动成功
+2025-11-06 09:54:07 [INFO]: 📍 地址: http://localhost:3000
+2025-11-06 09:54:07 [INFO]: 🌍 环境: development
+2025-11-06 09:54:07 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-06 09:56:43 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-06 09:56:50 [INFO]: 🚀 服务器启动成功
+2025-11-06 09:56:50 [INFO]: 📍 地址: http://localhost:3000
+2025-11-06 09:56:50 [INFO]: 🌍 环境: development
+2025-11-06 09:56:50 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-06 09:57:01 [INFO]: 导入历史已清空
+2025-11-06 10:00:35 [INFO]: 收到SIGINT信号，正在关闭服务器...

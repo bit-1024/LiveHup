@@ -12,6 +12,9 @@ router.get('/stats', authMiddleware, usersController.getUserStats);
 // 导出用户数据
 router.get('/export', authMiddleware, requireAdmin, usersController.exportUsers);
 
+// 重置所有用户积分（管理员）- 必须在 /:userId 路由之前
+router.post('/reset-all/points', authMiddleware, requireAdmin, usersController.resetAllPoints);
+
 // 获取用户详情（管理员）
 router.get('/:userId/detail', authMiddleware, usersController.getUserDetail);
 
@@ -23,5 +26,14 @@ router.get('/:userId/points', usersController.getUserPoints);
 
 // 手动调整用户积分（管理员）
 router.post('/:userId/adjust', authMiddleware, requireAdmin, usersController.adjustPoints);
+
+// 重置用户积分（管理员）
+router.post('/:userId/reset', authMiddleware, requireAdmin, usersController.resetPoints);
+
+// 删除用户（管理员）
+router.delete('/:userId', authMiddleware, requireAdmin, usersController.deleteUser);
+
+// 批量删除用户（管理员）
+router.post('/batch/delete', authMiddleware, requireAdmin, usersController.batchDeleteUsers);
 
 module.exports = router;

@@ -13,10 +13,11 @@ class ImportController {
     this.getImportHistory = this.getImportHistory.bind(this);
     this.getImportDetail = this.getImportDetail.bind(this);
     this.downloadTemplate = this.downloadTemplate.bind(this);
+    this.clearHistory = this.clearHistory.bind(this);
   }
 
-    /**
-   * 标准化字段名
+  /**
+   * 标准化字段名，去除空白和全角字符进行统一
    */
   normalizeKey(key) {
     if (key === undefined || key === null) {
@@ -31,7 +32,7 @@ class ImportController {
   }
 
   /**
-   * 获取数据行中的字段值
+   * 获取数据行中的字段值，自动匹配不同写法的列名
    */
   getRowValue(row, keys) {
     if (!row || typeof row !== 'object') {
@@ -56,6 +57,71 @@ class ImportController {
     }
 
     return undefined;
+  }
+
+    /**
+   * 将含中文或常见格式的时长字符串转换为分钟数
+   * 支持示例：
+   * - "0小时53分15秒" => 53.25
+   * - "1小时30分" => 90
+   * - "45分钟" / "45分" / "45min" => 45
+   * - "01:30:00" => 90
+   * - "30" => 30
+   */
+  parseTimeToMinutes(timeStr) {
+    if (timeStr === undefined || timeStr === null) {
+      return 0;
+    }
+
+    const str = String(timeStr).trim();
+    if (!str) {
+      return 0;
+    }
+
+    const toNumber = (value) => {
+      const num = Number(value);
+      return Number.isFinite(num) ? num : 0;
+    };
+
+    // 处理 HH:MM(:SS) 或 MM:SS 形式
+    if (/^\d{1,3}:\d{1,2}(:\d{1,2})?$/.test(str)) {
+      const parts = str.split(":").map(toNumber);
+      if (parts.length === 3) {
+        return parts[0] * 60 + parts[1] + parts[2] / 60;
+      }
+      if (parts.length === 2) {
+        const [first, second] = parts;
+        // 当首段 >= 24 时视为“分钟:秒”，否则默认“小时:分钟”
+        return (first >= 24 ? first : first * 60) + second / 60;
+      }
+    }
+
+    let totalMinutes = 0;
+    let matched = false;
+
+    const collectMatches = (regex, factor) => {
+      regex.lastIndex = 0;
+      let match;
+      while ((match = regex.exec(str)) !== null) {
+        totalMinutes += parseFloat(match[1]) * factor;
+        matched = true;
+      }
+    };
+
+    collectMatches(/(\d+(?:\.\d+)?)\s*(小时|小時|时|hour|hours|hr|hrs|h)/gi, 60);
+    collectMatches(/(\d+(?:\.\d+)?)\s*(分钟|分|minute(?:s)?|min(?:s)?|m(?![a-zA-Z]))/gi, 1);
+    collectMatches(/(\d+(?:\.\d+)?)\s*(秒钟|秒|second(?:s)?|sec(?:s)?|s(?![a-zA-Z]))/gi, 1 / 60);
+
+    if (matched) {
+      return totalMinutes;
+    }
+
+    const numericFallback = str.match(/(\d+(?:\.\d+)?)/);
+    if (numericFallback) {
+      return parseFloat(numericFallback[1]);
+    }
+
+    return 0;
   }
 
   /**
@@ -296,19 +362,19 @@ class ImportController {
                   break;
                   
                 case 'greater_than':
-                  matched = Number(columnValue) > Number(rule.condition_value);
+                  matched = this.parseTimeToMinutes(columnValue) > this.parseTimeToMinutes(rule.condition_value);
                   break;
                   
                 case 'greater_or_equal':
-                  matched = Number(columnValue) >= Number(rule.condition_value);
+                  matched = this.parseTimeToMinutes(columnValue) >= this.parseTimeToMinutes(rule.condition_value);
                   break;
                   
                 case 'less_than':
-                  matched = Number(columnValue) < Number(rule.condition_value);
+                  matched = this.parseTimeToMinutes(columnValue) < this.parseTimeToMinutes(rule.condition_value);
                   break;
                   
                 case 'less_or_equal':
-                  matched = Number(columnValue) <= Number(rule.condition_value);
+                  matched = this.parseTimeToMinutes(columnValue) <= this.parseTimeToMinutes(rule.condition_value);
                   break;
                   
                 case 'contains':
@@ -316,8 +382,8 @@ class ImportController {
                   break;
                   
                 case 'range':
-                  const [min, max] = rule.condition_value.split(',').map(v => Number(v.trim()));
-                  const numValue = Number(columnValue);
+                  const [min, max] = rule.condition_value.split(',').map(v => this.parseTimeToMinutes(v.trim()));
+                  const numValue = this.parseTimeToMinutes(columnValue);
                   matched = numValue >= min && numValue <= max;
                   break;
                   
@@ -330,11 +396,25 @@ class ImportController {
             }
 
             if (matched) {
+              // 检查是否已存在相同的积分记录（去重）
+              const description = `${rule.rule_name} - ${rule.column_name}:${columnValue}`;
+              const existingRecords = await connection.query(
+                `SELECT id FROM point_records
+                 WHERE user_id = ? AND rule_id = ? AND description = ? AND source = 'import'
+                 LIMIT 1`,
+                [userId, rule.id, description]
+              );
+              
+              if (existingRecords.length > 0) {
+                logger.debug(`跳过重复积分记录: 用户 ${userId}, 规则 ${rule.id}`);
+                continue;
+              }
+              
               userPoints += rule.points;
               appliedRules.push(rule);
               
               // 计算过期日期
-              const expireDate = rule.validity_days 
+              const expireDate = rule.validity_days
                 ? moment().add(rule.validity_days, 'days').format('YYYY-MM-DD')
                 : null;
 
@@ -347,8 +427,8 @@ class ImportController {
 
               // 记录积分变动
               await connection.execute(
-                `INSERT INTO point_records 
-                 (user_id, points, balance_after, source, rule_id, expire_date, import_batch, description) 
+                `INSERT INTO point_records
+                 (user_id, points, balance_after, source, rule_id, expire_date, import_batch, description)
                  VALUES (?, ?, ?, 'import', ?, ?, ?, ?)`,
                 [
                   userId,
@@ -357,7 +437,7 @@ class ImportController {
                   rule.id,
                   expireDate,
                   batchId,
-                  `${rule.rule_name} - ${rule.column_name}:${columnValue}`
+                  description
                 ]
               );
             }
@@ -416,8 +496,10 @@ class ImportController {
       
       res.json({
         success: true,
-        data: result.data,
-        pagination: result.pagination
+        data: {
+          list: result.data,
+          total: result.pagination.total
+        }
       });
     } catch (error) {
       logger.error('获取导入历史失败:', error);
@@ -448,23 +530,9 @@ class ImportController {
         });
       }
       
-      // 获取该批次的积分记录
-      const pointRecords = await db.query(
-        `SELECT pr.*, u.username 
-         FROM point_records pr
-         LEFT JOIN users u ON pr.user_id = u.user_id
-         WHERE pr.import_batch = ?
-         ORDER BY pr.created_at DESC
-         LIMIT 100`,
-        [batchId]
-      );
-      
       res.json({
         success: true,
-        data: {
-          import: importRecord,
-          records: pointRecords
-        }
+        data: importRecord
       });
     } catch (error) {
       logger.error('获取导入详情失败:', error);
@@ -518,6 +586,27 @@ class ImportController {
       res.status(500).json({
         success: false,
         message: '下载模板失败'
+      });
+    }
+  }
+
+  /**
+   * 清空导入历史
+   */
+  async clearHistory(req, res) {
+    try {
+      await db.query('DELETE FROM import_history');
+      logger.info('导入历史已清空');
+      
+      res.json({
+        success: true,
+        message: '导入历史已清空'
+      });
+    } catch (error) {
+      logger.error('清空导入历史失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '清空导入历史失败'
       });
     }
   }
