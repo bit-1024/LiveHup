@@ -15,6 +15,9 @@ router.get('/export', authMiddleware, requireAdmin, usersController.exportUsers)
 // 重置所有用户积分（管理员）- 必须在 /:userId 路由之前
 router.post('/reset-all/points', authMiddleware, requireAdmin, usersController.resetAllPoints);
 
+// 清理所有数据（管理员测试用）
+router.delete('/clear-all', authMiddleware, requireAdmin, usersController.clearAllData);
+
 // 获取用户详情（管理员）
 router.get('/:userId/detail', authMiddleware, usersController.getUserDetail);
 

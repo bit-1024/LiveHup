@@ -3,6 +3,9 @@ const router = express.Router();
 const rulesController = require('../controllers/rulesController');
 const { authMiddleware, requireAdmin } = require('../middleware/auth');
 
+// 获取可用列名
+router.get('/columns', authMiddleware, rulesController.getAvailableColumns);
+
 // 获取所有规则
 router.get('/', authMiddleware, rulesController.getRules);
 

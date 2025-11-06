@@ -34,11 +34,22 @@ const RulesConfig = () => {
   const [rules, setRules] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [editingRule, setEditingRule] = useState(null);
+  const [availableColumns, setAvailableColumns] = useState([]);
   const [form] = Form.useForm();
 
   useEffect(() => {
     fetchRules();
+    fetchColumns();
   }, []);
+
+  const fetchColumns = async () => {
+    try {
+      const response = await rulesAPI.getColumns();
+      setAvailableColumns(response.data || []);
+    } catch (error) {
+      console.error('获取列名失败:', error);
+    }
+  };
 
   const fetchRules = async () => {
     try {
@@ -55,6 +66,10 @@ const RulesConfig = () => {
   const handleAdd = () => {
     setEditingRule(null);
     form.resetFields();
+    form.setFieldsValue({
+      priority: 0,
+      is_active: true,
+    });
     setModalVisible(true);
   };
 
@@ -89,11 +104,19 @@ const RulesConfig = () => {
 
   const handleSubmit = async (values) => {
     try {
+      // 处理列名：如果是数组，取第一个元素
+      const submitData = {
+        ...values,
+        column_name: Array.isArray(values.column_name)
+          ? values.column_name[0]
+          : values.column_name
+      };
+      
       if (editingRule) {
-        await rulesAPI.update(editingRule.id, values);
+        await rulesAPI.update(editingRule.id, submitData);
         message.success('更新成功');
       } else {
-        await rulesAPI.create(values);
+        await rulesAPI.create(submitData);
         message.success('创建成功');
       }
       setModalVisible(false);
@@ -246,7 +269,8 @@ const RulesConfig = () => {
             <div>
               <p>• 规则按优先级从高到低执行，数字越大优先级越高</p>
               <p>• 同一行数据可以匹配多个规则，会累加积分</p>
-              <p>• 范围条件格式：最小值,最大值（如：10,100）</p>
+              <p>• <strong>时长判定</strong>：系统自动识别"直播观看时长"等时长字段，支持"0小时12分27秒"等格式，条件值输入分钟数即可（如：30表示30分钟）</p>
+              <p>• 范围条件格式：最小值,最大值（如：10,100表示10到100分钟）</p>
               <p>• 积分有效期为空表示永久有效</p>
             </div>
           }
@@ -318,12 +342,21 @@ const RulesConfig = () => {
           <Form.Item
             name="column_name"
             label="列名"
-            rules={[
-              { required: true, message: '请输入列名' },
-              { max: 100, message: '列名不能超过100个字符' }
-            ]}
+            rules={[{ required: true, message: '请选择或输入列名' }]}
+            extra="从导入文件中选择列名，或手动输入"
           >
-            <Input placeholder="Excel/CSV文件中的列名，如：观看时长" />
+            <Select
+              showSearch
+              placeholder="选择列名（如：直播观看时长）"
+              optionFilterProp="children"
+              mode="tags"
+              maxTagCount={1}
+              allowClear
+            >
+              {availableColumns.map(col => (
+                <Option key={col} value={col}>{col}</Option>
+              ))}
+            </Select>
           </Form.Item>
 
           <Form.Item
@@ -343,12 +376,10 @@ const RulesConfig = () => {
           <Form.Item
             name="condition_value"
             label="条件值"
-            rules={[
-              { required: true, message: '请输入条件值' },
-              { max: 255, message: '条件值不能超过255个字符' }
-            ]}
+            rules={[{ required: true, message: '请输入条件值' }]}
+            extra="时长类型输入分钟数（如：30表示30分钟），范围用逗号分隔（如：10,100）"
           >
-            <Input placeholder="如：30（数值）、是（文本）、10,100（范围）" />
+            <Input placeholder="如：30（30分钟）、是（文本）、10,100（范围）" />
           </Form.Item>
 
           <Form.Item

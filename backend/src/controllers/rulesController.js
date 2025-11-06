@@ -466,6 +466,54 @@ class RulesController {
       });
     }
   }
+
+  /**
+   * 获取最近导入文件的列名
+   */
+  async getAvailableColumns(req, res) {
+    try {
+      const latestImport = await db.query(
+        `SELECT pr.description
+         FROM point_records pr
+         WHERE pr.source = 'import'
+         ORDER BY pr.created_at DESC
+         LIMIT 100`
+      );
+      
+      const columnSet = new Set();
+      if (Array.isArray(latestImport)) {
+        latestImport.forEach(record => {
+          if (record.description) {
+            const match = record.description.match(/^(.+?)\s*-\s*(.+?):/);
+            if (match && match[2]) {
+              columnSet.add(match[2].trim());
+            }
+          }
+        });
+      }
+      
+      const columns = Array.from(columnSet);
+      
+      res.json({
+        success: true,
+        data: columns.length > 0 ? columns : [
+          '直播观看时长', '用户昵称', '用户ID', '区域', 
+          '首次观看直播时间', '最后离开直播时间', '最近观看直播时间', 
+          '邀请人id', '邀请人名字', 'ip'
+        ]
+      });
+    } catch (error) {
+      logger.error('获取可用列名失败:', error);
+      res.json({
+        success: true,
+        data: [
+          '直播观看时长', '用户昵称', '用户ID', '区域', 
+          '首次观看直播时间', '最后离开直播时间', '最近观看直播时间', 
+          '邀请人id', '邀请人名字', 'ip'
+        ]
+      });
+    }
+  }
 }
 
 module.exports = new RulesController();

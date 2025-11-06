@@ -89,10 +89,11 @@ export const importAPI = {
 // 积分规则API
 export const rulesAPI = {
   getList: (params) => api.get('/rules', { params }),
+  getColumns: () => api.get('/rules/columns'),
   create: (data) => api.post('/rules', data),
   update: (id, data) => api.put(`/rules/${id}`, data),
   delete: (id) => api.delete(`/rules/${id}`),
-  toggle: (id, isActive) => api.put(`/rules/${id}/toggle`, { is_active: isActive }),
+  toggle: (id, isActive) => api.put(`/rules/${id}`, { is_active: isActive }),
 };
 
 // 用户管理API

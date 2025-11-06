@@ -518,6 +518,26 @@ class UsersController {
       res.status(500).json({ success: false, message: '批量删除用户失败' });
     }
   }
+
+  /**
+   * 清理所有测试数据（管理员功能）
+   */
+  async clearAllData(req, res) {
+    try {
+      await db.transaction(async (connection) => {
+        await connection.execute('DELETE FROM point_records');
+        await connection.execute('DELETE FROM exchanges');
+        await connection.execute('DELETE FROM users');
+        await connection.execute('DELETE FROM import_history');
+      });
+
+      logger.info(`管理员清理所有数据, 操作人: ${req.user.username}`);
+      res.json({ success: true, message: '所有数据已清理' });
+    } catch (error) {
+      logger.error('清理数据失败:', error);
+      res.status(500).json({ success: false, message: '清理数据失败' });
+    }
+  }
 }
 
 module.exports = new UsersController();

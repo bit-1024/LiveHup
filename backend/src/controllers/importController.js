@@ -292,6 +292,9 @@ class ImportController {
     const existingUsers = await db.query('SELECT user_id FROM users');
     const existingUserIds = new Set(existingUsers.map(u => String(u.user_id)));
 
+    // 记录本批次已处理的用户ID，防止同一文件中重复处理同一用户
+    const processedUserIds = new Set();
+
     // 使用事务处理数据
     await db.transaction(async (connection) => {
       for (const row of data) {
@@ -308,6 +311,14 @@ class ImportController {
             failedRows++;
             continue;
           }
+
+          // 检查本批次是否已处理过该用户
+          if (processedUserIds.has(userId)) {
+            logger.warn(`跳过重复用户: ${userId} (同一文件中重复)`);
+            failedRows++;
+            continue;
+          }
+          processedUserIds.add(userId);
 
           // 判断是否是新用户
           const isNewUser = !existingUserIds.has(userId);
@@ -333,16 +344,37 @@ class ImportController {
             existingUsersCount++;
           }
 
+          // 获取用户当前积分余额
+          const [userBefore] = await connection.execute(
+            'SELECT available_points FROM users WHERE user_id = ?',
+            [userId]
+          );
+          let currentBalance = userBefore[0]?.available_points || 0;
+          
           // 根据规则计算积分
           let userPoints = 0;
           const appliedRules = [];
+          const appliedRuleIds = new Set(); // 记录本次已应用的规则ID
           
           for (const rule of rules) {
-            const columnKeys = rule.column_name
-              ? String(rule.column_name).split(/[,|]/).map(key => key.trim()).filter(Boolean)
-              : [];
+            // 处理列名：可能是字符串、数组字符串（如'["直播观看时长"]'）或普通字符串
+            let columnKeys = [];
+            if (rule.column_name) {
+              try {
+                // 尝试解析JSON数组格式
+                const parsed = JSON.parse(rule.column_name);
+                columnKeys = Array.isArray(parsed) ? parsed : [rule.column_name];
+              } catch {
+                // 不是JSON，按逗号或竖线分割
+                columnKeys = String(rule.column_name).split(/[,|]/).map(key => key.trim()).filter(Boolean);
+              }
+            }
+            
             const columnValueRaw = this.getRowValue(row, columnKeys.length ? columnKeys : rule.column_name);
             const columnValue = typeof columnValueRaw === "string" ? columnValueRaw.trim() : columnValueRaw;
+            
+            // 调试日志
+            logger.debug(`规则 ${rule.id} (${rule.rule_name}): 列名=${JSON.stringify(columnKeys)}, 原始值=${columnValueRaw}, 处理后值=${columnValue}`);
             
             // 如果列不存在，跳过该规则
             if (columnValue === undefined || columnValue === null || columnValue === '') {
@@ -362,19 +394,31 @@ class ImportController {
                   break;
                   
                 case 'greater_than':
-                  matched = this.parseTimeToMinutes(columnValue) > this.parseTimeToMinutes(rule.condition_value);
+                  const gtValueMinutes = this.parseTimeToMinutes(columnValue);
+                  const gtConditionMinutes = this.parseTimeToMinutes(rule.condition_value);
+                  matched = gtValueMinutes > gtConditionMinutes;
+                  logger.debug(`规则 ${rule.id} greater_than: ${gtValueMinutes} > ${gtConditionMinutes} = ${matched}`);
                   break;
                   
                 case 'greater_or_equal':
-                  matched = this.parseTimeToMinutes(columnValue) >= this.parseTimeToMinutes(rule.condition_value);
+                  const geValueMinutes = this.parseTimeToMinutes(columnValue);
+                  const geConditionMinutes = this.parseTimeToMinutes(rule.condition_value);
+                  matched = geValueMinutes >= geConditionMinutes;
+                  logger.info(`规则 ${rule.id} (${rule.rule_name}) greater_or_equal: 列值="${columnValue}" (${geValueMinutes}分钟) >= 条件值="${rule.condition_value}" (${geConditionMinutes}分钟) = ${matched}`);
                   break;
                   
                 case 'less_than':
-                  matched = this.parseTimeToMinutes(columnValue) < this.parseTimeToMinutes(rule.condition_value);
+                  const ltValueMinutes = this.parseTimeToMinutes(columnValue);
+                  const ltConditionMinutes = this.parseTimeToMinutes(rule.condition_value);
+                  matched = ltValueMinutes < ltConditionMinutes;
+                  logger.debug(`规则 ${rule.id} less_than: ${ltValueMinutes} < ${ltConditionMinutes} = ${matched}`);
                   break;
                   
                 case 'less_or_equal':
-                  matched = this.parseTimeToMinutes(columnValue) <= this.parseTimeToMinutes(rule.condition_value);
+                  const leValueMinutes = this.parseTimeToMinutes(columnValue);
+                  const leConditionMinutes = this.parseTimeToMinutes(rule.condition_value);
+                  matched = leValueMinutes <= leConditionMinutes;
+                  logger.debug(`规则 ${rule.id} less_or_equal: ${leValueMinutes} <= ${leConditionMinutes} = ${matched}`);
                   break;
                   
                 case 'contains':
@@ -385,6 +429,7 @@ class ImportController {
                   const [min, max] = rule.condition_value.split(',').map(v => this.parseTimeToMinutes(v.trim()));
                   const numValue = this.parseTimeToMinutes(columnValue);
                   matched = numValue >= min && numValue <= max;
+                  logger.debug(`规则 ${rule.id} range: ${numValue} in [${min}, ${max}] = ${matched}`);
                   break;
                   
                 default:
@@ -396,67 +441,53 @@ class ImportController {
             }
 
             if (matched) {
-              // 检查是否已存在相同的积分记录（去重）
-              const description = `${rule.rule_name} - ${rule.column_name}:${columnValue}`;
-              const existingRecords = await connection.query(
-                `SELECT id FROM point_records
-                 WHERE user_id = ? AND rule_id = ? AND description = ? AND source = 'import'
-                 LIMIT 1`,
-                [userId, rule.id, description]
-              );
+              logger.info(`✓ 规则匹配成功！用户 ${userId}, 规则 ${rule.id} (${rule.rule_name}), 将获得 ${rule.points} 积分`);
               
-              if (existingRecords.length > 0) {
-                logger.debug(`跳过重复积分记录: 用户 ${userId}, 规则 ${rule.id}`);
+              // 检查本次处理中是否已经应用过此规则（防止同一文件中重复行）
+              if (appliedRuleIds.has(rule.id)) {
+                logger.warn(`跳过重复规则（同用户同批次）: 用户 ${userId}, 规则 ${rule.id}`);
                 continue;
               }
               
+              appliedRuleIds.add(rule.id);
               userPoints += rule.points;
+              currentBalance += rule.points; // 实时更新余额
               appliedRules.push(rule);
+              logger.info(`累计积分: 用户 ${userId} 当前累计 ${userPoints} 积分`);
+              
+              const description = `${rule.rule_name} - ${rule.column_name}:${columnValue}`;
               
               // 计算过期日期
               const expireDate = rule.validity_days
                 ? moment().add(rule.validity_days, 'days').format('YYYY-MM-DD')
                 : null;
 
-              // 获取当前用户积分余额
-              const [userResult] = await connection.execute(
-                'SELECT available_points FROM users WHERE user_id = ?',
-                [userId]
-              );
-              const balanceAfter = (userResult[0]?.available_points || 0) + rule.points;
-
-              // 记录积分变动
-              await connection.execute(
+              // 记录积分变动（使用实时计算的余额）
+              const insertResult = await connection.execute(
                 `INSERT INTO point_records
                  (user_id, points, balance_after, source, rule_id, expire_date, import_batch, description)
                  VALUES (?, ?, ?, 'import', ?, ?, ?, ?)`,
                 [
                   userId,
                   rule.points,
-                  balanceAfter,
+                  currentBalance, // 使用实时余额
                   rule.id,
                   expireDate,
                   batchId,
                   description
                 ]
               );
+              logger.info(`✓ 积分记录已保存: 记录ID=${insertResult[0].insertId}, 用户=${userId}, 积分=${rule.points}, 余额=${currentBalance}`);
             }
           }
 
           // 更新用户总积分
           if (userPoints > 0) {
-            await connection.execute(
-              `UPDATE users 
-               SET total_points = total_points + ?, 
-                   available_points = available_points + ? 
-               WHERE user_id = ?`,
-              [userPoints, userPoints, userId]
-            );
+            logger.info('用户 ' + userId + ' 匹配成功 ' + appliedRules.length + ' 条规则, 已写入积分累计 ' + userPoints + ' 分, 用户积分将由数据库触发器同步更新');
             totalPointsAdded += userPoints;
-            
-            logger.debug(`用户 ${userId} 获得 ${userPoints} 积分，应用了 ${appliedRules.length} 条规则`);
+          } else {
+            logger.debug('用户 ' + userId + ' 未匹配任何规则, 积分为0');
           }
-
           successRows++;
 
         } catch (error) {

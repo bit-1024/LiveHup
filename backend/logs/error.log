@@ -221,3 +221,1643 @@ Error: Duplicate column name 'product_name'
     at F:\tsethup\backend\node_modules\express\lib\router\index.js:284:15
     at router.process_params (F:\tsethup\backend\node_modules\express\lib\router\index.js:346:12)
     at next (F:\tsethup\backend\node_modules\express\lib\router\index.js:280:10)
+2025-11-06 10:38:23 [ERROR]: 获取可用列名失败: Cannot read properties of undefined (reading 'forEach')
+TypeError: Cannot read properties of undefined (reading 'forEach')
+    at getAvailableColumns (F:\tsethup\backend\src\controllers\rulesController.js:484:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 10:38:23 [ERROR]: 获取可用列名失败: Cannot read properties of undefined (reading 'forEach')
+TypeError: Cannot read properties of undefined (reading 'forEach')
+    at getAvailableColumns (F:\tsethup\backend\src\controllers\rulesController.js:484:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 10:40:44 [ERROR]: 获取可用列名失败: Cannot read properties of undefined (reading 'forEach')
+TypeError: Cannot read properties of undefined (reading 'forEach')
+    at getAvailableColumns (F:\tsethup\backend\src\controllers\rulesController.js:484:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 10:40:45 [ERROR]: 获取可用列名失败: Cannot read properties of undefined (reading 'forEach')
+TypeError: Cannot read properties of undefined (reading 'forEach')
+    at getAvailableColumns (F:\tsethup\backend\src\controllers\rulesController.js:484:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:44 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-06 11:50:45 [ERROR]: 处理数据行失败: Field 'balance_after' doesn't have a default value
+Error: Field 'balance_after' doesn't have a default value
+    at PromisePoolConnection.execute (F:\tsethup\backend\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at F:\tsethup\backend\src\controllers\importController.js:447:53
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
+    at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
+    at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
