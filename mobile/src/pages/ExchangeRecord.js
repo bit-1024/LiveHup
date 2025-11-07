@@ -102,7 +102,7 @@ const ExchangeRecord = () => {
     <div className="page-container">
       <NavBar
         title="兑换记录"
-        leftArrow
+        leftArrow={<Icon name="arrow-left" />}
         onClickLeft={() => navigate(-1)}
         fixed
         placeholder

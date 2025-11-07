@@ -14,7 +14,8 @@ import {
   NewO,
   PhoneO,
   LocationO,
-  PhotoFail
+  PhotoFail,
+  ArrowLeft
 } from '@react-vant/icons';
 
 const iconMap = {
@@ -32,7 +33,8 @@ const iconMap = {
   'new-o': NewO,
   'phone-o': PhoneO,
   'location-o': LocationO,
-  'photo-fail': PhotoFail
+  'photo-fail': PhotoFail,
+  'arrow-left': ArrowLeft
 };
 
 const normalizeSize = (size) => {
@@ -45,7 +47,8 @@ const normalizeSize = (size) => {
 const Icon = ({ name, size, color, style, ...rest }) => {
   const Component = iconMap[name];
   if (!Component) {
-    return null;
+    console.warn(`Icon "${name}" not found in iconMap`);
+    return <span style={{ display: 'inline-block', width: normalizeSize(size), height: normalizeSize(size) }} />;
   }
 
   const fontSize = normalizeSize(size);

@@ -60,7 +60,7 @@ const ExchangeDetail = () => {
       <div className="page-container">
         <NavBar 
           title="兑换详情" 
-          leftArrow
+          leftArrow={<Icon name="arrow-left" />}
           onClickLeft={() => navigate(-1)}
           fixed 
           placeholder
@@ -77,7 +77,7 @@ const ExchangeDetail = () => {
       <div className="page-container">
         <NavBar 
           title="兑换详情" 
-          leftArrow
+          leftArrow={<Icon name="arrow-left" />}
           onClickLeft={() => navigate(-1)}
           fixed 
           placeholder
@@ -98,7 +98,7 @@ const ExchangeDetail = () => {
     <div className="page-container">
       <NavBar 
         title="兑换详情" 
-        leftArrow
+        leftArrow={<Icon name="arrow-left" />}
         onClickLeft={() => navigate(-1)}
         fixed 
         placeholder

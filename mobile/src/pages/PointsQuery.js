@@ -5,9 +5,7 @@ import {
   Button,
   Card,
   Cell,
-  Tag,
   Empty,
-  Divider,
   Toast
 } from 'react-vant';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -36,7 +34,11 @@ const PointsQuery = () => {
       
       // ��ȡ�û�������Ϣ
       const userResponse = await userAPI.getPoints(targetUserId);
-      setUserInfo(userResponse.data);
+      const userData = userResponse?.data?.user || userResponse?.data;
+      if (!userData) {
+        throw new Error('未找到该用户的积分信息');
+      }
+      setUserInfo(userData);
       
       // ��ȡ���ּ�¼
       const recordsResponse = await pointsAPI.getRecords(targetUserId, {
@@ -48,6 +50,7 @@ const PointsQuery = () => {
       setHasQueried(true);
     } catch (error) {
       console.error('��ѯʧ��:', error);
+      Toast.fail(error?.response?.data?.message || error.message || '积分查询失败，请稍后重试');
       setUserInfo(null);
       setPointsRecords([]);
       setHasQueried(true);
@@ -88,7 +91,7 @@ const PointsQuery = () => {
     <div className="page-container">
       <NavBar 
         title="积分查询" 
-        leftArrow
+        leftArrow={<Icon name="arrow-left" />}
         onClickLeft={() => navigate(-1)}
         fixed 
         placeholder
@@ -112,7 +115,6 @@ const PointsQuery = () => {
                 block
                 loading={loading}
                 onClick={() => handleQuery(userId)}
-                icon={<Icon name="search" />}
               >
                 查询积分
               </Button>
@@ -178,7 +180,7 @@ const PointsQuery = () => {
                       </div>
                     </div>
 
-                    <Divider />
+                    <div style={{ height: '1px', background: '#ebedf0', margin: '16px 0' }} />
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                       <div style={{ textAlign: 'center' }}>

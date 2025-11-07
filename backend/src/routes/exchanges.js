@@ -13,7 +13,7 @@ router.get('/:id', exchangesController.getExchangeDetail);
 router.post('/', exchangesController.createExchange);
 
 // 更新兑换状态（管理员）
-router.put('/:id', authMiddleware, requireAdmin, exchangesController.updateExchange);
+router.put('/:id/status', authMiddleware, requireAdmin, exchangesController.updateExchange);
 
 // 取消兑换（用户/管理员）
 router.post('/:id/cancel', exchangesController.cancelExchange);

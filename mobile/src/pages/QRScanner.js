@@ -7,12 +7,14 @@ import {
   Dialog
 } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
+import jsQR from 'jsqr';
 import Icon from '../components/Icon';
 
 const QRScanner = () => {
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const scanAnimationRef = useRef(null);
   const [isScanning, setIsScanning] = useState(false);
   const [stream, setStream] = useState(null);
   const [error, setError] = useState('');
@@ -20,6 +22,10 @@ const QRScanner = () => {
   useEffect(() => {
     return () => {
       // 组件卸载时停止摄像头
+      if (scanAnimationRef.current) {
+        cancelAnimationFrame(scanAnimationRef.current);
+        scanAnimationRef.current = null;
+      }
       if (stream) {
         stream.getTracks().forEach(track => track.stop());
       }
@@ -36,24 +42,27 @@ const QRScanner = () => {
           height: { ideal: 720 }
         }
       });
-      
+
       setStream(mediaStream);
       if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream;
-        videoRef.current.play();
+        const video = videoRef.current;
+        video.srcObject = mediaStream;
+        await video.play();
+        setIsScanning(true);
+        startScanning();
       }
-      setIsScanning(true);
-      
-      // 开始扫描
-      startScanning();
     } catch (err) {
-      console.error('启动摄像头失败:', err);
-      setError('无法访问摄像头，请检查权限设置');
-      Toast.fail('无法访问摄像头');
+      console.error('摄像头调用失败:', err);
+      setError('无法打开摄像头，请检查权限设置');
+      Toast.fail('无法打开摄像头');
     }
   };
 
   const stopCamera = () => {
+    if (scanAnimationRef.current) {
+      cancelAnimationFrame(scanAnimationRef.current);
+      scanAnimationRef.current = null;
+    }
     if (stream) {
       stream.getTracks().forEach(track => track.stop());
       setStream(null);
@@ -62,60 +71,103 @@ const QRScanner = () => {
   };
 
   const startScanning = () => {
-    const scanInterval = setInterval(() => {
-      if (videoRef.current && canvasRef.current && isScanning) {
-        const video = videoRef.current;
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
-        
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        
-        // 这里应该使用二维码解析库，比如 jsQR
-        // 由于没有安装相关库，这里模拟扫描结果
-        // 实际项目中需要安装 jsQR 或其他二维码解析库
-        
-        // 模拟扫描到二维码
-        if (Math.random() < 0.1) { // 10% 概率模拟扫描成功
-          const mockQRData = 'USER_ID_12345'; // 模拟扫描到的用户ID
-          handleScanResult(mockQRData);
-          clearInterval(scanInterval);
-        }
+    const scanFrame = () => {
+      if (!videoRef.current || !canvasRef.current || !isScanning) {
+        return;
       }
-    }, 500);
 
-    // 10秒后停止扫描
-    setTimeout(() => {
-      clearInterval(scanInterval);
-    }, 10000);
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+
+      if (video.readyState !== video.HAVE_ENOUGH_DATA) {
+        scanAnimationRef.current = requestAnimationFrame(scanFrame);
+        return;
+      }
+
+      const width = video.videoWidth;
+      const height = video.videoHeight;
+
+      if (!width || !height) {
+        scanAnimationRef.current = requestAnimationFrame(scanFrame);
+        return;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, width, height);
+
+      const imageData = context.getImageData(0, 0, width, height);
+      const code = jsQR(imageData.data, width, height, {
+        inversionAttempts: 'attemptBoth',
+      });
+
+      if (code?.data) {
+        handleScanResult(code.data);
+        return;
+      }
+
+      scanAnimationRef.current = requestAnimationFrame(scanFrame);
+    };
+
+    if (scanAnimationRef.current) {
+      cancelAnimationFrame(scanAnimationRef.current);
+    }
+    scanAnimationRef.current = requestAnimationFrame(scanFrame);
   };
+
+  // �������ά�����л�ȡ�û�ID
+  const extractUserId = (payload) => {
+    if (!payload) return '';
+    const text = payload.trim();
+    if (!text) return '';
+
+    if (/^USER_ID_/i.test(text)) {
+      return text.replace(/^USER_ID_/i, '');
+    }
+
+    if (/^[A-Za-z0-9_-]+$/.test(text)) {
+      return text;
+    }
+
+    try {
+      const url = new URL(text);
+      const idFromQuery = url.searchParams.get('user_id') || url.searchParams.get('userId');
+      if (idFromQuery) {
+        return idFromQuery;
+      }
+    } catch (error) {
+      // ���� URL ������Բ����κβ���
+    }
+
+    const match = text.match(/user[_-]?id[:=]?([A-Za-z0-9_-]+)/i);
+    return match ? match[1] : '';
+  };
+
 
   const handleScanResult = (data) => {
     stopCamera();
     
-    // 解析二维码数据
-    if (data && data.startsWith('USER_ID_')) {
-      const userId = data.replace('USER_ID_', '');
+    const userId = extractUserId(data);
+    if (userId) {
       Dialog.confirm({
-        title: '扫描成功',
+        title: '扫码成功',
         message: `检测到用户ID: ${userId}，是否查询该用户的积分？`,
       }).then(() => {
-        // 跳转到积分查询页面并传递用户ID
+        // 跳转到积分查询页面并携带用户ID
         navigate(`/points-query?userId=${userId}`);
       }).catch(() => {
-        // 用户取消，重新开始扫描
+        // 用户取消后重新开始扫描
         startCamera();
       });
     } else {
-      Toast.fail('无效的二维码格式');
+      Toast.fail('未识别到有效的用户ID');
       setTimeout(() => {
         startCamera();
       }, 1000);
     }
   };
+
 
   const handleManualInput = () => {
     navigate('/points-query');
@@ -125,7 +177,7 @@ const QRScanner = () => {
     <div className="page-container">
       <NavBar 
         title="扫描二维码" 
-        leftArrow
+        leftArrow={<Icon name="arrow-left" />}
         onClickLeft={() => navigate(-1)}
         fixed 
         placeholder

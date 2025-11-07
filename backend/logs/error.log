@@ -1861,3 +1861,7 @@ Error: Field 'balance_after' doesn't have a default value
     at async Object.transaction (F:\tsethup\backend\src\config\database.js:55:20)
     at async ImportController.processData (F:\tsethup\backend\src\controllers\importController.js:296:5)
     at async ImportController.importFile (F:\tsethup\backend\src\controllers\importController.js:183:22)
+2025-11-07 13:34:45 [ERROR]: Token验证失败:
+2025-11-07 13:34:45 [ERROR]: Token验证失败:
+2025-11-07 21:08:05 [ERROR]: Token验证失败:
+2025-11-07 21:08:05 [ERROR]: Token验证失败:

@@ -28,10 +28,6 @@ const ProductDetail = () => {
     shippingAddress: ''
   });
 
-  useEffect(() => {
-    loadProduct();
-  }, [loadProduct]);
-
   const loadProduct = useCallback(async () => {
     try {
       setLoading(true);
@@ -44,7 +40,11 @@ const ProductDetail = () => {
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, navigate]);
+
+  useEffect(() => {
+    loadProduct();
+  }, [loadProduct]);
 
   const handleExchange = () => {
     if (!product || product.stock === 0) {
@@ -104,7 +104,7 @@ const ProductDetail = () => {
       <div className="page-container">
         <NavBar 
           title="商品详情" 
-          leftArrow
+          leftArrow={<Icon name="arrow-left" />}
           onClickLeft={() => navigate(-1)}
           fixed 
           placeholder
@@ -121,7 +121,7 @@ const ProductDetail = () => {
       <div className="page-container">
         <NavBar 
           title="商品详情" 
-          leftArrow
+          leftArrow={<Icon name="arrow-left" />}
           onClickLeft={() => navigate(-1)}
           fixed 
           placeholder
@@ -137,7 +137,7 @@ const ProductDetail = () => {
     <div className="page-container">
       <NavBar 
         title="商品详情" 
-        leftArrow
+        leftArrow={<Icon name="arrow-left" />}
         onClickLeft={() => navigate(-1)}
         fixed 
         placeholder
