@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Tabbar } from 'react-vant';
+import Icon from './components/Icon';
 
 // 页面组件
 import Home from './pages/Home';
@@ -63,19 +64,19 @@ function AppContent() {
         >
           <Tabbar.Item
             name="home"
-            icon="wap-home-o"
+            icon={<Icon name="wap-home-o" size={24} />}
           >
             首页
           </Tabbar.Item>
           <Tabbar.Item
             name="shop"
-            icon="shop-o"
+            icon={<Icon name="shop-o" size={24} />}
           >
             积分商城
           </Tabbar.Item>
           <Tabbar.Item
             name="profile"
-            icon="contact"
+            icon={<Icon name="contact" size={24} />}
           >
             我的
           </Tabbar.Item>

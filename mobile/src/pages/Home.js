@@ -10,25 +10,25 @@ const Home = () => {
     {
       icon: 'scan',
       text: '扫码查询',
-      color: '#1989fa',
+      color: '#007AFF',
       path: '/qr-scanner'
     },
     {
       icon: 'search',
       text: '积分查询',
-      color: '#07c160',
+      color: '#007AFF',
       path: '/points-query'
     },
     {
       icon: 'shop-o',
       text: '积分商城',
-      color: '#ff976a',
+      color: '#007AFF',
       path: '/shop'
     },
     {
       icon: 'orders-o',
       text: '兑换记录',
-      color: '#ee0a24',
+      color: '#007AFF',
       path: '/exchange-record'
     }
   ];
@@ -39,26 +39,25 @@ const Home = () => {
 
   return (
     <div className="page-container">
-      <NavBar 
-        title="积分系统" 
-        fixed 
+      <NavBar
+        title="积分系统"
+        fixed
         placeholder
-        style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
       />
       
       <div className="page-content">
         {/* 欢迎横幅 */}
-        <div className="card" style={{ 
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        <div className="card" style={{
+          background: '#007AFF',
           color: 'white',
           textAlign: 'center',
           padding: '32px 16px',
           marginBottom: '16px'
         }}>
-          <div style={{ fontSize: '24px', fontWeight: '600', marginBottom: '8px' }}>
+          <div style={{ fontSize: '28px', fontWeight: '600', marginBottom: '8px' }}>
             欢迎使用积分系统
           </div>
-          <div style={{ fontSize: '14px', opacity: 0.8 }}>
+          <div style={{ fontSize: '15px', opacity: 0.9 }}>
             查询积分、兑换商品、享受专属福利
           </div>
         </div>
@@ -159,10 +158,10 @@ const Home = () => {
             alignItems: 'center'
           }}>
             <span>热门商品</span>
-            <span 
-              style={{ 
-                fontSize: '14px', 
-                color: '#1989fa',
+            <span
+              style={{
+                fontSize: '15px',
+                color: '#007AFF',
                 cursor: 'pointer'
               }}
               onClick={() => navigate('/shop')}
@@ -179,24 +178,23 @@ const Home = () => {
                   padding: '16px',
                   textAlign: 'center'
                 }}>
-                  <div style={{ 
+                  <div style={{
                     width: '60px',
                     height: '60px',
-                    background: '#1989fa',
+                    background: '#F2F2F7',
                     borderRadius: '50%',
                     margin: '0 auto 12px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'white',
-                    fontSize: '24px'
+                    fontSize: '28px'
                   }}>
                     🎁
                   </div>
-                  <div style={{ fontSize: '14px', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '15px', marginBottom: '4px', fontWeight: '500' }}>
                     精美礼品
                   </div>
-                  <div style={{ fontSize: '12px', color: '#1989fa' }}>
+                  <div style={{ fontSize: '13px', color: '#007AFF' }}>
                     200积分起
                   </div>
                 </div>
@@ -208,24 +206,23 @@ const Home = () => {
                   padding: '16px',
                   textAlign: 'center'
                 }}>
-                  <div style={{ 
+                  <div style={{
                     width: '60px',
                     height: '60px',
-                    background: '#07c160',
+                    background: '#F2F2F7',
                     borderRadius: '50%',
                     margin: '0 auto 12px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'white',
-                    fontSize: '24px'
+                    fontSize: '28px'
                   }}>
                     🎫
                   </div>
-                  <div style={{ fontSize: '14px', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '15px', marginBottom: '4px', fontWeight: '500' }}>
                     优惠券
                   </div>
-                  <div style={{ fontSize: '12px', color: '#07c160' }}>
+                  <div style={{ fontSize: '13px', color: '#007AFF' }}>
                     50积分起
                   </div>
                 </div>

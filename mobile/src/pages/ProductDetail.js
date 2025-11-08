@@ -164,13 +164,13 @@ const ProductDetail = () => {
             gap: '6px'
           }}>
             {product.is_hot && (
-              <Tag color="#ee0a24">
+              <Tag color="#FF3B30">
                 <Icon name="fire-o" style={{ marginRight: '4px' }} />
                 热门
               </Tag>
             )}
             {product.is_new && (
-              <Tag color="#ff976a">
+              <Tag color="#FF9500">
                 <Icon name="new-o" style={{ marginRight: '4px' }} />
                 新品
               </Tag>
@@ -211,10 +211,10 @@ const ProductDetail = () => {
             marginBottom: '12px'
           }}>
             <div>
-              <span style={{ 
-                fontSize: '24px', 
-                fontWeight: '600', 
-                color: '#ee0a24' 
+              <span style={{
+                fontSize: '24px',
+                fontWeight: '600',
+                color: '#FF3B30'
               }}>
                 {utils.formatNumber(product.points_required)}积分
               </span>

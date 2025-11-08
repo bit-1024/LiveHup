@@ -13414,3 +13414,33 @@ Error: Field 'balance_after' doesn't have a default value
 2025-11-07 21:10:46 [INFO]: 更新商品成功: ID 2
 2025-11-07 21:11:34 [INFO]: 创建兑换订单成功: EX176252109428143, 用户: 692850174, 商品: 100优惠卷
 2025-11-07 21:25:04 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-07 21:25:09 [INFO]: 🚀 服务器启动成功
+2025-11-07 21:25:09 [INFO]: 📍 地址: http://localhost:3000
+2025-11-07 21:25:09 [INFO]: 🌍 环境: development
+2025-11-07 21:25:09 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-07 21:25:40 [INFO]: 更新兑换订单: ID 1, 状态: confirmed
+2025-11-07 21:25:56 [INFO]: 更新兑换订单: ID 1, 状态: completed
+2025-11-07 21:56:11 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-07 21:56:15 [INFO]: 🚀 服务器启动成功
+2025-11-07 21:56:15 [INFO]: 📍 地址: http://localhost:3000
+2025-11-07 21:56:15 [INFO]: 🌍 环境: development
+2025-11-07 21:56:15 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-07 21:56:34 [ERROR]: 未捕获的异常: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at GetAddrInfoReqWrap.callback (node:net:2205:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-11-07 21:56:56 [INFO]: 🚀 服务器启动成功
+2025-11-07 21:56:56 [INFO]: 📍 地址: http://localhost:3000
+2025-11-07 21:56:56 [INFO]: 🌍 环境: development
+2025-11-07 21:56:56 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-07 22:02:26 [INFO]: 🚀 服务器启动成功
+2025-11-07 22:02:26 [INFO]: 📍 地址: http://localhost:3000
+2025-11-07 22:02:26 [INFO]: 🌍 环境: development
+2025-11-07 22:02:26 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-07 22:02:49 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-08 14:32:10 [INFO]: 🚀 服务器启动成功
+2025-11-08 14:32:10 [INFO]: 📍 地址: http://localhost:3000
+2025-11-08 14:32:10 [INFO]: 🌍 环境: development
+2025-11-08 14:32:10 [INFO]: 📊 健康检查: http://localhost:3000/health

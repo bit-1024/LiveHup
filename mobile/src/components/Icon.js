@@ -15,7 +15,9 @@ import {
   PhoneO,
   LocationO,
   PhotoFail,
-  ArrowLeft
+  ArrowLeft,
+  Contact,
+  WapHomeO
 } from '@react-vant/icons';
 
 const iconMap = {
@@ -34,7 +36,9 @@ const iconMap = {
   'phone-o': PhoneO,
   'location-o': LocationO,
   'photo-fail': PhotoFail,
-  'arrow-left': ArrowLeft
+  'arrow-left': ArrowLeft,
+  'contact': Contact,
+  'wap-home-o': WapHomeO
 };
 
 const normalizeSize = (size) => {

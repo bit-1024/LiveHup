@@ -109,13 +109,13 @@ const Shop = () => {
           gap: '4px'
         }}>
           {product.is_hot && (
-            <Tag color="#ee0a24" size="small">
+            <Tag color="#FF3B30" size="small">
               <Icon name="fire-o" style={{ marginRight: '2px' }} />
               热销
             </Tag>
           )}
           {product.is_new && (
-            <Tag color="#ff976a" size="small">
+            <Tag color="#FF9500" size="small">
               <Icon name="new-o" style={{ marginRight: '2px' }} />
               新品
             </Tag>

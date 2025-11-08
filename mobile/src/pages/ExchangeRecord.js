@@ -7,11 +7,11 @@ import Icon from '../components/Icon';
 const PAGE_SIZE = 10;
 
 const statusMeta = {
-  pending: { color: '#ff976a', text: '待处理' },
-  confirmed: { color: '#1989fa', text: '已确认' },
-  shipped: { color: '#ff976a', text: '已发货' },
-  completed: { color: '#07c160', text: '已完成' },
-  cancelled: { color: '#ee0a24', text: '已取消' },
+  pending: { color: '#FF9500', text: '待处理' },
+  confirmed: { color: '#007AFF', text: '已确认' },
+  shipped: { color: '#FF9500', text: '已发货' },
+  completed: { color: '#34C759', text: '已完成' },
+  cancelled: { color: '#FF3B30', text: '已取消' },
 };
 
 const ExchangeRecord = () => {

@@ -222,7 +222,7 @@ const QRScanner = () => {
                   transform: 'translate(-50%, -50%)',
                   width: '200px',
                   height: '200px',
-                  border: '2px solid #1989fa',
+                  border: '2px solid #007AFF',
                   borderRadius: '8px',
                   background: 'transparent'
                 }}>
@@ -233,8 +233,8 @@ const QRScanner = () => {
                     left: '-2px',
                     width: '20px',
                     height: '20px',
-                    borderTop: '4px solid #1989fa',
-                    borderLeft: '4px solid #1989fa'
+                    borderTop: '4px solid #007AFF',
+                    borderLeft: '4px solid #007AFF'
                   }} />
                   <div style={{
                     position: 'absolute',
@@ -242,8 +242,8 @@ const QRScanner = () => {
                     right: '-2px',
                     width: '20px',
                     height: '20px',
-                    borderTop: '4px solid #1989fa',
-                    borderRight: '4px solid #1989fa'
+                    borderTop: '4px solid #007AFF',
+                    borderRight: '4px solid #007AFF'
                   }} />
                   <div style={{
                     position: 'absolute',
@@ -251,8 +251,8 @@ const QRScanner = () => {
                     left: '-2px',
                     width: '20px',
                     height: '20px',
-                    borderBottom: '4px solid #1989fa',
-                    borderLeft: '4px solid #1989fa'
+                    borderBottom: '4px solid #007AFF',
+                    borderLeft: '4px solid #007AFF'
                   }} />
                   <div style={{
                     position: 'absolute',
@@ -260,8 +260,8 @@ const QRScanner = () => {
                     right: '-2px',
                     width: '20px',
                     height: '20px',
-                    borderBottom: '4px solid #1989fa',
-                    borderRight: '4px solid #1989fa'
+                    borderBottom: '4px solid #007AFF',
+                    borderRight: '4px solid #007AFF'
                   }} />
                 </div>
                 
@@ -273,7 +273,7 @@ const QRScanner = () => {
                   transform: 'translate(-50%, -50%)',
                   width: '180px',
                   height: '2px',
-                  background: 'linear-gradient(90deg, transparent, #1989fa, transparent)',
+                  background: 'linear-gradient(90deg, transparent, #007AFF, transparent)',
                   animation: 'scan 2s linear infinite'
                 }} />
               </>

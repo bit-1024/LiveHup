@@ -1865,3 +1865,9 @@ Error: Field 'balance_after' doesn't have a default value
 2025-11-07 13:34:45 [ERROR]: Token验证失败:
 2025-11-07 21:08:05 [ERROR]: Token验证失败:
 2025-11-07 21:08:05 [ERROR]: Token验证失败:
+2025-11-07 21:56:34 [ERROR]: 未捕获的异常: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at GetAddrInfoReqWrap.callback (node:net:2205:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)

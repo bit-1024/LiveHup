@@ -24,13 +24,13 @@ const ExchangeDetail = () => {
 
   const getStatusTag = (status) => {
     const statusMap = {
-      pending: { color: '#ff976a', text: '待处理' },
-      confirmed: { color: '#1989fa', text: '已确认' },
-      shipped: { color: '#ff976a', text: '已发货' },
-      completed: { color: '#07c160', text: '已完成' },
-      cancelled: { color: '#ee0a24', text: '已取消' },
+      pending: { color: '#FF9500', text: '待处理' },
+      confirmed: { color: '#007AFF', text: '已确认' },
+      shipped: { color: '#FF9500', text: '已发货' },
+      completed: { color: '#34C759', text: '已完成' },
+      cancelled: { color: '#FF3B30', text: '已取消' },
     };
-    const config = statusMap[status] || { color: '#969799', text: status };
+    const config = statusMap[status] || { color: '#8E8E93', text: status };
     return <Tag color={config.color}>{config.text}</Tag>;
   };
 
@@ -123,7 +123,7 @@ const ExchangeDetail = () => {
             <Steps 
               active={getStatusStep(exchange.status)}
               direction="vertical"
-              activeColor={exchange.status === 'cancelled' ? '#ee0a24' : '#1989fa'}
+              activeColor={exchange.status === 'cancelled' ? '#FF3B30' : '#007AFF'}
             >
               <Steps.Item>
                 <div style={{ fontSize: '14px', fontWeight: '500' }}>订单提交</div>
@@ -148,7 +148,7 @@ const ExchangeDetail = () => {
                     {utils.formatDate(exchange.shipped_at, 'YYYY-MM-DD HH:mm')}
                   </div>
                   {exchange.tracking_number && (
-                    <div style={{ fontSize: '12px', color: '#1989fa', marginTop: '2px' }}>
+                    <div style={{ fontSize: '12px', color: '#007AFF', marginTop: '2px' }}>
                       物流单号: {exchange.tracking_number}
                     </div>
                   )}
@@ -166,7 +166,7 @@ const ExchangeDetail = () => {
               
               {exchange.status === 'cancelled' && (
                 <Steps.Item>
-                  <div style={{ fontSize: '14px', fontWeight: '500', color: '#ee0a24' }}>
+                  <div style={{ fontSize: '14px', fontWeight: '500', color: '#FF3B30' }}>
                     订单取消
                   </div>
                   {exchange.cancelled_at && (
@@ -175,7 +175,7 @@ const ExchangeDetail = () => {
                     </div>
                   )}
                   {exchange.cancel_reason && (
-                    <div style={{ fontSize: '12px', color: '#ee0a24', marginTop: '2px' }}>
+                    <div style={{ fontSize: '12px', color: '#FF3B30', marginTop: '2px' }}>
                       取消原因: {exchange.cancel_reason}
                     </div>
                   )}
@@ -223,9 +223,9 @@ const ExchangeDetail = () => {
                   <div style={{ fontSize: '14px', color: '#969799' }}>
                     数量: {exchange.quantity}
                   </div>
-                  <div style={{ 
-                    fontSize: '18px', 
-                    color: '#ee0a24',
+                  <div style={{
+                    fontSize: '18px',
+                    color: '#FF3B30',
                     fontWeight: '600'
                   }}>
                     {utils.formatNumber(exchange.points_used)}积分
@@ -276,7 +276,7 @@ const ExchangeDetail = () => {
               alignItems: 'center',
               gap: '8px'
             }}>
-              <Icon name="location-o" color="#1989fa" />
+              <Icon name="location-o" color="#007AFF" />
               收货信息
             </div>
             

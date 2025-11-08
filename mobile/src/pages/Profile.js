@@ -9,13 +9,13 @@ const Profile = () => {
   const menuItems = [
     {
       title: '积分查询',
-      icon: <Icon name="point-gift-o" color="#1989fa" />,
+      icon: <Icon name="point-gift-o" color="#007AFF" />,
       path: '/points-query',
       desc: '查询个人积分余额和明细'
     },
     {
       title: '兑换记录',
-      icon: <Icon name="orders-o" color="#07c160" />,
+      icon: <Icon name="orders-o" color="#007AFF" />,
       path: '/exchange-record',
       desc: '查看历史兑换记录'
     }
@@ -24,17 +24,17 @@ const Profile = () => {
   const helpItems = [
     {
       title: '使用帮助',
-      icon: <Icon name="question-o" color="#ff976a" />,
+      icon: <Icon name="question-o" color="#8E8E93" />,
       path: '/help'
     },
     {
       title: '联系客服',
-      icon: <Icon name="service-o" color="#ee0a24" />,
+      icon: <Icon name="service-o" color="#8E8E93" />,
       path: '/contact'
     },
     {
       title: '关于我们',
-      icon: <Icon name="info-o" color="#969799" />,
+      icon: <Icon name="info-o" color="#8E8E93" />,
       path: '/about'
     }
   ];
@@ -49,56 +49,57 @@ const Profile = () => {
       
       <div className="page-content">
         {/* 用户信息卡片 */}
-        <div className="card" style={{ 
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        <div className="card" style={{
+          background: '#007AFF',
           color: 'white',
           padding: '24px 16px',
           marginBottom: '16px'
         }}>
-          <div style={{ 
-            display: 'flex', 
+          <div style={{
+            display: 'flex',
             alignItems: 'center',
             marginBottom: '16px'
           }}>
-            <div style={{ 
-              width: '60px',
-              height: '60px',
+            <div style={{
+              width: '64px',
+              height: '64px',
               background: 'rgba(255, 255, 255, 0.2)',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginRight: '16px',
-              fontSize: '24px'
+              fontSize: '28px'
             }}>
               <Icon name="user-o" />
             </div>
             <div>
-              <div style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>
+              <div style={{ fontSize: '22px', fontWeight: '600', marginBottom: '4px' }}>
                 积分用户
               </div>
-              <div style={{ fontSize: '14px', opacity: 0.8 }}>
+              <div style={{ fontSize: '15px', opacity: 0.9 }}>
                 欢迎使用积分系统
               </div>
             </div>
           </div>
           
-          <div style={{ 
-            background: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '8px',
-            padding: '12px',
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.15)',
+            borderRadius: '12px',
+            padding: '16px',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '14px', opacity: 0.8, marginBottom: '4px' }}>
+            <div style={{ fontSize: '15px', opacity: 0.9, marginBottom: '8px' }}>
               查询积分请输入您的用户ID
             </div>
-            <Button 
-              size="small" 
+            <Button
+              size="small"
               round
-              style={{ 
-                background: 'rgba(255, 255, 255, 0.2)',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-                color: 'white'
+              style={{
+                background: 'white',
+                border: 'none',
+                color: '#007AFF',
+                fontWeight: '500'
               }}
               onClick={() => navigate('/points-query')}
             >

@@ -157,13 +157,13 @@ const PointsQuery = () => {
                       alignItems: 'center',
                       gap: '8px'
                     }}>
-                      <Icon name="point-gift-o" color="#1989fa" />
+                      <Icon name="point-gift-o" color="#007AFF" />
                       积分详情
                     </div>
                     
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                       <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '20px', fontWeight: '600', color: '#1989fa' }}>
+                        <div style={{ fontSize: '20px', fontWeight: '600', color: '#007AFF' }}>
                           {utils.formatNumber(userInfo.total_points)}
                         </div>
                         <div style={{ fontSize: '14px', color: '#969799', marginTop: '4px' }}>
@@ -171,7 +171,7 @@ const PointsQuery = () => {
                         </div>
                       </div>
                       <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '20px', fontWeight: '600', color: '#ee0a24' }}>
+                        <div style={{ fontSize: '20px', fontWeight: '600', color: '#FF3B30' }}>
                           {utils.formatNumber(userInfo.used_points)}
                         </div>
                         <div style={{ fontSize: '14px', color: '#969799', marginTop: '4px' }}>
@@ -192,7 +192,7 @@ const PointsQuery = () => {
                         </div>
                       </div>
                       <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '16px', fontWeight: '600', color: '#07c160' }}>
+                        <div style={{ fontSize: '16px', fontWeight: '600', color: '#34C759' }}>
                           {userInfo.is_new_user ? '新用户' : '老用户'}
                         </div>
                         <div style={{ fontSize: '14px', color: '#969799', marginTop: '4px' }}>
@@ -214,7 +214,7 @@ const PointsQuery = () => {
                       alignItems: 'center',
                       gap: '8px'
                     }}>
-                      <Icon name="clock-o" color="#1989fa" />
+                      <Icon name="clock-o" color="#007AFF" />
                       积分记录
                     </div>
                     
@@ -239,7 +239,7 @@ const PointsQuery = () => {
                                 <div style={{ 
                                   fontSize: '16px', 
                                   fontWeight: '600',
-                                  color: record.points > 0 ? '#07c160' : '#ee0a24'
+                                  color: record.points > 0 ? '#34C759' : '#FF3B30'
                                 }}>
                                   {record.points > 0 ? '+' : ''}{utils.formatNumber(record.points)}
                                 </div>
