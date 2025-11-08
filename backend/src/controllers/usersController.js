@@ -12,6 +12,8 @@ class UsersController {
         pageSize = 20,
         userType,
         keyword,
+        startDate,
+        endDate,
         sort_by = 'created_at',
         sort_order = 'DESC'
       } = req.query;
@@ -29,6 +31,16 @@ class UsersController {
       if (keyword) {
         sql += ' AND (user_id LIKE ? OR username LIKE ?)';
         params.push(`%${keyword}%`, `%${keyword}%`);
+      }
+
+      if (startDate) {
+        sql += ' AND DATE(created_at) >= ?';
+        params.push(startDate);
+      }
+
+      if (endDate) {
+        sql += ' AND DATE(created_at) <= ?';
+        params.push(endDate);
       }
 
       // 排序
@@ -447,9 +459,31 @@ class UsersController {
 
       const users = await db.query(sql, params);
 
+      if (!users || users.length === 0) {
+        return res.status(200).json({
+          success: false,
+          message: '暂无可导出的数据'
+        });
+      }
+
+      // 转换为中文表头格式
+      const exportData = users.map(user => ({
+        '用户ID': user.user_id,
+        '用户名': user.username || '',
+        '手机号': user.phone || '',
+        '总积分': user.total_points,
+        '可用积分': user.available_points,
+        '已用积分': user.used_points,
+        '过期积分': user.expired_points,
+        '用户类型': user.is_new_user ? '新用户' : '老用户',
+        '首次导入': user.first_import_date || '',
+        '最后活跃': user.last_active_date || '',
+        '注册时间': user.created_at
+      }));
+
       // 生成Excel
       const xlsx = require('xlsx');
-      const ws = xlsx.utils.json_to_sheet(users);
+      const ws = xlsx.utils.json_to_sheet(exportData);
       const wb = xlsx.utils.book_new();
       xlsx.utils.book_append_sheet(wb, ws, '用户数据');
 

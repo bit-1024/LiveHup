@@ -139,22 +139,41 @@ const UserManagement = () => {
         startDate: filters.dateRange?.[0]?.format('YYYY-MM-DD'),
         endDate: filters.dateRange?.[1]?.format('YYYY-MM-DD'),
       };
-      
+
       const response = await usersAPI.export(params);
-      
-      // 创建下载链接
-      const url = window.URL.createObjectURL(new Blob([response]));
+      const blob = response instanceof Blob ? response : new Blob([response]);
+
+      if (!blob) {
+        message.warning('暂无可导出的数据');
+        return;
+      }
+
+      if (blob.type && blob.type.includes('application/json')) {
+        try {
+          const text = await blob.text();
+          const result = JSON.parse(text);
+          message.warning(result.message || '暂无可导出的数据');
+        } catch (parseError) {
+          console.error('解析导出结果失败:', parseError);
+          message.warning('暂无可导出的数据');
+        }
+        return;
+      }
+
+      const urlCreator = window.URL || window.webkitURL;
+      const downloadUrl = urlCreator.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = url;
+      link.href = downloadUrl;
       link.setAttribute('download', `用户数据_${dayjs().format('YYYY-MM-DD')}.xlsx`);
       document.body.appendChild(link);
       link.click();
       link.remove();
-      window.URL.revokeObjectURL(url);
-      
+      setTimeout(() => urlCreator.revokeObjectURL(downloadUrl), 1000);
+
       message.success('导出成功');
     } catch (error) {
       console.error('导出失败:', error);
+      message.error('导出失败，请稍后重试');
     }
   };
 
