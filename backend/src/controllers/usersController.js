@@ -7,10 +7,10 @@ class UsersController {
    */
   async getUsers(req, res) {
     try {
-      const { 
-        page = 1, 
-        pageSize = 20, 
-        is_new_user, 
+      const {
+        page = 1,
+        pageSize = 20,
+        userType,
         keyword,
         sort_by = 'created_at',
         sort_order = 'DESC'
@@ -20,9 +20,10 @@ class UsersController {
       const params = [];
 
       // 筛选条件
-      if (is_new_user !== undefined) {
-        sql += ' AND is_new_user = ?';
-        params.push(is_new_user === 'true' || is_new_user === '1');
+      if (userType === 'new') {
+        sql += ' AND is_new_user = true';
+      } else if (userType === 'old') {
+        sql += ' AND is_new_user = false';
       }
 
       if (keyword) {
