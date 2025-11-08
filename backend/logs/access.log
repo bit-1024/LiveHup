@@ -15340,3 +15340,16 @@ Error: listen EADDRINUSE: address already in use ::1:3000
 2025-11-08 17:06:45 [HTTP]: ::1 - - [08/Nov/2025:09:06:45 +0000] "GET /api/users?page=1&pageSize=10&userType=old HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-11-08 17:06:47 [HTTP]: ::1 - - [08/Nov/2025:09:06:47 +0000] "GET /api/users?page=1&pageSize=10&userType=old HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-11-08 17:10:55 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-08 17:11:00 [INFO]: 🚀 服务器启动成功
+2025-11-08 17:11:00 [INFO]: 📍 地址: http://localhost:3000
+2025-11-08 17:11:00 [INFO]: 🌍 环境: development
+2025-11-08 17:11:00 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-08 17:11:32 [HTTP]: ::1 - - [08/Nov/2025:09:11:32 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:32 [HTTP]: ::1 - - [08/Nov/2025:09:11:32 +0000] "GET /api/dashboard/stats HTTP/1.1" 304 - "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:36 [HTTP]: ::1 - - [08/Nov/2025:09:11:36 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:36 [HTTP]: ::1 - - [08/Nov/2025:09:11:36 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:38 [HTTP]: ::1 - - [08/Nov/2025:09:11:38 +0000] "GET /api/users?page=1&pageSize=10&userType=new HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:43 [HTTP]: ::1 - - [08/Nov/2025:09:11:43 +0000] "GET /api/users?page=1&pageSize=10&userType=old HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:44 [HTTP]: ::1 - - [08/Nov/2025:09:11:44 +0000] "GET /api/users?page=1&pageSize=10&userType=old HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:46 [HTTP]: ::1 - - [08/Nov/2025:09:11:46 +0000] "GET /api/users?page=2&pageSize=10&userType=old HTTP/1.1" 200 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-08 17:11:50 [HTTP]: ::1 - - [08/Nov/2025:09:11:50 +0000] "GET /api/users/488343111/points HTTP/1.1" 200 863 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"

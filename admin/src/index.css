@@ -59,11 +59,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 64px;
 }
 
 .layout-sider {
   background: #ffffff;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+  overflow-x: hidden;
 }
 
 .layout-content {
@@ -167,9 +169,26 @@ body {
 }
 
 /* 响应式 */
+@media (max-width: 1024px) {
+  .layout-header {
+    padding: 0 16px;
+  }
+  
+  .layout-sider {
+    width: 200px !important;
+    min-width: 200px !important;
+  }
+}
+
 @media (max-width: 768px) {
+  .layout-header {
+    height: 56px;
+    padding: 0 12px;
+  }
+  
   .layout-content {
     padding: 16px;
+    min-height: calc(100vh - 56px);
   }
   
   .page-header {
@@ -183,6 +202,23 @@ body {
   
   .button-group .ant-btn {
     width: 100%;
+  }
+  
+  .layout-sider {
+    position: fixed !important;
+    z-index: 999;
+    height: 100vh;
+  }
+  
+  .ant-layout-sider-collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .layout-content {
+    padding: 20px;
   }
 }
 

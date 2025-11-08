@@ -14,6 +14,9 @@ import {
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
 
+// 组件
+import Logo from './components/Logo';
+
 // 页面组件
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -132,22 +135,7 @@ function App() {
           className="layout-sider"
           width={240}
         >
-          <div style={{ 
-            height: 64, 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            borderBottom: '1px solid #f0f0f0'
-          }}>
-            <h2 style={{ 
-              color: '#1890ff', 
-              margin: 0, 
-              fontSize: collapsed ? 16 : 18,
-              fontWeight: 600
-            }}>
-              {collapsed ? '积分' : '积分管理系统'}
-            </h2>
-          </div>
+          <Logo collapsed={collapsed} />
           <Menu
             theme="light"
             mode="inline"
