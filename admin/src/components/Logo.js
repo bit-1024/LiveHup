@@ -16,7 +16,7 @@ const Logo = ({ collapsed }) => {
           </defs>
         </svg>
       </div>
-      {!collapsed && <span className="logo-text">积分系统</span>}
+      {!collapsed && <span className="logo-text">社群直播积分系统</span>}
     </div>
   );
 };
