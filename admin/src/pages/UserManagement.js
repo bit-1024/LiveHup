@@ -440,71 +440,62 @@ const UserManagement = () => {
 
       {/* 搜索筛选 */}
       <Card className="content-card" style={{ marginBottom: 24 }}>
-        <Row gutter={16} align="middle">
-          <Col xs={24} sm={8} md={6}>
-            <Input
-              placeholder="搜索用户ID或用户名"
-              prefix={<SearchOutlined />}
-              value={filters.keyword}
-              onChange={(e) => setFilters(prev => ({ ...prev, keyword: e.target.value }))}
-              onPressEnter={handleSearch}
-            />
-          </Col>
-          <Col xs={24} sm={8} md={4}>
-            <Select
-              placeholder="用户类型"
-              value={filters.userType}
-              onChange={(value) => setFilters(prev => ({ ...prev, userType: value }))}
-              style={{ width: '100%' }}
-              allowClear
-            >
-              <Option value="new">新用户</Option>
-              <Option value="old">老用户</Option>
-            </Select>
-          </Col>
-          <Col xs={24} sm={8} md={6}>
-            <RangePicker
-              placeholder={['开始日期', '结束日期']}
-              value={filters.dateRange}
-              onChange={(dates) => setFilters(prev => ({ ...prev, dateRange: dates }))}
-              style={{ width: '100%' }}
-            />
-          </Col>
-          <Col xs={24} sm={24} md={8}>
-            <Space wrap>
-              <Button
-                type="primary"
-                icon={<SearchOutlined />}
-                onClick={handleSearch}
-              >
-                搜索
-              </Button>
-              <Button onClick={handleReset}>
-                重置
-              </Button>
-              <Button
-                icon={<ReloadOutlined />}
-                onClick={fetchUsers}
-              >
-                刷新
-              </Button>
-              <Button
-                icon={<DownloadOutlined />}
-                onClick={handleExport}
-              >
-                导出
-              </Button>
-              <Button
-                danger
-                icon={<DeleteOutlined />}
-                onClick={handleBatchDelete}
-                disabled={selectedRowKeys.length === 0}
-              >
-                批量删除 {selectedRowKeys.length > 0 && `(${selectedRowKeys.length})`}
-              </Button>
-            </Space>
-          </Col>
-        </Row>
+        <Space wrap style={{ width: '100%' }}>
+          <Input
+            placeholder="搜索用户ID或用户名"
+            prefix={<SearchOutlined />}
+            value={filters.keyword}
+            onChange={(e) => setFilters(prev => ({ ...prev, keyword: e.target.value }))}
+            onPressEnter={handleSearch}
+            style={{ width: 200 }}
+          />
+          <Select
+            placeholder="用户类型"
+            value={filters.userType}
+            onChange={(value) => setFilters(prev => ({ ...prev, userType: value }))}
+            style={{ width: 120 }}
+            allowClear
+          >
+            <Option value="new">新用户</Option>
+            <Option value="old">老用户</Option>
+          </Select>
+          <RangePicker
+            placeholder={['开始日期', '结束日期']}
+            value={filters.dateRange}
+            onChange={(dates) => setFilters(prev => ({ ...prev, dateRange: dates }))}
+            style={{ width: 240 }}
+          />
+          <Button
+            type="primary"
+            icon={<SearchOutlined />}
+            onClick={handleSearch}
+          >
+            搜索
+          </Button>
+          <Button onClick={handleReset}>
+            重置
+          </Button>
+          <Button
+            icon={<ReloadOutlined />}
+            onClick={fetchUsers}
+          >
+            刷新
+          </Button>
+          <Button
+            icon={<DownloadOutlined />}
+            onClick={handleExport}
+          >
+            导出
+          </Button>
+          <Button
+            danger
+            icon={<DeleteOutlined />}
+            onClick={handleBatchDelete}
+            disabled={selectedRowKeys.length === 0}
+          >
+            批量删除 {selectedRowKeys.length > 0 && `(${selectedRowKeys.length})`}
+          </Button>
+        </Space>
       </Card>
 
       {/* 用户列表 */}
