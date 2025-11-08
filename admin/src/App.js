@@ -69,7 +69,7 @@ const menuItems = [
 ];
 
 function App() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(window.innerWidth <= 768);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState(null);
@@ -84,6 +84,15 @@ function App() {
       setUserInfo(JSON.parse(user));
     }
     setLoading(false);
+
+    // 监听窗口大小变化
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setCollapsed(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleLogout = () => {
@@ -128,9 +137,15 @@ function App() {
   return (
     <Router>
       <Layout className="layout-container">
-        <Sider 
-          trigger={null} 
-          collapsible 
+        {!collapsed && window.innerWidth <= 768 && (
+          <div
+            className="sidebar-mask"
+            onClick={() => setCollapsed(true)}
+          />
+        )}
+        <Sider
+          trigger={null}
+          collapsible
           collapsed={collapsed}
           className="layout-sider"
           width={240}
@@ -142,6 +157,9 @@ function App() {
             defaultSelectedKeys={['/dashboard']}
             items={menuItems}
             onClick={({ key }) => {
+              if (window.innerWidth <= 768) {
+                setCollapsed(true);
+              }
               window.location.pathname = key;
             }}
             selectedKeys={[window.location.pathname]}

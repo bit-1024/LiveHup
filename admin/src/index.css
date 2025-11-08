@@ -206,13 +206,24 @@ body {
   
   .layout-sider {
     position: fixed !important;
-    z-index: 999;
+    z-index: 1001;
     height: 100vh;
+    left: 0;
+    transition: transform 0.3s ease;
   }
   
   .ant-layout-sider-collapsed {
-    width: 0 !important;
-    min-width: 0 !important;
+    transform: translateX(-100%);
+  }
+
+  .sidebar-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
   }
 }
 
