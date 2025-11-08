@@ -104,8 +104,8 @@ const PointsQuery = () => {
             <Field
               value={userId}
               onChange={setUserId}
-              label="用户ID"
-              placeholder="请输入您的用户ID"
+              label="用户ID/用户名"
+              placeholder="请输入用户ID或用户名"
               clearable
               maxlength={50}
             />
@@ -290,13 +290,13 @@ const PointsQuery = () => {
               </div>
               <div style={{ lineHeight: '1.6', color: '#646566', fontSize: '14px' }}>
                 <p style={{ margin: '0 0 8px 0' }}>
-                  • 请输入您的用户ID进行积分查询
+                  • 请输入您的用户ID或用户名进行积分查询
                 </p>
                 <p style={{ margin: '0 0 8px 0' }}>
-                  • 用户ID通常在参与活动时获得
+                  • 用户ID/用户名通常在参与活动时获得
                 </p>
                 <p style={{ margin: '0 0 8px 0' }}>
-                  • 如忘记用户ID，请联系客服获取
+                  • 如忘记用户ID/用户名，请联系客服获取
                 </p>
                 <p style={{ margin: '0' }}>
                   • 积分有效期请关注具体活动规则

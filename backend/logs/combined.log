@@ -13444,3 +13444,4 @@ Error: listen EADDRINUSE: address already in use ::1:3000
 2025-11-08 14:32:10 [INFO]: 📍 地址: http://localhost:3000
 2025-11-08 14:32:10 [INFO]: 🌍 环境: development
 2025-11-08 14:32:10 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-08 16:41:58 [INFO]: 收到SIGINT信号，正在关闭服务器...

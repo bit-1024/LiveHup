@@ -131,8 +131,8 @@ class UsersController {
       const { userId } = req.params;
 
       const [user] = await db.query(
-        'SELECT user_id, username, total_points, available_points, used_points, expired_points, is_new_user FROM users WHERE user_id = ?',
-        [userId]
+        'SELECT user_id, username, total_points, available_points, used_points, expired_points, is_new_user FROM users WHERE user_id = ? OR username = ?',
+        [userId, userId]
       );
 
       if (!user) {
