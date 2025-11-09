@@ -12,6 +12,8 @@ class UsersController {
         pageSize = 20,
         userType,
         keyword,
+        user_id,
+        user_name,
         startDate,
         endDate,
         sort_by = 'created_at',
@@ -28,7 +30,13 @@ class UsersController {
         sql += ' AND is_new_user = false';
       }
 
-      if (keyword) {
+      if (user_id) {
+        sql += ' AND user_id = ?';
+        params.push(user_id);
+      } else if (user_name) {
+        sql += ' AND username LIKE ?';
+        params.push(`%${user_name}%`);
+      } else if (keyword) {
         sql += ' AND (user_id LIKE ? OR username LIKE ?)';
         params.push(`%${keyword}%`, `%${keyword}%`);
       }
@@ -54,7 +62,10 @@ class UsersController {
 
       res.json({
         success: true,
-        data: result.data,
+        data: {
+          list: result.data,
+          total: result.pagination.total
+        },
         pagination: result.pagination
       });
     } catch (error) {

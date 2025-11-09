@@ -13598,3 +13598,28 @@ Error: listen EADDRINUSE: address already in use ::1:3000
 2025-11-09 20:34:02 [INFO]: 📍 地址: http://localhost:3000
 2025-11-09 20:34:02 [INFO]: 🌍 环境: development
 2025-11-09 20:34:02 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 21:41:30 [ERROR]: 未捕获的异常: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at GetAddrInfoReqWrap.callback (node:net:2205:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-11-09 21:41:36 [INFO]: 🚀 服务器启动成功
+2025-11-09 21:41:36 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 21:41:36 [INFO]: 🌍 环境: development
+2025-11-09 21:41:36 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 22:47:12 [INFO]: 🚀 服务器启动成功
+2025-11-09 22:47:12 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 22:47:12 [INFO]: 🌍 环境: development
+2025-11-09 22:47:12 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 22:49:52 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-09 22:52:35 [INFO]: 🚀 服务器启动成功
+2025-11-09 22:52:35 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 22:52:35 [INFO]: 🌍 环境: development
+2025-11-09 22:52:35 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 22:57:51 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-09 22:57:54 [INFO]: 🚀 服务器启动成功
+2025-11-09 22:57:54 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 22:57:54 [INFO]: 🌍 环境: development
+2025-11-09 22:57:54 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 23:37:34 [INFO]: 收到SIGINT信号，正在关闭服务器...

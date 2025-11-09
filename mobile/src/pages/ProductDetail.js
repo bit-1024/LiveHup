@@ -11,7 +11,7 @@ import {
   ActionSheet
 } from 'react-vant';
 import { useNavigate, useParams } from 'react-router-dom';
-import { productAPI, exchangeAPI, utils } from '../services/api';
+import { productAPI, exchangeAPI, userAPI, utils } from '../services/api';
 import Icon from '../components/Icon';
 
 const ProductDetail = () => {
@@ -55,8 +55,9 @@ const ProductDetail = () => {
   };
 
   const handleConfirmExchange = async () => {
-    if (!exchangeForm.userId.trim()) {
-      Toast.fail('请输入用户ID');
+    const userInput = exchangeForm.userId.trim();
+    if (!userInput) {
+      Toast.fail('请输入用户ID或用户名');
       return;
     }
     if (!exchangeForm.contactName.trim()) {
@@ -73,8 +74,27 @@ const ProductDetail = () => {
     }
 
     try {
+      // 校验用户是否存在
+      const userInfo = await userAPI.verifyUser(userInput);
+      if (!userInfo.data || !userInfo.data.list || userInfo.data.list.length === 0) {
+        Toast.fail('用户不存在，请检查用户ID或用户名');
+        return;
+      }
+
+      const user = userInfo.data.list[0];
+      
+      // 检查用户积分是否足够
+      const totalPoints = product.points_required * exchangeForm.quantity;
+      if (user.available_points < totalPoints) {
+        Dialog.alert({
+          title: '积分不足',
+          message: `需要${utils.formatNumber(totalPoints)}积分，当前仅有${utils.formatNumber(user.available_points)}积分`,
+        });
+        return;
+      }
+
       await exchangeAPI.create({
-        user_id: exchangeForm.userId.trim(),
+        user_id: user.user_id,
         product_id: product.id,
         quantity: exchangeForm.quantity,
         contact_name: exchangeForm.contactName.trim(),
@@ -287,8 +307,8 @@ const ProductDetail = () => {
           <Field
             value={exchangeForm.userId}
             onChange={(value) => setExchangeForm(prev => ({ ...prev, userId: value }))}
-            label="用户ID"
-            placeholder="请输入您的用户ID"
+            label="用户ID/用户名"
+            placeholder="请输入用户ID或用户名"
             required
             clearable
           />

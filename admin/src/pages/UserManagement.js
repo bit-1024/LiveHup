@@ -74,10 +74,10 @@ const UserManagement = () => {
       };
       
       const response = await usersAPI.getList(params);
-      setUsers(response.data);
+      setUsers(response.data.list || []);
       setPagination(prev => ({
         ...prev,
-        total: response.pagination.total,
+        total: response.data.total || 0,
       }));
     } catch (error) {
       console.error('获取用户列表失败:', error);

@@ -3,8 +3,8 @@ const router = express.Router();
 const usersController = require('../controllers/usersController');
 const { authMiddleware, requireAdmin } = require('../middleware/auth');
 
-// 获取用户列表（管理员）
-router.get('/', authMiddleware, usersController.getUsers);
+// 获取用户列表（移动端公开接口用于验证用户，管理员接口）
+router.get('/', usersController.getUsers);
 
 // 获取用户统计
 router.get('/stats', authMiddleware, usersController.getUserStats);

@@ -126,6 +126,7 @@ export const exchangesAPI = {
   getList: (params) => api.get('/exchanges', { params }),
   getDetail: (id) => api.get(`/exchanges/${id}`),
   updateStatus: (id, status, data = {}) => api.put(`/exchanges/${id}/status`, { status, ...data }),
+  batchUpdateStatus: (data) => api.put('/exchanges/batch/status', data),
   export: (params) => api.get('/exchanges/export', { params, responseType: 'blob' }),
 };
 

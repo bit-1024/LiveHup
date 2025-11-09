@@ -69,6 +69,14 @@ export const userAPI = {
   
   // 获取用户基本信息
   getInfo: (userId) => api.get(`/users/${userId}`, { showLoading: false }),
+  
+  // 校验用户（支持用户ID或用户名）
+  verifyUser: (userInput) => {
+    const params = /^\d+$/.test(userInput)
+      ? { user_id: userInput }
+      : { user_name: userInput };
+    return api.get('/users', { params, showLoading: true });
+  },
 };
 
 // 商品相关API

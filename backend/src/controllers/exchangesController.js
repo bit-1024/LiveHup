@@ -401,6 +401,97 @@ class ExchangesController {
   }
 
   /**
+   * 批量更新兑换状态（管理员）
+   */
+  async batchUpdateStatus(req, res) {
+    try {
+      const { ids, status, tracking_number, remark } = req.body;
+
+      if (!ids || !Array.isArray(ids) || ids.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: '请选择要更新的记录'
+        });
+      }
+
+      if (!status) {
+        return res.status(400).json({
+          success: false,
+          message: '请选择要更新的状态'
+        });
+      }
+
+      // 检查所有记录是否存在且可修改
+      const placeholders = ids.map(() => '?').join(',');
+      const exchanges = await db.query(
+        `SELECT id, status FROM exchanges WHERE id IN (${placeholders})`,
+        ids
+      );
+
+      if (exchanges.length !== ids.length) {
+        return res.status(404).json({
+          success: false,
+          message: '部分记录不存在'
+        });
+      }
+
+      // 检查是否有已完成或已取消的订单
+      const invalidExchanges = exchanges.filter(e =>
+        ['completed', 'cancelled'].includes(e.status)
+      );
+
+      if (invalidExchanges.length > 0) {
+        return res.status(400).json({
+          success: false,
+          message: '选中的记录中包含已完成或已取消的订单，无法修改'
+        });
+      }
+
+      const updates = ['status = ?'];
+      const params = [status];
+
+      // 根据状态更新相应的时间戳
+      if (status === 'confirmed') {
+        updates.push('confirmed_at = NOW()');
+      } else if (status === 'shipped') {
+        updates.push('shipped_at = NOW()');
+      } else if (status === 'completed') {
+        updates.push('completed_at = NOW()');
+      }
+
+      if (tracking_number !== undefined) {
+        updates.push('tracking_number = ?');
+        params.push(tracking_number);
+      }
+
+      if (remark !== undefined) {
+        updates.push('remark = ?');
+        params.push(remark);
+      }
+
+      params.push(...ids);
+
+      await db.query(
+        `UPDATE exchanges SET ${updates.join(', ')} WHERE id IN (${placeholders})`,
+        params
+      );
+
+      logger.info(`批量更新兑换订单: ${ids.length}条记录, 状态: ${status}`);
+
+      res.json({
+        success: true,
+        message: `成功更新${ids.length}条记录`
+      });
+    } catch (error) {
+      logger.error('批量更新兑换状态失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '批量更新失败'
+      });
+    }
+  }
+
+  /**
    * 取消兑换
    */
   async cancelExchange(req, res) {

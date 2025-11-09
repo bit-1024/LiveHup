@@ -18,6 +18,9 @@ router.get('/:id', exchangesController.getExchangeDetail);
 // 创建兑换申请（移动端用户）
 router.post('/', exchangesController.createExchange);
 
+// 批量更新兑换状态（管理员）
+router.put('/batch/status', authMiddleware, requireAdmin, exchangesController.batchUpdateStatus);
+
 // 更新兑换状态（管理员）
 router.put('/:id/status', authMiddleware, requireAdmin, exchangesController.updateExchange);
 

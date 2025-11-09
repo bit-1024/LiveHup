@@ -50,8 +50,11 @@ const ExchangeManagement = () => {
   });
   const [detailVisible, setDetailVisible] = useState(false);
   const [statusModalVisible, setStatusModalVisible] = useState(false);
+  const [batchStatusModalVisible, setBatchStatusModalVisible] = useState(false);
   const [selectedExchange, setSelectedExchange] = useState(null);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [statusForm] = Form.useForm();
+  const [batchStatusForm] = Form.useForm();
   const lastFilterParamsRef = useRef({});
 
   const buildFilterParams = useCallback(() => {
@@ -146,6 +149,21 @@ const ExchangeManagement = () => {
     }
   };
 
+  const handleBatchStatusUpdate = async (values) => {
+    try {
+      await exchangesAPI.batchUpdateStatus({
+        ids: selectedRowKeys,
+        ...values
+      });
+      message.success(`成功更新${selectedRowKeys.length}条记录`);
+      setBatchStatusModalVisible(false);
+      setSelectedRowKeys([]);
+      fetchExchanges();
+    } catch (error) {
+      console.error('批量更新失败:', error);
+    }
+  };
+
   const handleSearch = () => {
     setPagination(prev => ({ ...prev, current: 1 }));
     fetchExchanges();
@@ -203,6 +221,14 @@ const ExchangeManagement = () => {
       cancelled: -1,
     };
     return statusSteps[status] || 0;
+  };
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: (keys) => setSelectedRowKeys(keys),
+    getCheckboxProps: (record) => ({
+      disabled: ['completed', 'cancelled'].includes(record.status),
+    }),
   };
 
   const columns = [
@@ -365,7 +391,7 @@ const ExchangeManagement = () => {
             />
           </Col>
           <Col xs={24} sm={24} md={8}>
-            <Space>
+            <Space wrap>
               <Button
                 type="primary"
                 icon={<SearchOutlined />}
@@ -388,6 +414,15 @@ const ExchangeManagement = () => {
               >
                 导出
               </Button>
+              {selectedRowKeys.length > 0 && (
+                <Button
+                  type="primary"
+                  icon={<EditOutlined />}
+                  onClick={() => setBatchStatusModalVisible(true)}
+                >
+                  批量处理({selectedRowKeys.length})
+                </Button>
+              )}
             </Space>
           </Col>
         </Row>
@@ -404,6 +439,7 @@ const ExchangeManagement = () => {
         className="content-card"
       >
         <Table
+          rowSelection={rowSelection}
           columns={columns}
           dataSource={exchanges}
           rowKey="id"
@@ -596,6 +632,64 @@ const ExchangeManagement = () => {
               </Button>
               <Button type="primary" htmlType="submit">
                 更新状态
+              </Button>
+            </Space>
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      {/* 批量状态更新弹窗 */}
+      <Modal
+        title={`批量更新订单状态 (已选${selectedRowKeys.length}条)`}
+        open={batchStatusModalVisible}
+        onCancel={() => setBatchStatusModalVisible(false)}
+        footer={null}
+        width={500}
+      >
+        <Form
+          form={batchStatusForm}
+          layout="vertical"
+          onFinish={handleBatchStatusUpdate}
+        >
+          <Form.Item
+            name="status"
+            label="订单状态"
+            rules={[{ required: true, message: '请选择订单状态' }]}
+          >
+            <Select placeholder="选择订单状态">
+              <Option value="pending">待处理</Option>
+              <Option value="confirmed">已确认</Option>
+              <Option value="shipped">已发货</Option>
+              <Option value="completed">已完成</Option>
+              <Option value="cancelled">已取消</Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            name="tracking_number"
+            label="物流单号"
+          >
+            <Input placeholder="请输入物流单号（发货时填写）" />
+          </Form.Item>
+
+          <Form.Item
+            name="remark"
+            label="备注"
+          >
+            <Input.TextArea
+              rows={3}
+              placeholder="请输入备注信息"
+              maxLength={500}
+            />
+          </Form.Item>
+
+          <Form.Item style={{ marginBottom: 0, textAlign: 'right' }}>
+            <Space>
+              <Button onClick={() => setBatchStatusModalVisible(false)}>
+                取消
+              </Button>
+              <Button type="primary" htmlType="submit">
+                批量更新
               </Button>
             </Space>
           </Form.Item>
