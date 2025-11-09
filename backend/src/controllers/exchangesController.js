@@ -11,9 +11,19 @@ const buildExchangeFilterConditions = (query = {}) => {
   let conditions = '';
 
   const rawUserId = query.user_id || query.userId;
-  if (rawUserId) {
-    conditions += ' AND e.user_id = ?';
-    params.push(rawUserId);
+  const userName = query.user_name || query.userName;
+  
+  if (rawUserId || userName) {
+    if (rawUserId && userName) {
+      conditions += ' AND (e.user_id = ? OR e.user_id IN (SELECT user_id FROM users WHERE user_name LIKE ?))';
+      params.push(rawUserId, `%${userName}%`);
+    } else if (rawUserId) {
+      conditions += ' AND e.user_id = ?';
+      params.push(rawUserId);
+    } else {
+      conditions += ' AND e.user_id IN (SELECT user_id FROM users WHERE user_name LIKE ?)';
+      params.push(`%${userName}%`);
+    }
   }
 
   const status = query.status;

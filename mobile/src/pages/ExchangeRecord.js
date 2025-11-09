@@ -16,7 +16,7 @@ const statusMeta = {
 
 const ExchangeRecord = () => {
   const navigate = useNavigate();
-  const [userId, setUserId] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [exchanges, setExchanges] = useState([]);
   const [hasQueried, setHasQueried] = useState(false);
@@ -24,9 +24,9 @@ const ExchangeRecord = () => {
   const [page, setPage] = useState(1);
 
   const fetchRecords = async (reset = false) => {
-    const trimmedId = userId.trim();
-    if (!trimmedId) {
-      Toast.fail('请输入用户ID');
+    const trimmedValue = searchValue.trim();
+    if (!trimmedValue) {
+      Toast.fail('请输入用户ID或用户名');
       return;
     }
 
@@ -36,7 +36,7 @@ const ExchangeRecord = () => {
       setLoading(true);
       const currentPage = reset ? 1 : page;
 
-      const response = await exchangeAPI.getMyExchanges(trimmedId, {
+      const response = await exchangeAPI.getMyExchanges(trimmedValue, {
         page: currentPage,
         pageSize: PAGE_SIZE
       });
@@ -82,7 +82,7 @@ const ExchangeRecord = () => {
   };
 
   const handleReset = () => {
-    setUserId('');
+    setSearchValue('');
     setExchanges([]);
     setHasQueried(false);
     setFinished(false);
@@ -113,10 +113,10 @@ const ExchangeRecord = () => {
         <Card>
           <div style={{ padding: '16px 0' }}>
             <Field
-              value={userId}
-              onChange={setUserId}
-              label="用户ID"
-              placeholder="请输入用户ID"
+              value={searchValue}
+              onChange={setSearchValue}
+              label="用户查询"
+              placeholder="请输入用户ID或用户名"
               clearable
               maxlength={50}
             />
@@ -218,7 +218,7 @@ const ExchangeRecord = () => {
                   imageSize={80}
                 >
                   <div style={{ marginTop: '16px', color: '#969799', fontSize: '14px' }}>
-                    请确认用户ID是否正确
+                    请确认用户ID或用户名是否正确
                   </div>
                 </Empty>
               </Card>
@@ -240,7 +240,7 @@ const ExchangeRecord = () => {
               </div>
               <div style={{ lineHeight: '1.6', color: '#646566', fontSize: '14px' }}>
                 <p style={{ margin: '0 0 8px 0' }}>
-                  • 输入用户ID查询兑换记录
+                  • 输入用户ID或用户名查询兑换记录
                 </p>
                 <p style={{ margin: '0 0 8px 0' }}>
                   • 可查看各笔兑换的状态和积分消耗

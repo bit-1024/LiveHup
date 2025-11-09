@@ -89,10 +89,19 @@ export const exchangeAPI = {
   create: (data) => api.post('/exchanges', data),
   
   // 获取用户兑换记录
-  getMyExchanges: (userId, params) => api.get('/exchanges', { 
-    params: { ...params, user_id: userId },
-    showLoading: false 
-  }),
+  getMyExchanges: (searchValue, params) => {
+    const queryParams = { ...params };
+    // 判断是用户ID还是用户名（简单判断：纯数字为ID，否则为用户名）
+    if (/^\d+$/.test(searchValue)) {
+      queryParams.user_id = searchValue;
+    } else {
+      queryParams.user_name = searchValue;
+    }
+    return api.get('/exchanges', {
+      params: queryParams,
+      showLoading: false
+    });
+  },
   
   // 获取兑换详情
   getDetail: (id) => api.get(`/exchanges/${id}`, { showLoading: false }),
