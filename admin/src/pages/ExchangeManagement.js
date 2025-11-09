@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { 
   Card, 
   Table, 
@@ -52,18 +52,46 @@ const ExchangeManagement = () => {
   const [statusModalVisible, setStatusModalVisible] = useState(false);
   const [selectedExchange, setSelectedExchange] = useState(null);
   const [statusForm] = Form.useForm();
+  const lastFilterParamsRef = useRef({});
+
+  const buildFilterParams = useCallback(() => {
+    const params = {};
+    if (filters.keyword?.trim()) params.keyword = filters.keyword.trim();
+    if (filters.status) params.status = filters.status;
+    if (filters.dateRange?.[0]) params.start_date = filters.dateRange[0].format('YYYY-MM-DD');
+    if (filters.dateRange?.[1]) params.end_date = filters.dateRange[1].format('YYYY-MM-DD');
+    return params;
+  }, [filters]);
+
+  const isZipBlob = async (blob) => {
+    try {
+      const buffer = await blob.slice(0, 4).arrayBuffer();
+      const bytes = new Uint8Array(buffer);
+      return bytes[0] === 0x50 && bytes[1] === 0x4B;
+    } catch (error) {
+      console.warn('检测导出文件头失败:', error);
+      return false;
+    }
+  };
+
+  const isJsonResponseBlob = async (blob) => {
+    if (!blob.type || !blob.type.includes('application/json')) {
+      return false;
+    }
+
+    const looksLikeZip = await isZipBlob(blob);
+    return !looksLikeZip;
+  };
 
   // Fixed: Wrap fetchExchanges in useCallback
   const fetchExchanges = useCallback(async () => {
     try {
       setLoading(true);
+      const filterParams = buildFilterParams();
       const params = {
         page: pagination.current,
         pageSize: pagination.pageSize,
-        keyword: filters.keyword || undefined,
-        status: filters.status || undefined,
-        startDate: filters.dateRange?.[0]?.format('YYYY-MM-DD'),
-        endDate: filters.dateRange?.[1]?.format('YYYY-MM-DD'),
+        ...filterParams,
       };
       
       const response = await exchangesAPI.getList(params);
@@ -72,12 +100,13 @@ const ExchangeManagement = () => {
         ...prev,
         total: response.data.total,
       }));
+      lastFilterParamsRef.current = filterParams;
     } catch (error) {
       console.error('获取兑换列表失败:', error);
     } finally {
       setLoading(false);
     }
-  }, [pagination.current, pagination.pageSize, filters]);
+  }, [pagination.current, pagination.pageSize, buildFilterParams]);
 
   useEffect(() => {
     fetchExchanges();
@@ -129,20 +158,15 @@ const ExchangeManagement = () => {
       dateRange: null,
     });
     setPagination(prev => ({ ...prev, current: 1 }));
+    lastFilterParamsRef.current = {};
   };
 
   const handleExport = async () => {
     try {
-      const params = {
-        keyword: filters.keyword || undefined,
-        status: filters.status || undefined,
-        startDate: filters.dateRange?.[0]?.format('YYYY-MM-DD'),
-        endDate: filters.dateRange?.[1]?.format('YYYY-MM-DD'),
-      };
+      const params = buildFilterParams();
+      const blob = await exchangesAPI.export(params);
       
-      const response = await exchangesAPI.export(params);
-      
-      const url = window.URL.createObjectURL(new Blob([response]));
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       link.setAttribute('download', `兑换记录_${dayjs().format('YYYY-MM-DD')}.xlsx`);
@@ -153,7 +177,8 @@ const ExchangeManagement = () => {
       
       message.success('导出成功');
     } catch (error) {
-      console.error('导出失败:', error);
+      console.error('导出错误:', error);
+      message.error(error.message || '导出失败');
     }
   };
 

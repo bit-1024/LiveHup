@@ -3,6 +3,59 @@ const logger = require('../config/logger');
 const moment = require('moment');
 const { buildFileUrl } = require('../utils/file');
 
+/**
+ * 构建兑换记录筛选条件，统一处理驼峰/下划线参数
+ */
+const buildExchangeFilterConditions = (query = {}) => {
+  const params = [];
+  let conditions = '';
+
+  const rawUserId = query.user_id || query.userId;
+  if (rawUserId) {
+    conditions += ' AND e.user_id = ?';
+    params.push(rawUserId);
+  }
+
+  const status = query.status;
+  if (status) {
+    conditions += ' AND e.status = ?';
+    params.push(status);
+  }
+
+  const keyword = (query.keyword || '').trim();
+  if (keyword) {
+    const likeValue = `%${keyword}%`;
+    conditions += ` AND (
+      e.exchange_no LIKE ?
+      OR e.product_name LIKE ?
+      OR e.contact_name LIKE ?
+      OR e.contact_phone LIKE ?
+      OR e.tracking_number LIKE ?
+    )`;
+    params.push(likeValue, likeValue, likeValue, likeValue, likeValue);
+  }
+
+  const startDateRaw = query.start_date || query.startDate;
+  if (startDateRaw) {
+    const startMoment = moment(startDateRaw);
+    if (startMoment.isValid()) {
+      conditions += ' AND e.exchange_date >= ?';
+      params.push(startMoment.startOf('day').format('YYYY-MM-DD HH:mm:ss'));
+    }
+  }
+
+  const endDateRaw = query.end_date || query.endDate;
+  if (endDateRaw) {
+    const endMoment = moment(endDateRaw);
+    if (endMoment.isValid()) {
+      conditions += ' AND e.exchange_date < ?';
+      params.push(endMoment.add(1, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'));
+    }
+  }
+
+  return { conditions, params };
+};
+
 class ExchangesController {
   /**
    * 获取兑换列表
@@ -12,11 +65,6 @@ class ExchangesController {
       const {
         page = 1,
         pageSize = 20,
-        user_id,
-        status,
-        keyword,
-        start_date,
-        end_date,
         sort_by = 'exchange_date',
         sort_order = 'DESC'
       } = req.query;
@@ -26,33 +74,8 @@ class ExchangesController {
         FROM exchanges e
         WHERE 1=1
       `;
-      const params = [];
-
-      // 筛选条件
-      if (user_id) {
-        sql += ' AND e.user_id = ?';
-        params.push(user_id);
-      }
-
-      if (status) {
-        sql += ' AND e.status = ?';
-        params.push(status);
-      }
-
-      if (keyword) {
-        sql += ' AND (e.exchange_no LIKE ? OR e.product_name LIKE ? OR e.contact_name LIKE ?)';
-        params.push(`%${keyword}%`, `%${keyword}%`, `%${keyword}%`);
-      }
-
-      if (start_date) {
-        sql += ' AND e.exchange_date >= ?';
-        params.push(start_date);
-      }
-
-      if (end_date) {
-        sql += ' AND e.exchange_date <= ?';
-        params.push(moment(end_date).add(1, 'day').format('YYYY-MM-DD'));
-      }
+      const { conditions: filterConditions, params } = buildExchangeFilterConditions(req.query);
+      sql += filterConditions;
 
       // 排序
       const allowedSortFields = ['exchange_date', 'points_used', 'status'];
@@ -447,6 +470,95 @@ class ExchangesController {
       res.status(500).json({
         success: false,
         message: '取消失败'
+      });
+    }
+  }
+
+
+  /**
+   * 导出兑换记录
+   */
+  async exportExchanges(req, res) {
+    try {
+      let sql = `
+        SELECT 
+          e.exchange_no,
+          e.user_id,
+          e.product_name,
+          e.quantity,
+          e.points_used,
+          e.status,
+          e.contact_name,
+          e.contact_phone,
+          e.shipping_address,
+          e.tracking_number,
+          e.remark,
+          e.exchange_date,
+          e.confirmed_at,
+          e.shipped_at,
+          e.completed_at,
+          e.cancelled_at
+        FROM exchanges e
+        WHERE 1=1
+      `;
+      const { conditions: filterConditions, params } = buildExchangeFilterConditions(req.query);
+      sql += filterConditions;
+      sql += ' ORDER BY e.exchange_date DESC LIMIT 10000';
+
+      const exchanges = await db.query(sql, params);
+
+      if (!exchanges || exchanges.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: '暂无可导出的数据'
+        });
+      }
+
+      const statusMap = {
+        pending: '待处理',
+        confirmed: '已确认',
+        shipped: '已发货',
+        completed: '已完成',
+        cancelled: '已取消'
+      };
+
+      const formatTime = (value) => value ? moment(value).format('YYYY-MM-DD HH:mm:ss') : '';
+
+      const exportData = exchanges.map((item) => ({
+        '兑换单号': item.exchange_no,
+        '用户ID': item.user_id,
+        '商品名称': item.product_name,
+        '兑换数量': item.quantity,
+        '消耗积分': item.points_used,
+        '订单状态': statusMap[item.status] || item.status,
+        '联系人': item.contact_name || '',
+        '联系电话': item.contact_phone || '',
+        '收货地址': item.shipping_address || '',
+        '快递单号': item.tracking_number || '',
+        '备注': item.remark || '',
+        '下单时间': formatTime(item.exchange_date),
+        '确认时间': formatTime(item.confirmed_at),
+        '发货时间': formatTime(item.shipped_at),
+        '完成时间': formatTime(item.completed_at),
+        '取消时间': formatTime(item.cancelled_at)
+      }));
+
+      const xlsx = require('xlsx');
+      const worksheet = xlsx.utils.json_to_sheet(exportData);
+      const workbook = xlsx.utils.book_new();
+      xlsx.utils.book_append_sheet(workbook, worksheet, '兑换记录');
+
+      const buffer = xlsx.write(workbook, { type: 'buffer', bookType: 'xlsx' });
+
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      res.setHeader('Content-Disposition', `attachment; filename=exchanges_${Date.now()}.xlsx`);
+
+      res.send(buffer);
+    } catch (error) {
+      logger.error('导出兑换数据失败:', error);
+      res.status(500).json({
+        success: false,
+        message: '导出失败'
       });
     }
   }
