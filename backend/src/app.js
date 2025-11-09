@@ -59,6 +59,7 @@ app.use('/api/products', require('./routes/products'));
 app.use('/api/exchanges', require('./routes/exchanges'));
 app.use('/api/qrcode', require('./routes/qrcode'));
 app.use('/api/dashboard', require('./routes/dashboard'));
+app.use('/api/settings', require('./routes/settings'));
 
 // 404处理
 app.use((req, res) => {

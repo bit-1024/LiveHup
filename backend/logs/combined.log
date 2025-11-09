@@ -13579,3 +13579,22 @@ Error: listen EADDRINUSE: address already in use ::1:3000
 2025-11-09 20:09:41 [INFO]: 🌍 环境: development
 2025-11-09 20:09:41 [INFO]: 📊 健康检查: http://localhost:3000/health
 2025-11-09 20:13:02 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-09 20:13:07 [INFO]: 🚀 服务器启动成功
+2025-11-09 20:13:07 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 20:13:07 [INFO]: 🌍 环境: development
+2025-11-09 20:13:07 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 20:21:10 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-09 20:24:30 [INFO]: 🚀 服务器启动成功
+2025-11-09 20:24:30 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 20:24:30 [INFO]: 🌍 环境: development
+2025-11-09 20:24:30 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 20:27:54 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-09 20:27:58 [INFO]: 🚀 服务器启动成功
+2025-11-09 20:27:58 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 20:27:58 [INFO]: 🌍 环境: development
+2025-11-09 20:27:58 [INFO]: 📊 健康检查: http://localhost:3000/health
+2025-11-09 20:33:58 [INFO]: 收到SIGINT信号，正在关闭服务器...
+2025-11-09 20:34:02 [INFO]: 🚀 服务器启动成功
+2025-11-09 20:34:02 [INFO]: 📍 地址: http://localhost:3000
+2025-11-09 20:34:02 [INFO]: 🌍 环境: development
+2025-11-09 20:34:02 [INFO]: 📊 健康检查: http://localhost:3000/health

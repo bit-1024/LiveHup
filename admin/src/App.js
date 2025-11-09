@@ -12,6 +12,7 @@ import {
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  ControlOutlined,
 } from '@ant-design/icons';
 
 // 组件
@@ -26,6 +27,7 @@ import UserManagement from './pages/UserManagement';
 import ProductManagement from './pages/ProductManagement';
 import ExchangeManagement from './pages/ExchangeManagement';
 import QRCodePage from './pages/QRCodePage';
+import SystemSettings from './pages/SystemSettings';
 
 const { Header, Sider, Content } = Layout;
 
@@ -65,6 +67,11 @@ const menuItems = [
     key: '/qrcode',
     icon: <QrcodeOutlined />,
     label: '二维码',
+  },
+  {
+    key: '/settings',
+    icon: <ControlOutlined />,
+    label: '系统设置',
   },
 ];
 
@@ -204,6 +211,7 @@ function App() {
               <Route path="/products" element={<ProductManagement />} />
               <Route path="/exchanges" element={<ExchangeManagement />} />
               <Route path="/qrcode" element={<QRCodePage />} />
+              <Route path="/settings" element={<SystemSettings />} />
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </Routes>
           </Content>
