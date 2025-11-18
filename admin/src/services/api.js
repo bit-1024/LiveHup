@@ -107,6 +107,7 @@ export const usersAPI = {
   export: (params) => api.get('/users/export', { params, responseType: 'blob' }),
   delete: (userId) => api.delete(`/users/${userId}`),
   batchDelete: (userIds) => api.post('/users/batch/delete', { userIds }),
+  resetPassword: (userId) => api.post(`/users/${userId}/password/reset`),
 };
 
 // 商品管理API

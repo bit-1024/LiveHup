@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Toast } from 'react-vant';
+import { authStorage } from '../utils/authStorage';
 
-// 创建axios实例
+// 创建 axios 实例
 const api = axios.create({
   baseURL: '/api',
   timeout: 30000,
@@ -10,16 +11,19 @@ const api = axios.create({
   },
 });
 
-// 请求拦截器
+// 请求拦截器：附带 token、显示 loading
 api.interceptors.request.use(
   (config) => {
-    // 显示加载提示
     if (config.showLoading !== false) {
       Toast.loading({
         message: '加载中...',
         forbidClick: true,
         duration: 0,
       });
+    }
+    const token = authStorage.getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -29,7 +33,7 @@ api.interceptors.request.use(
   }
 );
 
-// 响应拦截器
+// 响应拦截器：统一处理错误、401 登出
 api.interceptors.response.use(
   (response) => {
     Toast.clear();
@@ -45,15 +49,18 @@ api.interceptors.response.use(
     const { response } = error;
     if (response) {
       const { status, data } = response;
-      switch (status) {
-        case 404:
-          Toast.fail('请求的资源不存在');
-          break;
-        case 500:
-          Toast.fail('服务器内部错误');
-          break;
-        default:
-          Toast.fail(data?.message || '网络错误');
+      if (status === 401) {
+        authStorage.clear();
+        Toast.fail(data?.message || '登录已失效，请重新登录');
+        if (window.location.pathname !== '/login') {
+          window.location.replace('/login');
+        }
+      } else if (status === 404) {
+        Toast.fail('请求资源不存在');
+      } else if (status === 500) {
+        Toast.fail('服务器内部错误');
+      } else {
+        Toast.fail(data?.message || '请求出错');
       }
     } else {
       Toast.fail('网络连接失败');
@@ -62,85 +69,64 @@ api.interceptors.response.use(
   }
 );
 
-// 用户相关API
-export const userAPI = {
-  // 获取用户积分信息
-  getPoints: (userId) => api.get(`/users/${userId}/points`, { showLoading: false }),
-  
-  // 获取用户基本信息
-  getInfo: (userId) => api.get(`/users/${userId}`, { showLoading: false }),
-  
-  // 校验用户（支持用户ID或用户名）
-  verifyUser: (userInput) => {
-    const params = /^\d+$/.test(userInput)
-      ? { user_id: userInput }
-      : { user_name: userInput };
-    return api.get('/users', { params, showLoading: true });
-  },
+// 用户认证 API
+export const authAPI = {
+  login: (data) => api.post('/user-auth/login', data),
+  getProfile: () => api.get('/user-auth/profile', { showLoading: false }),
+  getSummary: () => api.get('/user-auth/points/summary', { showLoading: false }),
+  changePassword: (data) => api.post('/user-auth/change-password', data),
 };
 
-// 商品相关API
+// 用户 API（仅自查）
+export const userAPI = {
+  getPoints: (userId) => api.get(`/users/${userId}/points`, { showLoading: false }),
+  getInfo: (userId) => api.get(`/users/${userId}`, { showLoading: false }),
+};
+
+// 商品 API
 export const productAPI = {
-  // 获取商品列表
-  getList: (params) => api.get('/products', { 
-    params: { ...params, is_active: true },
-    showLoading: false 
-  }),
-  
-  // 获取商品详情
+  getList: (params) =>
+    api.get('/products', {
+      params: { ...params, is_active: true },
+      showLoading: false,
+    }),
   getDetail: (id) => api.get(`/products/${id}`, { showLoading: false }),
 };
 
-// 兑换相关API
+// 兑换 API（绑定当前登录用户）
 export const exchangeAPI = {
-  // 创建兑换订单
   create: (data) => api.post('/exchanges', data),
-  
-  // 获取用户兑换记录
-  getMyExchanges: (searchValue, params) => {
-    const queryParams = { ...params };
-    // 判断是用户ID还是用户名（简单判断：纯数字为ID，否则为用户名）
-    if (/^\d+$/.test(searchValue)) {
-      queryParams.user_id = searchValue;
-    } else {
-      queryParams.user_name = searchValue;
-    }
-    return api.get('/exchanges', {
-      params: queryParams,
-      showLoading: false
-    });
-  },
-  
-  // 获取兑换详情
+  getMyExchanges: (params = {}) =>
+    api.get('/exchanges', {
+      params,
+      showLoading: false,
+    }),
   getDetail: (id) => api.get(`/exchanges/${id}`, { showLoading: false }),
 };
 
-// 积分记录API
+// 积分记录 API（绑定当前登录用户）
 export const pointsAPI = {
-  // 获取积分记录
-  getRecords: (userId, params) => api.get('/points/records', { 
-    params: { ...params, user_id: userId },
-    showLoading: false 
-  }),
+  getRecords: (userId, params) =>
+    api.get('/points/records', {
+      params: { ...params, user_id: userId },
+      showLoading: false,
+    }),
 };
 
-// 工具函数
+// 辅助函数
 export const utils = {
-  // 构建图片URL
   buildImageUrl: (path) => {
     if (!path) return '';
     if (/^https?:\/\//i.test(path)) return path;
     const baseUrl = process.env.REACT_APP_API_URL || window.location.origin;
     return `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
   },
-  
-  // 格式化数字
+
   formatNumber: (num) => {
     if (num === null || num === undefined) return '0';
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   },
-  
-  // 格式化日期
+
   formatDate: (date, format = 'YYYY-MM-DD') => {
     if (!date) return '-';
     const d = new Date(date);
@@ -149,7 +135,7 @@ export const utils = {
     const day = String(d.getDate()).padStart(2, '0');
     const hour = String(d.getHours()).padStart(2, '0');
     const minute = String(d.getMinutes()).padStart(2, '0');
-    
+
     return format
       .replace('YYYY', year)
       .replace('MM', month)
@@ -157,8 +143,7 @@ export const utils = {
       .replace('HH', hour)
       .replace('mm', minute);
   },
-  
-  // 获取状态文本
+
   getStatusText: (status) => {
     const statusMap = {
       pending: '待处理',
@@ -169,8 +154,7 @@ export const utils = {
     };
     return statusMap[status] || status;
   },
-  
-  // 获取状态颜色
+
   getStatusColor: (status) => {
     const colorMap = {
       pending: '#ff976a',
@@ -181,18 +165,10 @@ export const utils = {
     };
     return colorMap[status] || '#969799';
   },
-  
-  // 检查是否为微信环境
-  isWeChat: () => {
-    return /micromessenger/i.test(navigator.userAgent);
-  },
-  
-  // 检查是否为移动设备
-  isMobile: () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  },
-  
-  // 复制到剪贴板
+
+  isWeChat: () => /micromessenger/i.test(navigator.userAgent),
+  isMobile: () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+
   copyToClipboard: (text) => {
     if (navigator.clipboard) {
       return navigator.clipboard.writeText(text).then(() => {
@@ -200,33 +176,28 @@ export const utils = {
       }).catch(() => {
         Toast.fail('复制失败');
       });
-    } else {
-      // 降级方案
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        Toast.success('复制成功');
-      } catch (err) {
-        Toast.fail('复制失败');
-      }
-      document.body.removeChild(textArea);
     }
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      Toast.success('复制成功');
+    } catch (err) {
+      Toast.fail('复制失败');
+    }
+    document.body.removeChild(textArea);
   },
-  
-  // 分享功能
+
   share: (data) => {
     if (navigator.share) {
       return navigator.share(data);
-    } else {
-      // 降级方案：复制链接
-      if (data.url) {
-        return utils.copyToClipboard(data.url);
-      }
-      Toast.fail('当前浏览器不支持分享功能');
     }
+    if (data.url) {
+      return utils.copyToClipboard(data.url);
+    }
+    Toast.fail('当前环境不支持分享');
   },
 };
 

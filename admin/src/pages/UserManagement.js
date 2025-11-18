@@ -25,7 +25,8 @@ import {
   TrophyOutlined,
   ReloadOutlined,
   ClearOutlined,
-  DeleteOutlined
+  DeleteOutlined,
+  KeyOutlined
 } from '@ant-design/icons';
 import { usersAPI } from '../services/api';
 import dayjs from 'dayjs';
@@ -243,6 +244,24 @@ const UserManagement = () => {
     });
   };
 
+  const handleResetPassword = (record) => {
+    Modal.confirm({
+      title: `确认重置用户 ${record.username || record.user_id} 的登录密码？`,
+      content: '密码将被重置为 123456，用户可登录后自行修改。',
+      okText: '确认重置',
+      cancelText: '取消',
+      okButtonProps: { danger: true },
+      onOk: async () => {
+        try {
+          await usersAPI.resetPassword(record.user_id);
+          message.success('密码已重置为 123456');
+        } catch (error) {
+          console.error('重置密码失败:', error);
+        }
+      },
+    });
+  };
+
   const columns = [
     {
       title: '用户ID',
@@ -358,6 +377,14 @@ const UserManagement = () => {
               size="small"
               icon={<EyeOutlined />}
               onClick={() => showUserDetail(record)}
+            />
+          </Tooltip>
+          <Tooltip title="重置密码">
+            <Button
+              type="link"
+              size="small"
+              icon={<KeyOutlined />}
+              onClick={() => handleResetPassword(record)}
             />
           </Tooltip>
           <Tooltip title="重置积分">

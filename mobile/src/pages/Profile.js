@@ -1,43 +1,45 @@
-import React from 'react';
-import { NavBar, Cell, Button } from 'react-vant';
+import React, { useState } from 'react';
+import { NavBar, Cell, Button, Form, Field, Toast, Dialog } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
+import { useAuth } from '../context/AuthContext';
+import { authAPI } from '../services/api';
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
-  const menuItems = [
-    {
-      title: '积分查询',
-      icon: <Icon name="point-gift-o" color="#007AFF" />,
-      path: '/points-query',
-      desc: '查询个人积分余额和明细'
-    },
-    {
-      title: '兑换记录',
-      icon: <Icon name="orders-o" color="#007AFF" />,
-      path: '/exchange-record',
-      desc: '查看历史兑换记录'
-    }
-  ];
+  const handleLogout = () => {
+    Dialog.confirm({
+      title: '提示',
+      message: '确认要退出登录吗？',
+    }).then(() => {
+      logout();
+      navigate('/login', { replace: true });
+    }).catch(() => {});
+  };
 
-  const helpItems = [
-    {
-      title: '使用帮助',
-      icon: <Icon name="question-o" color="#8E8E93" />,
-      path: '/help'
-    },
-    {
-      title: '联系客服',
-      icon: <Icon name="service-o" color="#8E8E93" />,
-      path: '/contact'
-    },
-    {
-      title: '关于我们',
-      icon: <Icon name="info-o" color="#8E8E93" />,
-      path: '/about'
+  const handleChangePassword = async (values) => {
+    if (values.newPassword !== values.confirmPassword) {
+      Toast.fail('两次输入的新密码不一致');
+      return;
     }
-  ];
+    try {
+      setLoading(true);
+      await authAPI.changePassword({
+        oldPassword: values.oldPassword,
+        newPassword: values.newPassword,
+      });
+      Toast.success('密码修改成功');
+      form.resetFields();
+    } catch (error) {
+      Toast.fail(error?.response?.data?.message || '修改密码失败');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="page-container">
@@ -48,7 +50,7 @@ const Profile = () => {
       />
       
       <div className="page-content">
-        {/* 用户信息卡片 */}
+        {/* 个人信息卡片 */}
         <div className="card" style={{
           background: '#007AFF',
           color: 'white',
@@ -74,96 +76,86 @@ const Profile = () => {
               <Icon name="user-o" />
             </div>
             <div>
-              <div style={{ fontSize: '22px', fontWeight: '600', marginBottom: '4px' }}>
-                积分用户
+              <div style={{ fontSize: '22px', fontWeight: 600, marginBottom: 4 }}>
+                {user?.username || user?.user_id || '匿名用户'}
               </div>
-              <div style={{ fontSize: '15px', opacity: 0.9 }}>
-                欢迎使用积分系统
+              <div style={{ fontSize: 15, opacity: 0.9 }}>
+                ID: {user?.user_id || '-'}
               </div>
             </div>
           </div>
           
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.15)',
-            borderRadius: '12px',
-            padding: '16px',
-            textAlign: 'center'
-          }}>
-            <div style={{ fontSize: '15px', opacity: 0.9, marginBottom: '8px' }}>
-              查询积分请输入您的用户ID
-            </div>
-            <Button
-              size="small"
-              round
-              style={{
-                background: 'white',
-                border: 'none',
-                color: '#007AFF',
-                fontWeight: '500'
-              }}
-              onClick={() => navigate('/points-query')}
+          <Button
+            size="small"
+            round
+            style={{
+              background: 'white',
+              border: 'none',
+              color: '#007AFF',
+              fontWeight: 500
+            }}
+            onClick={handleLogout}
+          >
+            退出登录
+          </Button>
+        </div>
+
+        {/* 修改密码 */}
+        <div className="card">
+          <div className="card-header">修改密码</div>
+          <Form form={form} layout="vertical" onFinish={handleChangePassword}>
+            <Form.Item
+              name="oldPassword"
+              label="原密码"
+              rules={[{ required: true, message: '请输入原密码' }]}
             >
-              立即查询
+              <Field type="password" placeholder="请输入原密码" />
+            </Form.Item>
+            <Form.Item
+              name="newPassword"
+              label="新密码"
+              rules={[{ required: true, message: '请输入新密码' }, { min: 6, message: '新密码长度不能少于6位' }]}
+            >
+              <Field type="password" placeholder="至少 6 位，包含字母或数字" />
+            </Form.Item>
+            <Form.Item
+              name="confirmPassword"
+              label="确认密码"
+              rules={[{ required: true, message: '请再次输入新密码' }]}
+            >
+              <Field type="password" placeholder="请再次输入新密码" />
+            </Form.Item>
+            <Button
+              type="primary"
+              block
+              loading={loading}
+              nativeType="submit"
+            >
+              保存密码
             </Button>
-          </div>
+          </Form>
         </div>
 
-        {/* 主要功能 */}
+        {/* 功能入口 */}
         <div className="card">
-          <div className="card-header">主要功能</div>
+          <div className="card-header">常用功能</div>
           <Cell.Group inset={false}>
-            {menuItems.map((item, index) => (
-              <Cell
-                key={index}
-                title={item.title}
-                label={item.desc}
-                icon={item.icon}
-                isLink
-                onClick={() => navigate(item.path)}
-              />
-            ))}
+            <Cell
+              title="查看积分"
+              label="查看当前账号积分明细"
+              icon={<Icon name="point-gift-o" color="#007AFF" />}
+              isLink
+              onClick={() => navigate('/points-query')}
+            />
+            <Cell
+              title="兑换记录"
+              label="查看当前账号的兑换记录"
+              icon={<Icon name="orders-o" color="#007AFF" />}
+              isLink
+              onClick={() => navigate('/exchange-record')}
+            />
           </Cell.Group>
         </div>
-
-        {/* 帮助与支持 */}
-        <div className="card">
-          <div className="card-header">帮助与支持</div>
-          <Cell.Group inset={false}>
-            {helpItems.map((item, index) => (
-              <Cell
-                key={index}
-                title={item.title}
-                icon={item.icon}
-                isLink
-                onClick={() => {
-                  if (item.path === '/contact') {
-                    // 这里可以实现联系客服功能
-                    // 比如打开微信客服、拨打电话等
-                    window.location.href = 'tel:400-123-4567';
-                  } else if (item.path === '/help') {
-                    // 显示帮助信息
-                    navigate('/help');
-                  } else if (item.path === '/about') {
-                    // 显示关于信息
-                    navigate('/about');
-                  }
-                }}
-              />
-            ))}
-          </Cell.Group>
-        </div>
-
-        {/* 系统信息 */}
-        <div className="card">
-          <div className="card-header">系统信息</div>
-          <Cell.Group inset={false}>
-            <Cell title="当前版本" value="v1.0.0" />
-            <Cell title="更新时间" value="2024-01-01" />
-          </Cell.Group>
-        </div>
-
-        {/* 底部安全区域 */}
-        <div style={{ height: '20px' }} />
       </div>
     </div>
   );

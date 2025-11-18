@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavig
 import { Tabbar } from 'react-vant';
 import Icon from './components/Icon';
 
+import { AuthProvider, useAuth } from './context/AuthContext';
+
 // 页面组件
 import Home from './pages/Home';
 import Shop from './pages/Shop';
@@ -12,11 +14,13 @@ import PointsQuery from './pages/PointsQuery';
 import ExchangeRecord from './pages/ExchangeRecord';
 import ExchangeDetail from './pages/ExchangeDetail';
 import QRScanner from './pages/QRScanner';
+import Login from './pages/Login';
 
 function AppContent() {
   const [activeTab, setActiveTab] = React.useState('home');
   const location = useLocation();
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   // 需要隐藏底部导航的页面
   const hideTabbarPages = ['/product/', '/exchange/', '/points-query', '/qr-scanner'];
@@ -38,9 +42,19 @@ function AppContent() {
     navigate(`/${name}`);
   };
 
+  if (!isAuthenticated) {
+    return (
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    );
+  }
+
   return (
     <div className="page-container">
       <Routes>
+        <Route path="/login" element={<Navigate to="/home" replace />} />
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
@@ -88,8 +102,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </AuthProvider>
   );
 }

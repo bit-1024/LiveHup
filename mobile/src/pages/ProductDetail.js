@@ -11,17 +11,18 @@ import {
   ActionSheet
 } from 'react-vant';
 import { useNavigate, useParams } from 'react-router-dom';
-import { productAPI, exchangeAPI, userAPI, utils } from '../services/api';
+import { productAPI, exchangeAPI, utils } from '../services/api';
 import Icon from '../components/Icon';
+import { useAuth } from '../context/AuthContext';
 
 const ProductDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { user } = useAuth();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [exchangeVisible, setExchangeVisible] = useState(false);
   const [exchangeForm, setExchangeForm] = useState({
-    userId: '',
     quantity: 1,
     contactName: '',
     contactPhone: '',
@@ -34,8 +35,8 @@ const ProductDetail = () => {
       const response = await productAPI.getDetail(id);
       setProduct(response.data);
     } catch (error) {
-      console.error('加载商品详情失败:', error);
-      Toast.fail('商品不存在');
+      console.error('获取商品详情失败:', error);
+      Toast.fail('商品不存在或已下架');
       navigate(-1);
     } finally {
       setLoading(false);
@@ -47,6 +48,11 @@ const ProductDetail = () => {
   }, [loadProduct]);
 
   const handleExchange = () => {
+    if (!user?.user_id) {
+      Toast.fail('请先登录');
+      navigate('/login');
+      return;
+    }
     if (!product || product.stock === 0) {
       Toast.fail('商品暂时缺货');
       return;
@@ -55,9 +61,10 @@ const ProductDetail = () => {
   };
 
   const handleConfirmExchange = async () => {
-    const userInput = exchangeForm.userId.trim();
-    if (!userInput) {
-      Toast.fail('请输入用户ID或用户名');
+    if (!user?.user_id) {
+      Toast.fail('请先登录');
+      setExchangeVisible(false);
+      navigate('/login');
       return;
     }
     if (!exchangeForm.contactName.trim()) {
@@ -74,41 +81,20 @@ const ProductDetail = () => {
     }
 
     try {
-      // 校验用户是否存在
-      const userInfo = await userAPI.verifyUser(userInput);
-      if (!userInfo.data || !userInfo.data.list || userInfo.data.list.length === 0) {
-        Toast.fail('用户不存在，请检查用户ID或用户名');
-        return;
-      }
-
-      const user = userInfo.data.list[0];
-      
-      // 检查用户积分是否足够
-      const totalPoints = product.points_required * exchangeForm.quantity;
-      if (user.available_points < totalPoints) {
-        Dialog.alert({
-          title: '积分不足',
-          message: `需要${utils.formatNumber(totalPoints)}积分，当前仅有${utils.formatNumber(user.available_points)}积分`,
-        });
-        return;
-      }
-
       await exchangeAPI.create({
-        user_id: user.user_id,
         product_id: product.id,
         quantity: exchangeForm.quantity,
         contact_name: exchangeForm.contactName.trim(),
         contact_phone: exchangeForm.contactPhone.trim(),
-        shipping_address: exchangeForm.shippingAddress.trim()
+        shipping_address: exchangeForm.shippingAddress.trim(),
       });
 
-      Toast.success('兑换申请提交成功');
+      Toast.success('兑换申请已提交');
       setExchangeVisible(false);
-      
-      // 询问是否查看兑换记录
+
       Dialog.confirm({
         title: '兑换成功',
-        message: '是否查看兑换记录？',
+        message: '是否前往查看兑换记录？',
       }).then(() => {
         navigate('/exchange-record');
       }).catch(() => {
@@ -116,6 +102,7 @@ const ProductDetail = () => {
       });
     } catch (error) {
       console.error('兑换失败:', error);
+      Toast.fail(error?.response?.data?.message || '兑换失败，请稍后重试');
     }
   };
 
@@ -146,8 +133,10 @@ const ProductDetail = () => {
           fixed 
           placeholder
         />
-        <div className="empty-state">
-          <div className="empty-text">商品不存在</div>
+        <div className="page-content">
+          <div style={{ padding: '40px 16px', textAlign: 'center', color: '#969799' }}>
+            商品不存在或已下架
+          </div>
         </div>
       </div>
     );
@@ -163,114 +152,73 @@ const ProductDetail = () => {
         placeholder
       />
       
-      <div style={{ paddingBottom: '80px' }}>
-        {/* 商品图片 */}
-        <div style={{ position: 'relative' }}>
+      <div className="page-content">
+        {/* 商品主信息 */}
+        <div style={{ background: '#fff' }}>
           <Image
             src={utils.buildImageUrl(product.image_url)}
             alt={product.name}
             width="100%"
-            height="300px"
+            height="220px"
             fit="cover"
-            errorIcon="shop-o"
           />
-          
-          {/* 商品标签 */}
-          <div style={{ 
-            position: 'absolute',
-            top: '12px',
-            left: '12px',
-            display: 'flex',
-            gap: '6px'
-          }}>
-            {product.is_hot && (
-              <Tag color="#FF3B30">
-                <Icon name="fire-o" style={{ marginRight: '4px' }} />
-                热门
-              </Tag>
-            )}
-            {product.is_new && (
-              <Tag color="#FF9500">
-                <Icon name="new-o" style={{ marginRight: '4px' }} />
-                新品
-              </Tag>
-            )}
-          </div>
 
-          {/* 库存状态 */}
-          {product.stock === 0 && (
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0, 0, 0, 0.5)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '18px',
-              fontWeight: '600'
-            }}>
-              暂时缺货
+          <div style={{ padding: '16px' }}>
+            <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>
+              {product.name}
             </div>
-          )}
-        </div>
 
-        {/* 商品信息 */}
-        <div style={{ background: '#fff', padding: '16px' }}>
-          <div style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px' }}>
-            {product.name}
-          </div>
-          
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between',
-            marginBottom: '12px'
-          }}>
-            <div>
-              <span style={{
-                fontSize: '24px',
-                fontWeight: '600',
+            <div style={{ marginBottom: 8 }}>
+              {product.is_hot && (
+                <Tag color="#FF3B30" style={{ marginRight: 8 }}>热门</Tag>
+              )}
+              {product.is_new && (
+                <Tag color="#FF9500">新品</Tag>
+              )}
+            </div>
+
+            <div style={{ marginBottom: 8 }}>
+              <span style={{ 
+                fontSize: 20, 
+                fontWeight: 600, 
                 color: '#FF3B30'
               }}>
-                {utils.formatNumber(product.points_required)}积分
+                {utils.formatNumber(product.points_required)} 积分
               </span>
               {product.original_price && (
                 <span style={{ 
-                  fontSize: '14px', 
+                  fontSize: 14, 
                   color: '#969799',
                   textDecoration: 'line-through',
-                  marginLeft: '8px'
+                  marginLeft: 8
                 }}>
                   ¥{product.original_price}
                 </span>
               )}
             </div>
             
-            <div style={{ fontSize: '14px', color: '#969799' }}>
-              {product.stock === -1 ? '库存充足' : `库存${product.stock}`}
+            <div style={{ fontSize: 14, color: '#969799' }}>
+              {product.stock === -1 ? '库存充足' : `库存 ${product.stock}`}
             </div>
           </div>
 
           {product.description && (
             <div style={{ 
-              fontSize: '14px', 
+              fontSize: 14, 
               color: '#646566', 
-              lineHeight: '1.6' 
+              lineHeight: '1.6',
+              padding: '0 16px 16px'
             }}>
               {product.description}
             </div>
           )}
         </div>
 
-        {/* 商品详情 */}
-        <div style={{ marginTop: '12px', background: '#fff' }}>
+        {/* 商品信息 */}
+        <div style={{ marginTop: 12, background: '#fff' }}>
           <Cell.Group>
             <Cell title="商品分类" value={product.category} />
-            <Cell title="已售数量" value={`${product.sold_count}件`} />
+            <Cell title="已兑数量" value={`${product.sold_count} 件`} />
             {product.start_time && product.end_time && (
               <Cell 
                 title="活动时间" 
@@ -282,7 +230,7 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* 底部操作栏 */}
+      {/* 底部兑换按钮 */}
       <div className="fixed-bottom-button safe-area">
         <Button 
           type="primary" 
@@ -295,7 +243,7 @@ const ProductDetail = () => {
         </Button>
       </div>
 
-      {/* 兑换弹窗 */}
+      {/* 兑换信息填写 */}
       <ActionSheet
         visible={exchangeVisible}
         onClose={() => setExchangeVisible(false)}
@@ -303,15 +251,7 @@ const ProductDetail = () => {
         title="填写兑换信息"
         closeable
       >
-        <div style={{ padding: '16px' }}>
-          <Field
-            value={exchangeForm.userId}
-            onChange={(value) => setExchangeForm(prev => ({ ...prev, userId: value }))}
-            label="用户ID/用户名"
-            placeholder="请输入用户ID或用户名"
-            required
-            clearable
-          />
+        <div style={{ padding: 16 }}>
           <Field
             value={exchangeForm.contactName}
             onChange={(value) => setExchangeForm(prev => ({ ...prev, contactName: value }))}
@@ -339,7 +279,7 @@ const ProductDetail = () => {
             clearable
           />
           
-          <div style={{ marginTop: '24px', display: 'flex', gap: '12px' }}>
+          <div style={{ marginTop: 24, display: 'flex', gap: 12 }}>
             <Button 
               block 
               onClick={() => setExchangeVisible(false)}
@@ -361,6 +301,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
-
-

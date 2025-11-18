@@ -5,6 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 const moment = require('moment');
 const db = require('../config/database');
 const logger = require('../config/logger');
+const { DEFAULT_PASSWORD_HASH } = require('../utils/password');
 
 class ImportController {
   constructor() {
@@ -326,11 +327,12 @@ class ImportController {
           if (isNewUser) {
             // 创建新用户
             await connection.execute(
-              `INSERT INTO users (user_id, username, is_new_user, first_import_date, last_active_date) 
-               VALUES (?, ?, true, NOW(), NOW())`,
+              `INSERT INTO users (user_id, username, password_hash, is_new_user, first_import_date, last_active_date) 
+               VALUES (?, ?, ?, true, NOW(), NOW())`,
               [
                 userId,
-                (this.getRowValue(row, ['用户昵称', 'username', '昵称', '用户名称', 'name']) || '').toString().trim()
+                (this.getRowValue(row, ['用户昵称', 'username', '昵称', '用户名称', 'name']) || '').toString().trim(),
+                DEFAULT_PASSWORD_HASH
               ]
             );
             existingUserIds.add(userId);

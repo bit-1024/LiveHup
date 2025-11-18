@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { NavBar, Field, Button, Card, List, Tag, Empty, Image, PullRefresh, Toast } from 'react-vant';
+import React, { useState, useEffect, useCallback } from 'react';
+import { NavBar, Card, List, Empty, PullRefresh, Tag, Toast } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
 import { exchangeAPI, utils } from '../services/api';
 import Icon from '../components/Icon';
+import { useAuth } from '../context/AuthContext';
 
-const PAGE_SIZE = 10;
-
-const statusMeta = {
+const STATUS_META = {
   pending: { color: '#FF9500', text: '待处理' },
   confirmed: { color: '#007AFF', text: '已确认' },
   shipped: { color: '#FF9500', text: '已发货' },
@@ -14,61 +13,50 @@ const statusMeta = {
   cancelled: { color: '#FF3B30', text: '已取消' },
 };
 
+const PAGE_SIZE = 10;
+
 const ExchangeRecord = () => {
   const navigate = useNavigate();
-  const [searchValue, setSearchValue] = useState('');
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
-  const [exchanges, setExchanges] = useState([]);
-  const [hasQueried, setHasQueried] = useState(false);
+  const [records, setRecords] = useState([]);
   const [finished, setFinished] = useState(false);
   const [page, setPage] = useState(1);
 
-  const fetchRecords = async (reset = false) => {
-    const trimmedValue = searchValue.trim();
-    if (!trimmedValue) {
-      Toast.fail('请输入用户ID或用户名');
-      return;
-    }
-
+  const fetchRecords = useCallback(async (reset = false) => {
+    if (!user?.user_id) return;
     if (loading) return;
-
     try {
       setLoading(true);
       const currentPage = reset ? 1 : page;
-
-      const response = await exchangeAPI.getMyExchanges(trimmedValue, {
+      const response = await exchangeAPI.getMyExchanges({
         page: currentPage,
-        pageSize: PAGE_SIZE
+        pageSize: PAGE_SIZE,
       });
-
-      const list = response.data.list || [];
-
+      const list = response?.data?.list || [];
       if (reset) {
-        setExchanges(list);
+        setRecords(list);
         setPage(2);
       } else {
-        setExchanges(prev => [...prev, ...list]);
+        setRecords(prev => [...prev, ...list]);
         setPage(prev => prev + 1);
       }
-
       setFinished(list.length < PAGE_SIZE);
-      setHasQueried(true);
     } catch (error) {
-      console.error('查询失败:', error);
+      console.error('获取兑换记录失败:', error);
+      Toast.fail(error?.response?.data?.message || '获取记录失败');
       if (reset) {
-        setExchanges([]);
+        setRecords([]);
       }
-      setHasQueried(true);
+      setFinished(true);
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, user?.user_id, loading]);
 
-  const handleSubmit = async () => {
-    setFinished(false);
-    setPage(1);
-    await fetchRecords(true);
-  };
+  useEffect(() => {
+    fetchRecords(true);
+  }, [fetchRecords]);
 
   const handleRefresh = async () => {
     setFinished(false);
@@ -76,26 +64,9 @@ const ExchangeRecord = () => {
     await fetchRecords(true);
   };
 
-  const handleLoadMore = async () => {
-    if (loading || finished) return;
-    await fetchRecords(false);
-  };
-
-  const handleReset = () => {
-    setSearchValue('');
-    setExchanges([]);
-    setHasQueried(false);
-    setFinished(false);
-    setPage(1);
-  };
-
-  const renderStatusTag = (status) => {
-    const meta = statusMeta[status] || { color: '#969799', text: status };
+  const renderStatus = (status) => {
+    const meta = STATUS_META[status] || { color: '#969799', text: status };
     return <Tag color={meta.color}>{meta.text}</Tag>;
-  };
-
-  const handleExchangeClick = (exchange) => {
-    navigate(`/exchange/${exchange.id}`);
   };
 
   return (
@@ -109,155 +80,86 @@ const ExchangeRecord = () => {
       />
 
       <div className="page-content">
-        {/* 查询条件 */}
-        <Card>
-          <div style={{ padding: '16px 0' }}>
-            <Field
-              value={searchValue}
-              onChange={setSearchValue}
-              label="用户查询"
-              placeholder="请输入用户ID或用户名"
-              clearable
-              maxlength={50}
-            />
-            <div style={{ marginTop: '16px', display: 'flex', gap: '12px' }}>
-              <Button
-                type="primary"
-                block
-                loading={loading}
-                onClick={handleSubmit}
-                icon={<Icon name="search" />}
-              >
-                查询记录
-              </Button>
-              {hasQueried && (
-                <Button block onClick={handleReset} style={{ flex: '0 0 80px' }}>
-                  清空
-                </Button>
-              )}
-            </div>
-          </div>
-        </Card>
-
-        {/* 查询结果 */}
-        {hasQueried && (
-          <div style={{ marginTop: '12px' }}>
-            {exchanges.length > 0 ? (
-              <PullRefresh onRefresh={handleRefresh}>
-                <List
-                  loading={loading}
-                  finished={finished}
-                  onLoad={handleLoadMore}
-                  finishedText="没有更多记录了"
-                  loadingText="加载中..."
+        {records.length > 0 ? (
+          <PullRefresh onRefresh={handleRefresh}>
+            <List
+              loading={loading}
+              finished={finished}
+              onLoad={() => fetchRecords(false)}
+              finishedText="没有更多记录了"
+              loadingText="加载中..."
+            >
+              {records.map((exchange) => (
+                <Card
+                  key={exchange.id}
+                  style={{ marginBottom: 12 }}
+                  onClick={() => navigate(`/exchange/${exchange.id}`)}
                 >
-                  {exchanges.map(exchange => (
-                    <Card
-                      key={exchange.id}
-                      style={{ marginBottom: '12px', cursor: 'pointer' }}
-                      onClick={() => handleExchangeClick(exchange)}
-                    >
-                      <div style={{ padding: '12px 0' }}>
-                        {/* 头部信息 */}
-                        <div style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          marginBottom: '12px'
-                        }}>
-                          <div style={{ fontSize: '12px', color: '#969799' }}>
-                            订单号: {exchange.exchange_no}
-                          </div>
-                          {renderStatusTag(exchange.status)}
-                        </div>
+                  <div style={{ padding: '12px 0' }}>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: 12
+                    }}>
+                      <div style={{ fontSize: 12, color: '#969799' }}>
+                        订单号: {exchange.exchange_no}
+                      </div>
+                      {renderStatus(exchange.status)}
+                    </div>
 
-                        {/* 商品信息 */}
-                        <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
-                          <Image
-                            src={exchange.product_image}
-                            alt={exchange.product_name}
-                            width="60px"
-                            height="60px"
-                            fit="cover"
-                            lazyload
-                            errorIcon={<Icon name="photo-fail" />}
-                            style={{ borderRadius: '8px' }}
-                          />
-                          <div style={{ flex: 1 }}>
-                            <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '6px' }}>
-                              {exchange.product_name}
-                            </div>
-                            <div style={{ fontSize: '14px', color: '#969799', marginBottom: '6px' }}>
-                              数量: {exchange.quantity} | 积分消耗: {utils.formatNumber(exchange.points_used)}
-                            </div>
-                            <div style={{ fontSize: '12px', color: '#969799' }}>
-                              联系人: {exchange.contact_name || '-'} | 电话: {exchange.contact_phone || '-'}
-                            </div>
-                          </div>
+                    <div style={{ display: 'flex', gap: 12, marginBottom: 12 }}>
+                      <div style={{
+                        width: 60,
+                        height: 60,
+                        borderRadius: 8,
+                        background: '#f7f8fa',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 28,
+                        color: '#969799'
+                      }}>
+                        <Icon name="shop-o" />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 16, fontWeight: 600, marginBottom: 6 }}>
+                          {exchange.product_name}
                         </div>
-
-                        {/* 底部信息 */}
-                        <div style={{
-                          fontSize: '12px',
-                          color: '#969799',
-                          display: 'flex',
-                          justifyContent: 'space-between'
-                        }}>
-                          <span>兑换时间: {utils.formatDate(exchange.exchange_date, 'MM-DD HH:mm')}</span>
-                          <span>点击查看详情 &gt;</span>
+                        <div style={{ fontSize: 14, color: '#969799' }}>
+                          数量: {exchange.quantity} | 消耗积分: {utils.formatNumber(exchange.points_used)}
                         </div>
                       </div>
-                    </Card>
-                  ))}
-                </List>
-              </PullRefresh>
-            ) : (
-              <Card>
-                <Empty
-                  description="暂无兑换记录"
-                  imageSize={80}
-                >
-                  <div style={{ marginTop: '16px', color: '#969799', fontSize: '14px' }}>
-                    请确认用户ID或用户名是否正确
-                  </div>
-                </Empty>
-              </Card>
-            )}
-          </div>
-        )}
+                    </div>
 
-        {/* 使用说明 */}
-        {!hasQueried && (
-          <Card style={{ marginTop: '12px' }}>
-            <div style={{ padding: '16px 0' }}>
-              <div style={{
-                fontSize: '16px',
-                fontWeight: '600',
-                marginBottom: '12px',
-                color: '#323233'
-              }}>
-                使用说明
+                    <div style={{
+                      fontSize: 12,
+                      color: '#969799',
+                      display: 'flex',
+                      justifyContent: 'space-between'
+                    }}>
+                      <span>兑换时间: {utils.formatDate(exchange.exchange_date, 'MM-DD HH:mm')}</span>
+                      <span>点击查看详情 &gt;</span>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </List>
+          </PullRefresh>
+        ) : (
+          <Card style={{ marginTop: 12 }}>
+            <Empty
+              description="暂无兑换记录"
+              imageSize={80}
+            >
+              <div style={{ marginTop: 16, color: '#969799', fontSize: 14 }}>
+                完成兑换后可以在这里查看记录
               </div>
-              <div style={{ lineHeight: '1.6', color: '#646566', fontSize: '14px' }}>
-                <p style={{ margin: '0 0 8px 0' }}>
-                  • 输入用户ID或用户名查询兑换记录
-                </p>
-                <p style={{ margin: '0 0 8px 0' }}>
-                  • 可查看各笔兑换的状态和积分消耗
-                </p>
-                <p style={{ margin: '0 0 8px 0' }}>
-                  • 点击记录可进入详情页面
-                </p>
-                <p style={{ margin: 0 }}>
-                  • 有疑问请联系运营人员
-                </p>
-              </div>
-            </div>
+            </Empty>
           </Card>
         )}
 
-        {/* 底部预留空间 */}
-        <div style={{ height: '20px' }} />
+        <div style={{ height: 20 }} />
       </div>
     </div>
   );

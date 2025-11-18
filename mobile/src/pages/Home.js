@@ -2,9 +2,11 @@ import React from 'react';
 import { NavBar, Cell, Grid } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
+import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const quickActions = [
     {

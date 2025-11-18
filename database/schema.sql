@@ -12,6 +12,8 @@ CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id VARCHAR(100) UNIQUE NOT NULL COMMENT '用户唯一标识',
     username VARCHAR(100) COMMENT '用户名',
+    password_hash VARCHAR(255) NOT NULL COMMENT '密码哈希',
+    password_updated_at DATETIME NULL COMMENT '密码最近更新时间',
     phone VARCHAR(20) COMMENT '手机号',
     avatar VARCHAR(500) COMMENT '头像URL',
     total_points INT DEFAULT 0 COMMENT '历史总积分',
