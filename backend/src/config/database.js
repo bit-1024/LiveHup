@@ -65,25 +65,28 @@ const transaction = async (callback) => {
 
 // 分页查询辅助函数
 const paginate = async (sql, params, page = 1, pageSize = 10) => {
-  const offset = (page - 1) * pageSize;
-  const limit = pageSize;
+  // 确保 page 和 pageSize 是整数
+  const pageInt = parseInt(page) || 1;
+  const pageSizeInt = parseInt(pageSize) || 10;
+  const offset = (pageInt - 1) * pageSizeInt;
+  const limit = pageSizeInt;
   
   // 获取总数
   const countSql = `SELECT COUNT(*) as total FROM (${sql}) as count_table`;
   const [countResult] = await promisePool.execute(countSql, params);
   const total = countResult[0].total;
   
-  // 获取分页数据
-  const dataSql = `${sql} LIMIT ? OFFSET ?`;
-  const [data] = await promisePool.execute(dataSql, [...params, limit, offset]);
+  // 获取分页数据 - 使用字符串拼接而不是参数绑定（避免MySQL参数类型问题）
+  const dataSql = `${sql} LIMIT ${limit} OFFSET ${offset}`;
+  const [data] = await promisePool.execute(dataSql, params);
   
   return {
     data,
     pagination: {
-      page,
-      pageSize,
+      page: pageInt,
+      pageSize: pageSizeInt,
       total,
-      totalPages: Math.ceil(total / pageSize)
+      totalPages: Math.ceil(total / pageSizeInt)
     }
   };
 };

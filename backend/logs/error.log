@@ -1878,3 +1878,5 @@ Error: listen EADDRINUSE: address already in use ::1:3000
     at listenInCluster (node:net:1996:12)
     at GetAddrInfoReqWrap.callback (node:net:2205:7)
     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-11-18 09:13:17 [ERROR]: Token验证失败:
+2025-11-18 09:13:17 [ERROR]: Token验证失败:

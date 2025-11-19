@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Layout, Menu, Avatar, Dropdown, Button, message } from 'antd';
 import {
   DashboardOutlined,
@@ -75,24 +75,12 @@ const menuItems = [
   },
 ];
 
-function App() {
+function MainLayout({ onLogout, userInfo }) {
   const [collapsed, setCollapsed] = useState(window.innerWidth <= 768);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [userInfo, setUserInfo] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    // 检查登录状态
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('userInfo');
-    
-    if (token && user) {
-      setIsAuthenticated(true);
-      setUserInfo(JSON.parse(user));
-    }
-    setLoading(false);
-
-    // 监听窗口大小变化
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setCollapsed(true);
@@ -102,48 +90,17 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userInfo');
-    setIsAuthenticated(false);
-    setUserInfo(null);
-    message.success('退出登录成功');
-  };
-
   const userMenuItems = [
     {
       key: 'logout',
       icon: <LogoutOutlined />,
       label: '退出登录',
-      onClick: handleLogout,
+      onClick: onLogout,
     },
   ];
 
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div>加载中...</div>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return (
-      <Router>
-        <Routes>
-          <Route 
-            path="/login" 
-            element={<Login onLogin={setIsAuthenticated} onUserInfo={setUserInfo} />} 
-          />
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </Router>
-    );
-  }
-
   return (
-    <Router>
-      <Layout className="layout-container">
+    <Layout className="layout-container">
         {!collapsed && window.innerWidth <= 768 && (
           <div
             className="sidebar-mask"
@@ -161,15 +118,14 @@ function App() {
           <Menu
             theme="light"
             mode="inline"
-            defaultSelectedKeys={['/dashboard']}
             items={menuItems}
             onClick={({ key }) => {
               if (window.innerWidth <= 768) {
                 setCollapsed(true);
               }
-              window.location.pathname = key;
+              navigate(key);
             }}
-            selectedKeys={[window.location.pathname]}
+            selectedKeys={[location.pathname]}
           />
         </Sider>
         
@@ -217,6 +173,58 @@ function App() {
           </Content>
         </Layout>
       </Layout>
+  );
+}
+
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('userInfo');
+    
+    if (token && user) {
+      setIsAuthenticated(true);
+      setUserInfo(JSON.parse(user));
+    }
+    setLoading(false);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userInfo');
+    setIsAuthenticated(false);
+    setUserInfo(null);
+    message.success('退出登录成功');
+  };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div>加载中...</div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <Router>
+        <Routes>
+          <Route
+            path="/login"
+            element={<Login onLogin={setIsAuthenticated} onUserInfo={setUserInfo} />}
+          />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </Router>
+    );
+  }
+
+  return (
+    <Router>
+      <MainLayout onLogout={handleLogout} userInfo={userInfo} />
     </Router>
   );
 }

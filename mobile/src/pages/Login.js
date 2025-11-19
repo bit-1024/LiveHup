@@ -47,7 +47,7 @@ const Login = () => {
           <div style={{ fontSize: 28, fontWeight: 600, color: '#007AFF' }}>
             积分管理系统
           </div>
-          <div style={{ color: '#8c8c8c', marginTop: 8 }}>
+          <div style={{ color: '#8c8c8c', marginTop: 8, whiteSpace: 'nowrap' }}>
             使用 用户名/用户ID + 密码 登录
           </div>
         </div>
@@ -62,6 +62,7 @@ const Login = () => {
               placeholder="请输入用户ID或用户名"
               maxLength={50}
               clearable
+              labelStyle={{ whiteSpace: 'nowrap' }}
             />
           </Form.Item>
 
@@ -88,7 +89,7 @@ const Login = () => {
             登录
           </Button>
 
-          <div style={{ marginTop: 16, fontSize: 12, color: '#969799', textAlign: 'center' }}>
+          <div style={{ marginTop: 16, fontSize: 12, color: '#969799', textAlign: 'center', whiteSpace: 'nowrap' }}>
             默认密码为 123456，首次登录后请及时修改密码
           </div>
         </Form>

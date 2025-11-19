@@ -3,7 +3,7 @@ import { message } from 'antd';
 
 // 创建axios实例
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: process.env.REACT_APP_API_URL || '/api',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',

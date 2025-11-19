@@ -258,8 +258,57 @@ class UsersController {
 
   async getUsers(req, res) {
     try {
-      const users = await db.query(`SELECT ${SAFE_USER_FIELDS} FROM users ORDER BY created_at DESC`);
-      res.json({ success: true, data: users });
+      const { page = 1, pageSize = 10, keyword, userType, startDate, endDate } = req.query;
+      
+      let whereConditions = [];
+      let params = [];
+      
+      if (keyword) {
+        whereConditions.push('(user_id LIKE ? OR username LIKE ?)');
+        params.push(`%${keyword}%`, `%${keyword}%`);
+      }
+      
+      if (userType === 'new') {
+        whereConditions.push('is_new_user = 1');
+      } else if (userType === 'old') {
+        whereConditions.push('is_new_user = 0');
+      }
+      
+      if (startDate) {
+        whereConditions.push('DATE(created_at) >= ?');
+        params.push(startDate);
+      }
+      
+      if (endDate) {
+        whereConditions.push('DATE(created_at) <= ?');
+        params.push(endDate);
+      }
+      
+      const whereClause = whereConditions.length > 0 ? `WHERE ${whereConditions.join(' AND ')}` : '';
+      
+      const [{ total }] = await db.query(
+        `SELECT COUNT(*) as total FROM users ${whereClause}`,
+        params
+      );
+      
+      const pageInt = parseInt(page) || 1;
+      const pageSizeInt = parseInt(pageSize) || 10;
+      const offset = (pageInt - 1) * pageSizeInt;
+      
+      const users = await db.query(
+        `SELECT ${SAFE_USER_FIELDS} FROM users ${whereClause} ORDER BY created_at DESC LIMIT ${pageSizeInt} OFFSET ${offset}`,
+        params
+      );
+      
+      res.json({
+        success: true,
+        data: {
+          list: users,
+          total,
+          page: parseInt(page),
+          pageSize: parseInt(pageSize)
+        }
+      });
     } catch (error) {
       logger.error('获取用户列表失败:', error);
       res.status(500).json({ success: false, message: '获取用户列表失败' });
@@ -323,11 +372,40 @@ class UsersController {
   async getUserPoints(req, res) {
     try {
       const { userId } = req.params;
+      const { page = 1, pageSize = 20 } = req.query;
+      
       const [user] = await db.query(`SELECT ${SAFE_USER_FIELDS} FROM users WHERE user_id = ?`, [userId]);
       if (!user) {
         return res.status(404).json({ success: false, message: '用户不存在' });
       }
-      res.json({ success: true, data: formatUserProfile(user) });
+      
+      const pageInt = parseInt(page) || 1;
+      const pageSizeInt = parseInt(pageSize) || 20;
+      const offset = (pageInt - 1) * pageSizeInt;
+      
+      const [{ total }] = await db.query(
+        'SELECT COUNT(*) as total FROM point_records WHERE user_id = ?',
+        [userId]
+      );
+      
+      const records = await db.query(
+        `SELECT id, user_id, points, balance_after, source, description,
+                expire_date, is_expired, created_at, import_batch
+         FROM point_records
+         WHERE user_id = ?
+         ORDER BY created_at DESC
+         LIMIT ${pageSizeInt} OFFSET ${offset}`,
+        [userId]
+      );
+      
+      res.json({
+        success: true,
+        data: {
+          user: formatUserProfile(user),
+          records,
+          total
+        }
+      });
     } catch (error) {
       logger.error('获取用户积分失败:', error);
       res.status(500).json({ success: false, message: '获取用户积分失败' });
