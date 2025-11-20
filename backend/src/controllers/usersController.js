@@ -243,17 +243,50 @@ class UsersController {
   }
 
   /**
-   * 当前登录用户积分概要（复用 getUserPoints）
+   * 当前登录用户积分概要
    */
   async getSelfPointsSummary(req, res) {
-    if (!req.user?.user_id) {
-      return res.status(401).json({
-        success: false,
-        message: '未认证的请求，无法访问该资源',
+    try {
+      if (!req.user?.user_id) {
+        return res.status(401).json({
+          success: false,
+          message: '未认证的请求，无法访问该资源',
+        });
+      }
+
+      const userId = req.user.user_id;
+      const { page = 1, pageSize = 20 } = req.query;
+      
+      const [user] = await db.query(`SELECT ${SAFE_USER_FIELDS} FROM users WHERE user_id = ?`, [userId]);
+      if (!user) {
+        return res.status(404).json({ success: false, message: '用户不存在' });
+      }
+      
+      const pageInt = parseInt(page) || 1;
+      const pageSizeInt = parseInt(pageSize) || 20;
+      const offset = (pageInt - 1) * pageSizeInt;
+      
+      const records = await db.query(
+        `SELECT id, user_id, points, balance_after, source, description,
+                expire_date, is_expired, created_at, import_batch
+         FROM point_records
+         WHERE user_id = ?
+         ORDER BY created_at DESC
+         LIMIT ${pageSizeInt} OFFSET ${offset}`,
+        [userId]
+      );
+      
+      res.json({
+        success: true,
+        data: {
+          user: formatUserProfile(user),
+          records
+        }
       });
+    } catch (error) {
+      logger.error('获取用户积分概要失败:', error);
+      res.status(500).json({ success: false, message: '获取用户积分概要失败' });
     }
-    req.params.userId = req.user.user_id;
-    return this.getUserPoints(req, res);
   }
 
   async getUsers(req, res) {

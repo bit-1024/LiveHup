@@ -1880,3 +1880,27 @@ Error: listen EADDRINUSE: address already in use ::1:3000
     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
 2025-11-18 09:13:17 [ERROR]: Token验证失败:
 2025-11-18 09:13:17 [ERROR]: Token验证失败:
+2025-11-20 09:47:33 [ERROR]: 未处理的Promise拒绝: Cannot read properties of undefined (reading 'getUserPoints')
+TypeError: Cannot read properties of undefined (reading 'getUserPoints')
+    at getSelfPointsSummary (F:\LiveHup\backend\src\controllers\usersController.js:256:17)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (F:\LiveHup\backend\src\middleware\auth.js:25:5)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\LiveHup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\LiveHup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\LiveHup\backend\node_modules\express\lib\router\index.js:346:12)
+2025-11-20 09:47:53 [ERROR]: 未处理的Promise拒绝: Cannot read properties of undefined (reading 'getUserPoints')
+TypeError: Cannot read properties of undefined (reading 'getUserPoints')
+    at getSelfPointsSummary (F:\LiveHup\backend\src\controllers\usersController.js:256:17)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (F:\LiveHup\backend\src\middleware\auth.js:25:5)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\LiveHup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\LiveHup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\LiveHup\backend\node_modules\express\lib\router\index.js:346:12)

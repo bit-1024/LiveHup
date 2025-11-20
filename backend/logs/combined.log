@@ -15695,3 +15695,31 @@ Error: listen EADDRINUSE: address already in use ::1:3000
 2025-11-19 18:07:12 [INFO]: ✓ 积分记录已保存: 记录ID=202, 用户=470792309, 积分=1, 余额=1
 2025-11-19 18:07:12 [INFO]: 用户 470792309 匹配成功 1 条规则, 已写入积分累计 1 分, 用户积分将由数据库触发器同步更新
 2025-11-19 18:07:12 [INFO]: 文件导入完成: 小张测试.xlsx, 耗时: 2016ms, 成功: 206/207
+2025-11-20 09:47:33 [ERROR]: 未处理的Promise拒绝: Cannot read properties of undefined (reading 'getUserPoints')
+TypeError: Cannot read properties of undefined (reading 'getUserPoints')
+    at getSelfPointsSummary (F:\LiveHup\backend\src\controllers\usersController.js:256:17)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (F:\LiveHup\backend\src\middleware\auth.js:25:5)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\LiveHup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\LiveHup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\LiveHup\backend\node_modules\express\lib\router\index.js:346:12)
+2025-11-20 09:47:53 [ERROR]: 未处理的Promise拒绝: Cannot read properties of undefined (reading 'getUserPoints')
+TypeError: Cannot read properties of undefined (reading 'getUserPoints')
+    at getSelfPointsSummary (F:\LiveHup\backend\src\controllers\usersController.js:256:17)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (F:\LiveHup\backend\src\middleware\auth.js:25:5)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\LiveHup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\LiveHup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\LiveHup\backend\node_modules\express\lib\router\index.js:346:12)
+2025-11-20 11:10:01 [INFO]: 🚀 服务器启动成功
+2025-11-20 11:10:01 [INFO]: 📍 地址: http://localhost:3000
+2025-11-20 11:10:01 [INFO]: 🌍 环境: development
+2025-11-20 11:10:01 [INFO]: 📊 健康检查: http://localhost:3000/health

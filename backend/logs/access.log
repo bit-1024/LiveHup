@@ -18880,3 +18880,56 @@ Error: listen EADDRINUSE: address already in use ::1:3000
 2025-11-19 18:07:41 [HTTP]: ::1 - - [19/Nov/2025:10:07:41 +0000] "GET /api/products?page=1&pageSize=10&is_active=true HTTP/1.1" 304 - "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-11-19 18:07:41 [HTTP]: ::1 - - [19/Nov/2025:10:07:41 +0000] "GET /uploads/products/file-1762393558989-831730670.png HTTP/1.1" 200 185999 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 2025-11-19 18:07:41 [HTTP]: ::1 - - [19/Nov/2025:10:07:41 +0000] "GET /uploads/products/file-1762335102754-403907079.png HTTP/1.1" 200 241926 "http://localhost:3002/shop" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 09:47:33 [ERROR]: 未处理的Promise拒绝: Cannot read properties of undefined (reading 'getUserPoints')
+TypeError: Cannot read properties of undefined (reading 'getUserPoints')
+    at getSelfPointsSummary (F:\LiveHup\backend\src\controllers\usersController.js:256:17)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (F:\LiveHup\backend\src\middleware\auth.js:25:5)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\LiveHup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\LiveHup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\LiveHup\backend\node_modules\express\lib\router\index.js:346:12)
+2025-11-20 09:47:33 [HTTP]: ::1 - - [20/Nov/2025:01:47:33 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:3002/points-query" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 09:47:53 [ERROR]: 未处理的Promise拒绝: Cannot read properties of undefined (reading 'getUserPoints')
+TypeError: Cannot read properties of undefined (reading 'getUserPoints')
+    at getSelfPointsSummary (F:\LiveHup\backend\src\controllers\usersController.js:256:17)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (F:\LiveHup\backend\src\middleware\auth.js:25:5)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\LiveHup\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\LiveHup\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\LiveHup\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\LiveHup\backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (F:\LiveHup\backend\node_modules\express\lib\router\index.js:346:12)
+2025-11-20 09:48:27 [HTTP]: ::1 - - [20/Nov/2025:01:48:27 +0000] "GET /api/users?page=1&pageSize=10&keyword=473424271 HTTP/1.1" 200 423 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 10:56:45 [HTTP]: ::1 - - [20/Nov/2025:02:56:45 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 10:56:47 [HTTP]: ::1 - - [20/Nov/2025:02:56:47 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:13 [HTTP]: ::1 - - [20/Nov/2025:03:03:13 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:13 [HTTP]: ::1 - - [20/Nov/2025:03:03:13 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:13 [HTTP]: ::1 - - [20/Nov/2025:03:03:13 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:15 [HTTP]: ::1 - - [20/Nov/2025:03:03:15 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:15 [HTTP]: ::1 - - [20/Nov/2025:03:03:15 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:15 [HTTP]: ::1 - - [20/Nov/2025:03:03:15 +0000] "GET /uploads/products/file-1762393558989-831730670.png HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:16 [HTTP]: ::1 - - [20/Nov/2025:03:03:16 +0000] "GET /uploads/products/file-1762335102754-403907079.png HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:22 [HTTP]: ::1 - - [20/Nov/2025:03:03:22 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 200 108 "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:23 [HTTP]: ::1 - - [20/Nov/2025:03:03:23 +0000] "GET /api/exchanges?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/exchanges" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:24 [HTTP]: ::1 - - [20/Nov/2025:03:03:24 +0000] "GET /api/qrcode/generate?size=300 HTTP/1.1" 304 - "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:25 [HTTP]: ::1 - - [20/Nov/2025:03:03:25 +0000] "GET /api/qrcode/generate?size=300 HTTP/1.1" 304 - "http://localhost:3001/qrcode" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:28 [HTTP]: ::1 - - [20/Nov/2025:03:03:28 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:28 [HTTP]: ::1 - - [20/Nov/2025:03:03:28 +0000] "GET /api/products?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:30 [HTTP]: ::1 - - [20/Nov/2025:03:03:30 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:30 [HTTP]: ::1 - - [20/Nov/2025:03:03:30 +0000] "GET /api/users?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/users" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:33 [HTTP]: ::1 - - [20/Nov/2025:03:03:33 +0000] "GET /api/rules/columns HTTP/1.1" 200 46 "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:33 [HTTP]: ::1 - - [20/Nov/2025:03:03:33 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:33 [HTTP]: ::1 - - [20/Nov/2025:03:03:33 +0000] "GET /api/rules/columns HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:34 [HTTP]: ::1 - - [20/Nov/2025:03:03:34 +0000] "GET /api/rules HTTP/1.1" 304 - "http://localhost:3001/rules" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:37 [HTTP]: ::1 - - [20/Nov/2025:03:03:37 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:03:38 [HTTP]: ::1 - - [20/Nov/2025:03:03:38 +0000] "GET /api/import/history?page=1&pageSize=10 HTTP/1.1" 304 - "http://localhost:3001/import" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+2025-11-20 11:10:01 [INFO]: 🚀 服务器启动成功
+2025-11-20 11:10:01 [INFO]: 📍 地址: http://localhost:3000
+2025-11-20 11:10:01 [INFO]: 🌍 环境: development
+2025-11-20 11:10:01 [INFO]: 📊 健康检查: http://localhost:3000/health
