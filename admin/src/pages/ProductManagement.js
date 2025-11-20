@@ -204,12 +204,13 @@ const ProductManagement = () => {
       const response = await productsAPI.upload(formData);
       const uploadData = response?.data || {};
       const storedPath = uploadData.path || '';
+      const fullUrl = uploadData.url || '';
 
       if (storedPath) {
         setImageUrl(storedPath);
         form.setFieldsValue({ image_url: storedPath });
         clearPreviewObjectUrl();
-        setPreviewUrl(storedPath);
+        setPreviewUrl(fullUrl || buildPreviewUrl(storedPath));
         message.success('图片上传成功');
       } else {
         throw new Error('上传响应数据异常');
