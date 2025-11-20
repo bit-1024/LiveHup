@@ -15728,3 +15728,4 @@ TypeError: Cannot read properties of undefined (reading 'getUserPoints')
 2025-11-20 11:32:35 [INFO]: 🌍 环境: development
 2025-11-20 11:32:35 [INFO]: 📊 健康检查: http://localhost:3000/health
 2025-11-20 12:59:30 [INFO]: 创建兑换订单成功: EX20251120125930146，用户: 473424271，商品: 100优惠卷
+2025-11-20 15:15:55 [INFO]: 收到SIGINT信号，正在关闭服务器...
