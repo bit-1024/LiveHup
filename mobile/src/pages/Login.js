@@ -48,22 +48,21 @@ const Login = () => {
             积分管理系统
           </div>
           <div style={{ color: '#8c8c8c', marginTop: 8, whiteSpace: 'nowrap' }}>
-            使用 用户名/用户ID + 密码 登录
+            使用 用户名/ID + 密码 登录
           </div>
         </div>
 
         <Form onFinish={handleSubmit}>
           <Form.Item
             name="identifier"
-            rules={[{ required: true, message: '请输入用户ID或用户名' }]}
+            rules={[{ required: true, message: '请输入用户名或ID' }]}
           >
             <Field
-              label="用户ID/用户名"
-              placeholder="请输入用户ID或用户名"
-              maxLength={50}
-              clearable
-              labelStyle={{ whiteSpace: 'nowrap' }}
-            />
+             label="用户名/ID"
+             placeholder="请输入用户名或ID"
+             maxLength={50}
+             clearable
+           />
           </Form.Item>
 
           <Form.Item

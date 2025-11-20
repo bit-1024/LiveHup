@@ -80,15 +80,6 @@ function MainLayout({ onLogout, userInfo }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setCollapsed(true);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const userMenuItems = [
     {
@@ -101,12 +92,6 @@ function MainLayout({ onLogout, userInfo }) {
 
   return (
     <Layout className="layout-container">
-        {!collapsed && window.innerWidth <= 768 && (
-          <div
-            className="sidebar-mask"
-            onClick={() => setCollapsed(true)}
-          />
-        )}
         <Sider
           trigger={null}
           collapsible
@@ -119,12 +104,7 @@ function MainLayout({ onLogout, userInfo }) {
             theme="light"
             mode="inline"
             items={menuItems}
-            onClick={({ key }) => {
-              if (window.innerWidth <= 768) {
-                setCollapsed(true);
-              }
-              navigate(key);
-            }}
+            onClick={({ key }) => navigate(key)}
             selectedKeys={[location.pathname]}
           />
         </Sider>

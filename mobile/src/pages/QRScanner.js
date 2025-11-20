@@ -155,7 +155,7 @@ const QRScanner = () => {
         message: `检测到用户ID: ${userId}，是否查询该用户的积分？`,
       }).then(() => {
         // 跳转到积分查询页面并携带用户ID
-        navigate(`/points-query?userId=${userId}`);
+        navigate(`/points-details?userId=${userId}`);
       }).catch(() => {
         // 用户取消后重新开始扫描
         startCamera();
@@ -167,12 +167,12 @@ const QRScanner = () => {
       }, 1000);
     }
   };
-
-
+ 
+ 
   const handleManualInput = () => {
-    navigate('/points-query');
+    navigate('/points-details');
   };
-
+ 
   return (
     <div className="page-container">
       <NavBar 

@@ -17,10 +17,12 @@ import {
   PhotoFail,
   ArrowLeft,
   Contact,
-  WapHomeO
+  WapHomeO,
+  SettingO
 } from '@react-vant/icons';
 
 const iconMap = {
+  'setting-o': SettingO,
   scan: Scan,
   search: Search,
   'shop-o': ShopO,

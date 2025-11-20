@@ -63,8 +63,9 @@ const ProductManagement = () => {
   const buildPreviewUrl = useCallback((url) => {
     if (!url) return '';
     if (url.startsWith('blob:')) return url;
-    if (url.startsWith('/')) return url;
-    return url;
+    if (url.startsWith('http')) return url;
+    const baseUrl = process.env.REACT_APP_BASE_URL || 'http://188.239.18.147:3000';
+    return `${baseUrl}${url.startsWith('/') ? url : `/${url}`}`;
   }, []);
 
   // Fixed: Wrap fetchProducts in useCallback

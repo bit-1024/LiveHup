@@ -106,10 +106,10 @@ const ExchangeDetail = () => {
       
       <div className="page-content">
         {/* 订单状态 */}
-        <Card>
-          <div style={{ padding: '16px 0' }}>
-            <div style={{ 
-              display: 'flex', 
+        <Card style={{ borderRadius: '12px' }}>
+          <div style={{ padding: '16px' }}>
+            <div style={{
+              display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
               marginBottom: '16px'
@@ -186,10 +186,10 @@ const ExchangeDetail = () => {
         </Card>
 
         {/* 商品信息 */}
-        <Card style={{ marginTop: '12px' }}>
-          <div style={{ padding: '16px 0' }}>
-            <div style={{ 
-              fontSize: '16px', 
+        <Card style={{ marginTop: '12px', borderRadius: '12px' }}>
+          <div style={{ padding: '16px' }}>
+            <div style={{
+              fontSize: '16px',
               fontWeight: '600', 
               marginBottom: '16px'
             }}>
@@ -237,10 +237,10 @@ const ExchangeDetail = () => {
         </Card>
 
         {/* 订单信息 */}
-        <Card style={{ marginTop: '12px' }}>
-          <div style={{ padding: '16px 0' }}>
-            <div style={{ 
-              fontSize: '16px', 
+        <Card style={{ marginTop: '12px', borderRadius: '12px' }}>
+          <div style={{ padding: '16px' }}>
+            <div style={{
+              fontSize: '16px',
               fontWeight: '600', 
               marginBottom: '16px'
             }}>
@@ -266,10 +266,10 @@ const ExchangeDetail = () => {
         </Card>
 
         {/* 收货信息 */}
-        <Card style={{ marginTop: '12px' }}>
-          <div style={{ padding: '16px 0' }}>
-            <div style={{ 
-              fontSize: '16px', 
+        <Card style={{ marginTop: '12px', borderRadius: '12px' }}>
+          <div style={{ padding: '16px' }}>
+            <div style={{
+              fontSize: '16px',
               fontWeight: '600', 
               marginBottom: '16px',
               display: 'flex',
@@ -310,10 +310,10 @@ const ExchangeDetail = () => {
 
         {/* 备注信息 */}
         {exchange.remark && (
-          <Card style={{ marginTop: '12px' }}>
-            <div style={{ padding: '16px 0' }}>
-              <div style={{ 
-                fontSize: '16px', 
+          <Card style={{ marginTop: '12px', borderRadius: '12px' }}>
+            <div style={{ padding: '16px' }}>
+              <div style={{
+                fontSize: '16px',
                 fontWeight: '600', 
                 marginBottom: '12px'
               }}>

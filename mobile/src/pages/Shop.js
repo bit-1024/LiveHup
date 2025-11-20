@@ -209,7 +209,7 @@ const Shop = () => {
                   {products.length > 0 ? (
                     <div style={{
                       display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
                       gap: '12px',
                       paddingTop: '12px'
                     }}>

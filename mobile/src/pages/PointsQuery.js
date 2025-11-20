@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { NavBar, Button, Card, Cell, Empty, Toast } from 'react-vant';
+import { Plus, Minus } from '@react-vant/icons';
 import { useNavigate } from 'react-router-dom';
 import { authAPI, utils } from '../services/api';
 import Icon from '../components/Icon';
@@ -125,12 +126,19 @@ const PointsQuery = () => {
                           <Cell
                             key={record.id || index}
                             title={
-                              <div>
-                                <div style={{ marginBottom: 4 }}>
-                                  {record.description || record.source}
-                                </div>
-                                <div style={{ fontSize: 12, color: '#969799' }}>
-                                  {utils.formatDate(record.created_at, 'YYYY-MM-DD HH:mm')}
+                              <div style={{ display: 'flex', alignItems: 'center' }}>
+                                {record.points > 0 ? (
+                                  <Plus color="var(--success-color)" style={{ marginRight: '12px' }} />
+                                ) : (
+                                  <Minus color="var(--danger-color)" style={{ marginRight: '12px' }} />
+                                )}
+                                <div>
+                                  <div style={{ marginBottom: 4 }}>
+                                    {record.description || record.source}
+                                  </div>
+                                  <div style={{ fontSize: 12, color: '#969799' }}>
+                                    {utils.formatDate(record.created_at, 'YYYY-MM-DD HH:mm')}
+                                  </div>
                                 </div>
                               </div>
                             }

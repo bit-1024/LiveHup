@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Tabbar } from 'react-vant';
 import Icon from './components/Icon';
+import './styles/theme.css';
 
 import { AuthProvider, useAuth } from './context/AuthContext';
 
@@ -10,10 +11,10 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Profile from './pages/Profile';
-import PointsQuery from './pages/PointsQuery';
+import PointsDetails from './pages/PointsDetails';
 import ExchangeRecord from './pages/ExchangeRecord';
 import ExchangeDetail from './pages/ExchangeDetail';
-import QRScanner from './pages/QRScanner';
+import ChangePassword from './pages/ChangePassword';
 import Login from './pages/Login';
 
 function AppContent() {
@@ -23,7 +24,7 @@ function AppContent() {
   const { isAuthenticated } = useAuth();
 
   // 需要隐藏底部导航的页面
-  const hideTabbarPages = ['/product/', '/exchange/', '/points-query', '/qr-scanner'];
+  const hideTabbarPages = ['/product/', '/exchange/', '/points-details', '/change-password'];
   const shouldHideTabbar = hideTabbarPages.some(page => location.pathname.includes(page));
 
   React.useEffect(() => {
@@ -60,10 +61,10 @@ function AppContent() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/points-query" element={<PointsQuery />} />
+        <Route path="/points-details" element={<PointsDetails />} />
         <Route path="/exchange-record" element={<ExchangeRecord />} />
         <Route path="/exchange/:id" element={<ExchangeDetail />} />
-        <Route path="/qr-scanner" element={<QRScanner />} />
+        <Route path="/change-password" element={<ChangePassword />} />
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
 

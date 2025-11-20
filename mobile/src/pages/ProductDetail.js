@@ -154,7 +154,7 @@ const ProductDetail = () => {
       
       <div className="page-content">
         {/* 商品主信息 */}
-        <div style={{ background: '#fff' }}>
+        <div style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden' }}>
           <Image
             src={utils.buildImageUrl(product.image_url)}
             alt={product.name}
@@ -215,7 +215,7 @@ const ProductDetail = () => {
         </div>
 
         {/* 商品信息 */}
-        <div style={{ marginTop: 12, background: '#fff' }}>
+        <div style={{ marginTop: 12, background: '#fff', borderRadius: '12px', overflow: 'hidden' }}>
           <Cell.Group>
             <Cell title="商品分类" value={product.category} />
             <Cell title="已兑数量" value={`${product.sold_count} 件`} />

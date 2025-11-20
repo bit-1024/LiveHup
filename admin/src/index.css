@@ -61,6 +61,7 @@ body {
   margin-left: 80px;
 }
 
+
 .layout-header {
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -119,6 +120,10 @@ body {
 }
 
 /* 表格样式 */
+.ant-table-wrapper {
+  overflow-x: auto;
+}
+
 .ant-table-thead > tr > th {
   background: #fafafa;
   font-weight: 600;
@@ -183,50 +188,18 @@ body {
 }
 
 /* 响应式 */
-@media (max-width: 1024px) {
-  .layout-header {
-    padding: 0 16px;
-  }
-  
-  .layout-sider {
-    width: 200px !important;
-    min-width: 200px !important;
-  }
-}
-
 @media (max-width: 768px) {
-  .layout-header {
-    height: 56px;
-    padding: 0 12px;
+  .layout-container > .ant-layout {
+    margin-left: 0;
   }
-  
-  .layout-content {
-    padding: 16px;
-    min-height: calc(100vh - 56px);
-  }
-  
-  .page-header {
-    padding: 12px 16px;
-    margin-bottom: 16px;
-  }
-  
-  .button-group {
-    flex-direction: column;
-  }
-  
-  .button-group .ant-btn {
-    width: 100%;
-  }
-  
+
   .layout-sider {
     position: fixed !important;
+    height: 100%;
     z-index: 1001;
-    height: 100vh;
-    left: 0;
-    transition: transform 0.3s ease;
   }
-  
-  .ant-layout-sider-collapsed {
+
+  .layout-sider.ant-layout-sider-collapsed {
     transform: translateX(-100%);
   }
 
@@ -238,12 +211,6 @@ body {
     bottom: 0;
     background: rgba(0, 0, 0, 0.45);
     z-index: 1000;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .layout-content {
-    padding: 20px;
   }
 }
 

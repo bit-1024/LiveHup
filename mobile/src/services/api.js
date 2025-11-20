@@ -118,7 +118,7 @@ export const utils = {
   buildImageUrl: (path) => {
     if (!path) return '';
     if (/^https?:\/\//i.test(path)) return path;
-    const baseUrl = process.env.REACT_APP_API_URL || window.location.origin;
+    const baseUrl = process.env.REACT_APP_BASE_URL || 'http://188.239.18.147:3000';
     return `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
   },
 

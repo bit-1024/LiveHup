@@ -91,14 +91,14 @@ const ExchangeRecord = () => {
             >
               {records.map((exchange) => (
                 <Card
-                  key={exchange.id}
-                  style={{ marginBottom: 12 }}
-                  onClick={() => navigate(`/exchange/${exchange.id}`)}
-                >
-                  <div style={{ padding: '12px 0' }}>
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
+                 key={exchange.id}
+                 style={{ marginBottom: 12, borderRadius: '12px' }}
+                 onClick={() => navigate(`/exchange/${exchange.id}`)}
+               >
+                 <div style={{ padding: '12px 16px' }}>
+                   <div style={{
+                     display: 'flex',
+                     justifyContent: 'space-between',
                       alignItems: 'center',
                       marginBottom: 12
                     }}>
