@@ -231,7 +231,7 @@ class UsersController {
 
       res.json({
         success: true,
-        message: `用户密码已重置为 ${DEFAULT_USER_PASSWORD}`,
+        message: '用户密码已重置为默认密码',
       });
     } catch (error) {
       logger.error('重置用户密码失败:', error);
@@ -262,25 +262,19 @@ class UsersController {
         return res.status(404).json({ success: false, message: '用户不存在' });
       }
       
-      const pageInt = parseInt(page) || 1;
-      const pageSizeInt = parseInt(pageSize) || 20;
-      const offset = (pageInt - 1) * pageSizeInt;
-      
-      const records = await db.query(
-        `SELECT id, user_id, points, balance_after, source, description,
+      const sql = `SELECT id, user_id, points, balance_after, source, description,
                 expire_date, is_expired, created_at, import_batch
          FROM point_records
          WHERE user_id = ?
-         ORDER BY created_at DESC
-         LIMIT ${pageSizeInt} OFFSET ${offset}`,
-        [userId]
-      );
+         ORDER BY created_at DESC`;
+      
+      const result = await db.paginate(sql, [userId], parseInt(page), parseInt(pageSize));
       
       res.json({
         success: true,
         data: {
           user: formatUserProfile(user),
-          records
+          records: result.data
         }
       });
     } catch (error) {
@@ -324,22 +318,16 @@ class UsersController {
         params
       );
       
-      const pageInt = parseInt(page) || 1;
-      const pageSizeInt = parseInt(pageSize) || 10;
-      const offset = (pageInt - 1) * pageSizeInt;
-      
-      const users = await db.query(
-        `SELECT ${SAFE_USER_FIELDS} FROM users ${whereClause} ORDER BY created_at DESC LIMIT ${pageSizeInt} OFFSET ${offset}`,
-        params
-      );
+      const sql = `SELECT ${SAFE_USER_FIELDS} FROM users ${whereClause} ORDER BY created_at DESC`;
+      const result = await db.paginate(sql, params, parseInt(page), parseInt(pageSize));
       
       res.json({
         success: true,
         data: {
-          list: users,
-          total,
-          page: parseInt(page),
-          pageSize: parseInt(pageSize)
+          list: result.data,
+          total: result.pagination.total,
+          page: result.pagination.page,
+          pageSize: result.pagination.pageSize
         }
       });
     } catch (error) {
@@ -380,7 +368,8 @@ class UsersController {
 
   async clearAllData(req, res) {
     try {
-      await db.query('DELETE FROM users WHERE role != "admin"');
+      // 清理所有用户数据（users表没有role字段，此功能仅用于测试环境）
+      await db.query('DELETE FROM users');
       res.json({ success: true, message: '数据已清理' });
     } catch (error) {
       logger.error('清理数据失败:', error);
@@ -412,31 +401,20 @@ class UsersController {
         return res.status(404).json({ success: false, message: '用户不存在' });
       }
       
-      const pageInt = parseInt(page) || 1;
-      const pageSizeInt = parseInt(pageSize) || 20;
-      const offset = (pageInt - 1) * pageSizeInt;
-      
-      const [{ total }] = await db.query(
-        'SELECT COUNT(*) as total FROM point_records WHERE user_id = ?',
-        [userId]
-      );
-      
-      const records = await db.query(
-        `SELECT id, user_id, points, balance_after, source, description,
+      const sql = `SELECT id, user_id, points, balance_after, source, description,
                 expire_date, is_expired, created_at, import_batch
          FROM point_records
          WHERE user_id = ?
-         ORDER BY created_at DESC
-         LIMIT ${pageSizeInt} OFFSET ${offset}`,
-        [userId]
-      );
+         ORDER BY created_at DESC`;
+      
+      const result = await db.paginate(sql, [userId], parseInt(page), parseInt(pageSize));
       
       res.json({
         success: true,
         data: {
           user: formatUserProfile(user),
-          records,
-          total
+          records: result.data,
+          total: result.pagination.total
         }
       });
     } catch (error) {

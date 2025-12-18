@@ -1,2 +1,5 @@
 node_modules/
 backend/logs/
+database/
+.env/
+.itignore/

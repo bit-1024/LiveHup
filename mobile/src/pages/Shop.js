@@ -1,8 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { NavBar, Search, Tabs, Card, Tag, Image, Empty, PullRefresh, List } from 'react-vant';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { NavBar, Search, Tabs, Card, Tag, Image, Empty, PullRefresh, List, Skeleton } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
 import { productAPI, utils } from '../services/api';
 import Icon from '../components/Icon';
+
+// 自定义防抖 Hook
+const useDebounce = (value, delay = 300) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
+// 商品骨架屏组件
+const ProductSkeleton = () => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+    gap: '12px',
+    paddingTop: '12px'
+  }}>
+    {[1, 2, 3, 4].map((i) => (
+      <Card key={i} style={{ borderRadius: '8px', overflow: 'hidden' }}>
+        <Skeleton style={{ height: '200px', width: '100%' }} />
+        <div style={{ padding: '12px' }}>
+          <Skeleton title row={2} />
+        </div>
+      </Card>
+    ))}
+  </div>
+);
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -10,35 +46,36 @@ const Shop = () => {
   const [searchValue, setSearchValue] = useState('');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [finished, setFinished] = useState(false);
-  const [page, setPage] = useState(1);
+  const pageRef = useRef(1);
+  const loadingRef = useRef(false);
+  
+  // 使用防抖处理搜索值
+  const debouncedSearchValue = useDebounce(searchValue, 300);
 
-  const categories = [
+  const categories = useMemo(() => [
     { key: 'all', name: '全部' },
     { key: '热门商品', name: '热门商品' },
     { key: '最新商品', name: '最新商品' },
     { key: '周边', name: '周边' },
     { key: '实物', name: '实物' },
     { key: '优惠券', name: '优惠券' }
-  ];
+  ], []);
 
-  useEffect(() => {
-    loadProducts(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab, searchValue]);
-
-  const loadProducts = async (reset = false) => {
-    if (loading) return;
+  const loadProducts = useCallback(async (reset = false) => {
+    if (loadingRef.current) return;
 
     try {
+      loadingRef.current = true;
       setLoading(true);
-      const currentPage = reset ? 1 : page;
+      const currentPage = reset ? 1 : pageRef.current;
 
       const params = {
         page: currentPage,
         pageSize: 10,
         category: activeTab === 'all' ? undefined : activeTab,
-        keyword: searchValue || undefined
+        keyword: debouncedSearchValue || undefined
       };
 
       const response = await productAPI.getList(params);
@@ -46,10 +83,10 @@ const Shop = () => {
 
       if (reset) {
         setProducts(newProducts);
-        setPage(2);
+        pageRef.current = 2;
       } else {
         setProducts(prev => [...prev, ...newProducts]);
-        setPage(prev => prev + 1);
+        pageRef.current = pageRef.current + 1;
       }
 
       setFinished(newProducts.length < params.pageSize);
@@ -59,25 +96,42 @@ const Shop = () => {
         setProducts([]);
       }
     } finally {
+      loadingRef.current = false;
       setLoading(false);
+      setInitialLoading(false);
     }
-  };
+  }, [activeTab, debouncedSearchValue]);
 
-  const handleRefresh = async () => {
+  // 当分类或防抖后的搜索值变化时，重新加载商品
+  useEffect(() => {
+    setInitialLoading(true);
+    pageRef.current = 1;
+    loadProducts(true);
+  }, [activeTab, debouncedSearchValue, loadProducts]);
+
+  const handleRefresh = useCallback(async () => {
     setFinished(false);
-    setPage(1);
+    pageRef.current = 1;
     await loadProducts(true);
-  };
+  }, [loadProducts]);
 
-  const handleLoadMore = async () => {
-    if (loading || finished) return;
+  const handleLoadMore = useCallback(async () => {
+    if (loadingRef.current || finished) return;
     await loadProducts(false);
-  };
+  }, [finished, loadProducts]);
 
-  const handleSearch = (value) => {
+  // 搜索输入变化时只更新本地状态，实际搜索由防抖值触发
+  const handleSearchChange = useCallback((value) => {
     setSearchValue(value);
-    setPage(1);
-  };
+  }, []);
+
+  // 点击搜索按钮时立即搜索
+  const handleSearchSubmit = useCallback((value) => {
+    setSearchValue(value);
+    // 立即触发搜索，不等待防抖
+    setInitialLoading(true);
+    pageRef.current = 1;
+  }, []);
 
   const handleProductClick = (product) => {
     navigate(`/product/${product.id}`);
@@ -181,8 +235,8 @@ const Shop = () => {
       <div style={{ background: '#fff', padding: '12px 16px' }}>
         <Search
           value={searchValue}
-          onChange={setSearchValue}
-          onSearch={handleSearch}
+          onChange={handleSearchChange}
+          onSearch={handleSearchSubmit}
           placeholder="搜索商品"
           shape="round"
         />
@@ -200,13 +254,16 @@ const Shop = () => {
             <div style={{ padding: '0 16px' }}>
               <PullRefresh onRefresh={handleRefresh}>
                 <List
-                  loading={loading}
+                  loading={loading && !initialLoading}
                   finished={finished}
                   onLoad={handleLoadMore}
                   finishedText="没有更多商品了"
                   loadingText="加载中..."
                 >
-                  {products.length > 0 ? (
+                  {/* 首次加载显示骨架屏 */}
+                  {initialLoading ? (
+                    <ProductSkeleton />
+                  ) : products.length > 0 ? (
                     <div style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
@@ -217,14 +274,14 @@ const Shop = () => {
                         <ProductCard key={product.id} product={product} />
                       ))}
                     </div>
-                  ) : !loading ? (
+                  ) : (
                     <div style={{ paddingTop: '60px' }}>
                       <Empty
                         description={searchValue ? '未找到相关商品' : '暂无商品'}
                         imageSize={80}
                       />
                     </div>
-                  ) : null}
+                  )}
                 </List>
               </PullRefresh>
             </div>

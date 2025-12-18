@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { NavBar, Card, List, Empty, PullRefresh, Tag, Toast } from 'react-vant';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { NavBar, Card, List, Empty, PullRefresh, Tag, Toast, Skeleton } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
 import { exchangeAPI, utils } from '../services/api';
 import Icon from '../components/Icon';
@@ -15,20 +15,37 @@ const STATUS_META = {
 
 const PAGE_SIZE = 10;
 
+// 骨架屏组件
+const RecordSkeleton = () => (
+  <div style={{ padding: '12px 16px' }}>
+    {[1, 2, 3].map((i) => (
+      <Card key={i} style={{ marginBottom: 12, borderRadius: '12px' }}>
+        <div style={{ padding: '12px 16px' }}>
+          <Skeleton title row={3} />
+        </div>
+      </Card>
+    ))}
+  </div>
+);
+
 const ExchangeRecord = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [records, setRecords] = useState([]);
   const [finished, setFinished] = useState(false);
-  const [page, setPage] = useState(1);
+  const pageRef = useRef(1);
+  const loadingRef = useRef(false);
 
   const fetchRecords = useCallback(async (reset = false) => {
     if (!user?.user_id) return;
-    if (loading) return;
+    if (loadingRef.current) return;
+    
     try {
+      loadingRef.current = true;
       setLoading(true);
-      const currentPage = reset ? 1 : page;
+      const currentPage = reset ? 1 : pageRef.current;
       const response = await exchangeAPI.getMyExchanges({
         page: currentPage,
         pageSize: PAGE_SIZE,
@@ -36,10 +53,10 @@ const ExchangeRecord = () => {
       const list = response?.data?.list || [];
       if (reset) {
         setRecords(list);
-        setPage(2);
+        pageRef.current = 2;
       } else {
         setRecords(prev => [...prev, ...list]);
-        setPage(prev => prev + 1);
+        pageRef.current = pageRef.current + 1;
       }
       setFinished(list.length < PAGE_SIZE);
     } catch (error) {
@@ -50,9 +67,11 @@ const ExchangeRecord = () => {
       }
       setFinished(true);
     } finally {
+      loadingRef.current = false;
       setLoading(false);
+      setInitialLoading(false);
     }
-  }, [page, user?.user_id, loading]);
+  }, [user?.user_id]);
 
   useEffect(() => {
     fetchRecords(true);
@@ -60,7 +79,7 @@ const ExchangeRecord = () => {
 
   const handleRefresh = async () => {
     setFinished(false);
-    setPage(1);
+    pageRef.current = 1;
     await fetchRecords(true);
   };
 
@@ -80,7 +99,10 @@ const ExchangeRecord = () => {
       />
 
       <div className="page-content">
-        {records.length > 0 ? (
+        {/* 首次加载显示骨架屏 */}
+        {initialLoading ? (
+          <RecordSkeleton />
+        ) : records.length > 0 ? (
           <PullRefresh onRefresh={handleRefresh}>
             <List
               loading={loading}
@@ -146,7 +168,7 @@ const ExchangeRecord = () => {
               ))}
             </List>
           </PullRefresh>
-        ) : (
+        ) : !loading ? (
           <Card style={{ marginTop: 12 }}>
             <Empty
               description="暂无兑换记录"
@@ -157,7 +179,7 @@ const ExchangeRecord = () => {
               </div>
             </Empty>
           </Card>
-        )}
+        ) : null}
 
         <div style={{ height: 20 }} />
       </div>

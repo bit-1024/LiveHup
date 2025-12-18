@@ -1,5 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Statistic, Table, Tag, Typography, Spin, Empty } from 'antd';
+// {{CODE-Cycle-Integration:
+//   Task_ID: [#T012]
+//   Timestamp: 2025-12-17T01:58:14Z
+//   Phase: D-Develop
+//   Context-Analysis: "更新Dashboard页面，集成骨架屏和请求取消机制"
+//   Principle_Applied: "State-Management, Request-Cancellation, Skeleton-Loading"
+// }}
+// {{START_MODIFICATIONS}}
+
+import React, { useEffect } from 'react';
+import { Card, Row, Col, Statistic, Table, Tag, Typography, Empty } from 'antd';
 import { 
   UserOutlined, 
   TrophyOutlined, 
@@ -8,48 +17,65 @@ import {
   ArrowUpOutlined,
   ArrowDownOutlined
 } from '@ant-design/icons';
-import { dashboardAPI } from '../services/api';
+import { useDashboardStore } from '../store';
+import { useAbortController } from '../hooks';
+import { DashboardSkeleton } from '../components/Skeleton';
 import dayjs from 'dayjs';
 
 const { Title } = Typography;
 
 const Dashboard = () => {
-  const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState(null);
+  // 使用Zustand store
+  const { 
+    stats, 
+    loading, 
+    error, 
+    fetchStats,
+    clearError 
+  } = useDashboardStore();
+  
+  // 使用请求取消hook
+  const { getSignal } = useAbortController();
 
   useEffect(() => {
-    fetchStats();
-  }, []);
+    // 获取数据，传入signal用于取消请求
+    const signal = getSignal();
+    fetchStats(signal);
+    
+    // 清除错误状态
+    return () => {
+      clearError();
+    };
+  }, [fetchStats, getSignal, clearError]);
 
-  const fetchStats = async () => {
-    try {
-      setLoading(true);
-      const response = await dashboardAPI.getStats();
-      setStats(response.data);
-    } catch (error) {
-      console.error('获取统计数据失败:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
+  // 显示骨架屏
+  if (loading.stats) {
     return (
-      <div className="loading-container">
-        <Spin size="large" />
+      <div>
+        <div className="page-header">
+          <Title level={3} className="page-title">仪表盘</Title>
+          <p className="page-description">系统概览和数据统计</p>
+        </div>
+        <DashboardSkeleton />
       </div>
     );
   }
 
-  if (!stats) {
+  // 显示错误或空状态
+  if (error || !stats) {
     return (
-      <div className="empty-container">
-        <Empty description="暂无数据" />
+      <div>
+        <div className="page-header">
+          <Title level={3} className="page-title">仪表盘</Title>
+          <p className="page-description">系统概览和数据统计</p>
+        </div>
+        <div className="empty-container">
+          <Empty description={error || "暂无数据"} />
+        </div>
       </div>
     );
   }
 
-  // Fixed: Remove unused 'trends' variable
   const { userStats, pointsStats, productStats, exchangeStats, recentImports } = stats;
 
   // 最近导入表格列配置
@@ -122,11 +148,11 @@ const Dashboard = () => {
           <Card className="content-card">
             <Statistic
               title="总用户数"
-              value={userStats.total_users}
+              value={userStats?.total_users || 0}
               prefix={<UserOutlined style={{ color: '#1890ff' }} />}
               suffix={
                 <div style={{ fontSize: 12, color: '#8c8c8c', marginTop: 4 }}>
-                  今日新增 {userStats.todayNew}
+                  今日新增 {userStats?.todayNew || 0}
                 </div>
               }
             />
@@ -137,11 +163,11 @@ const Dashboard = () => {
           <Card className="content-card">
             <Statistic
               title="总积分"
-              value={pointsStats.total}
+              value={pointsStats?.total || 0}
               prefix={<TrophyOutlined style={{ color: '#52c41a' }} />}
               suffix={
                 <div style={{ fontSize: 12, color: '#8c8c8c', marginTop: 4 }}>
-                  可用 {pointsStats.available?.toLocaleString()}
+                  可用 {pointsStats?.available?.toLocaleString() || 0}
                 </div>
               }
             />
@@ -152,11 +178,11 @@ const Dashboard = () => {
           <Card className="content-card">
             <Statistic
               title="商品数量"
-              value={productStats.total_products}
+              value={productStats?.total_products || 0}
               prefix={<ShopOutlined style={{ color: '#faad14' }} />}
               suffix={
                 <div style={{ fontSize: 12, color: '#8c8c8c', marginTop: 4 }}>
-                  在售 {productStats.active_products}
+                  在售 {productStats?.active_products || 0}
                 </div>
               }
             />
@@ -167,11 +193,11 @@ const Dashboard = () => {
           <Card className="content-card">
             <Statistic
               title="兑换订单"
-              value={exchangeStats.total_exchanges}
+              value={exchangeStats?.total_exchanges || 0}
               prefix={<SwapOutlined style={{ color: '#ff4d4f' }} />}
               suffix={
                 <div style={{ fontSize: 12, color: '#8c8c8c', marginTop: 4 }}>
-                  待处理 {exchangeStats.pending_count}
+                  待处理 {exchangeStats?.pending_count || 0}
                 </div>
               }
             />
@@ -195,7 +221,7 @@ const Dashboard = () => {
               <Col span={12}>
                 <Statistic
                   title="获得积分"
-                  value={pointsStats.earned || 0}
+                  value={pointsStats?.earned || 0}
                   valueStyle={{ color: '#52c41a' }}
                   prefix={<ArrowUpOutlined />}
                 />
@@ -203,7 +229,7 @@ const Dashboard = () => {
               <Col span={12}>
                 <Statistic
                   title="消费积分"
-                  value={pointsStats.used || 0}
+                  value={pointsStats?.used || 0}
                   valueStyle={{ color: '#ff4d4f' }}
                   prefix={<ArrowDownOutlined />}
                 />
@@ -221,17 +247,17 @@ const Dashboard = () => {
               <Col span={12}>
                 <Statistic
                   title="新用户"
-                  value={userStats.new_users}
+                  value={userStats?.new_users || 0}
                   valueStyle={{ color: '#1890ff' }}
-                  suffix={`/ ${userStats.total_users}`}
+                  suffix={`/ ${userStats?.total_users || 0}`}
                 />
               </Col>
               <Col span={12}>
                 <Statistic
                   title="老用户"
-                  value={userStats.total_users - userStats.new_users}
+                  value={(userStats?.total_users || 0) - (userStats?.new_users || 0)}
                   valueStyle={{ color: '#8c8c8c' }}
-                  suffix={`/ ${userStats.total_users}`}
+                  suffix={`/ ${userStats?.total_users || 0}`}
                 />
               </Col>
             </Row>
@@ -251,7 +277,7 @@ const Dashboard = () => {
       >
         <Table
           columns={importColumns}
-          dataSource={recentImports}
+          dataSource={recentImports || []}
           rowKey="batch_id"
           pagination={false}
           size="small"
@@ -263,3 +289,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+// {{END_MODIFICATIONS}}

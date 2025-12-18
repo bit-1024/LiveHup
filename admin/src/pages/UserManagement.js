@@ -113,11 +113,26 @@ const UserManagement = () => {
     fetchUsers({ page: 1 });
   };
 
-  const handleReset = () => {
+  // 清空筛选条件
+  const handleClearFilters = () => {
+    setFilters({ ...INITIAL_FILTERS });
+    setPagination(prev => ({ ...prev, current: 1 }));
+    fetchUsers({ page: 1, filters: INITIAL_FILTERS });
+  };
+
+  // 重置所有用户积分（危险操作）
+  const handleResetAllPoints = () => {
     Modal.confirm({
-      title: '确认重置所有用户积分',
-      content: '此操作将清空所有用户的积分记录，是否继续？',
-      okText: '确认',
+      title: '⚠️ 危险操作：重置所有用户积分',
+      content: (
+        <div>
+          <p style={{ color: '#ff4d4f', fontWeight: 'bold' }}>
+            此操作将清空所有用户的积分记录！
+          </p>
+          <p>该操作不可撤销，请谨慎操作。</p>
+        </div>
+      ),
+      okText: '确认重置',
       cancelText: '取消',
       okType: 'danger',
       onOk: async () => {
@@ -518,12 +533,12 @@ const UserManagement = () => {
           >
             搜索
           </Button>
-          <Button onClick={handleReset}>
-            重置
+          <Button onClick={handleClearFilters}>
+            清空筛选
           </Button>
           <Button
             icon={<ReloadOutlined />}
-            onClick={fetchUsers}
+            onClick={() => fetchUsers()}
           >
             刷新
           </Button>
@@ -541,6 +556,15 @@ const UserManagement = () => {
           >
             批量删除 {selectedRowKeys.length > 0 && `(${selectedRowKeys.length})`}
           </Button>
+          <Tooltip title="此操作将清空所有用户的积分记录，不可撤销">
+            <Button
+              danger
+              icon={<ClearOutlined />}
+              onClick={handleResetAllPoints}
+            >
+              重置所有积分
+            </Button>
+          </Tooltip>
         </Space>
       </Card>
 

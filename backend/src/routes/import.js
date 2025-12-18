@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const importController = require('../controllers/importController');
 const { authMiddleware, requireAdmin } = require('../middleware/auth');
+const { uploadLimiter } = require('../middleware/rateLimit');
 
 // 确保上传目录存在
 const uploadDir = process.env.UPLOAD_PATH || './uploads';
@@ -44,8 +45,8 @@ const upload = multer({
   }
 });
 
-// 上传并导入文件
-router.post('/upload', authMiddleware, requireAdmin, upload.single('file'), importController.importFile);
+// 上传并导入文件（应用文件上传速率限制）
+router.post('/upload', authMiddleware, requireAdmin, uploadLimiter, upload.single('file'), importController.importFile);
 
 // 获取导入历史
 router.get('/history', authMiddleware, importController.getImportHistory);

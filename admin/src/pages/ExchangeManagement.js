@@ -66,27 +66,6 @@ const ExchangeManagement = () => {
     return params;
   }, [filters]);
 
-  const isZipBlob = async (blob) => {
-    try {
-      const buffer = await blob.slice(0, 4).arrayBuffer();
-      const bytes = new Uint8Array(buffer);
-      return bytes[0] === 0x50 && bytes[1] === 0x4B;
-    } catch (error) {
-      console.warn('检测导出文件头失败:', error);
-      return false;
-    }
-  };
-
-  const isJsonResponseBlob = async (blob) => {
-    if (!blob.type || !blob.type.includes('application/json')) {
-      return false;
-    }
-
-    const looksLikeZip = await isZipBlob(blob);
-    return !looksLikeZip;
-  };
-
-  // Fixed: Wrap fetchExchanges in useCallback
   const fetchExchanges = useCallback(async () => {
     try {
       setLoading(true);

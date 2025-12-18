@@ -1906,3 +1906,6 @@ TypeError: Cannot read properties of undefined (reading 'getUserPoints')
     at router.process_params (F:\LiveHup\backend\node_modules\express\lib\router\index.js:346:12)
 2025-11-20 15:26:28 [ERROR]: Token验证失败:
 2025-11-20 15:26:28 [ERROR]: Token验证失败:
+2025-12-18 15:14:46 [ERROR]: Token验证失败:
+2025-12-18 15:42:43 [ERROR]: Token验证失败:
+2025-12-18 15:42:43 [ERROR]: Token验证失败:

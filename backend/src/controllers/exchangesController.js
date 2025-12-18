@@ -349,6 +349,12 @@ class ExchangesController {
           ]
         );
 
+        // 更新用户积分
+        await connection.execute(
+          'UPDATE users SET available_points = available_points - ?, used_points = used_points + ? WHERE user_id = ?',
+          [totalPoints, totalPoints, targetUserId]
+        );
+
         if (product.stock !== -1) {
           await connection.execute('UPDATE products SET stock = stock - ?, sold_count = sold_count + ? WHERE id = ?', [quantity, quantity, product_id]);
         } else {
@@ -485,6 +491,12 @@ class ExchangesController {
           newBalance,
           '兑换订单取消退回积分，订单号: ' + exchange.exchange_no,
         ]
+      );
+
+      // 更新用户积分
+      await connection.execute(
+        'UPDATE users SET available_points = available_points + ?, used_points = used_points - ? WHERE user_id = ?',
+        [exchange.points_used, exchange.points_used, exchange.user_id]
       );
 
       await connection.execute(

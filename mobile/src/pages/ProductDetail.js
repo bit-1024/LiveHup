@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   NavBar,
   Image,
@@ -8,12 +8,89 @@ import {
   Dialog,
   Field,
   Toast,
-  ActionSheet
+  ActionSheet,
+  Skeleton
 } from 'react-vant';
 import { useNavigate, useParams } from 'react-router-dom';
 import { productAPI, exchangeAPI, utils } from '../services/api';
 import Icon from '../components/Icon';
 import { useAuth } from '../context/AuthContext';
+
+// 表单验证规则
+const VALIDATION_RULES = {
+  contactName: {
+    required: true,
+    minLength: 2,
+    maxLength: 20,
+    pattern: /^[\u4e00-\u9fa5a-zA-Z\s]+$/,
+    messages: {
+      required: '请输入收货人姓名',
+      minLength: '姓名至少2个字符',
+      maxLength: '姓名不能超过20个字符',
+      pattern: '姓名只能包含中文、英文和空格'
+    }
+  },
+  contactPhone: {
+    required: true,
+    pattern: /^1[3-9]\d{9}$/,
+    messages: {
+      required: '请输入联系电话',
+      pattern: '请输入正确的11位手机号码'
+    }
+  },
+  shippingAddress: {
+    required: true,
+    minLength: 10,
+    maxLength: 200,
+    messages: {
+      required: '请输入收货地址',
+      minLength: '地址至少10个字符',
+      maxLength: '地址不能超过200个字符'
+    }
+  }
+};
+
+// 验证单个字段
+const validateField = (fieldName, value) => {
+  const rules = VALIDATION_RULES[fieldName];
+  if (!rules) return null;
+
+  const trimmedValue = value?.trim() || '';
+
+  if (rules.required && !trimmedValue) {
+    return rules.messages.required;
+  }
+
+  if (rules.minLength && trimmedValue.length < rules.minLength) {
+    return rules.messages.minLength;
+  }
+
+  if (rules.maxLength && trimmedValue.length > rules.maxLength) {
+    return rules.messages.maxLength;
+  }
+
+  if (rules.pattern && !rules.pattern.test(trimmedValue)) {
+    return rules.messages.pattern;
+  }
+
+  return null;
+};
+
+// 验证所有字段
+const validateForm = (form) => {
+  const errors = {};
+  let firstError = null;
+
+  Object.keys(VALIDATION_RULES).forEach(fieldName => {
+    const error = validateField(fieldName, form[fieldName]);
+    if (error) {
+      errors[fieldName] = error;
+      if (!firstError) firstError = error;
+    }
+  });
+
+  return { errors, firstError, isValid: !firstError };
+};
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -21,6 +98,7 @@ const ProductDetail = () => {
   const { user } = useAuth();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
   const [exchangeVisible, setExchangeVisible] = useState(false);
   const [exchangeForm, setExchangeForm] = useState({
     quantity: 1,
@@ -28,6 +106,7 @@ const ProductDetail = () => {
     contactPhone: '',
     shippingAddress: ''
   });
+  const [formErrors, setFormErrors] = useState({});
 
   const loadProduct = useCallback(async () => {
     try {
@@ -60,6 +139,34 @@ const ProductDetail = () => {
     setExchangeVisible(true);
   };
 
+  // 实时验证字段
+  const handleFieldChange = useCallback((fieldName, value) => {
+    setExchangeForm(prev => ({ ...prev, [fieldName]: value }));
+    
+    // 清除该字段的错误
+    if (formErrors[fieldName]) {
+      setFormErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[fieldName];
+        return newErrors;
+      });
+    }
+  }, [formErrors]);
+
+  // 字段失焦时验证
+  const handleFieldBlur = useCallback((fieldName) => {
+    const error = validateField(fieldName, exchangeForm[fieldName]);
+    if (error) {
+      setFormErrors(prev => ({ ...prev, [fieldName]: error }));
+    }
+  }, [exchangeForm]);
+
+  // 计算表单是否可提交
+  const canSubmit = useMemo(() => {
+    const { isValid } = validateForm(exchangeForm);
+    return isValid && !submitting;
+  }, [exchangeForm, submitting]);
+
   const handleConfirmExchange = async () => {
     if (!user?.user_id) {
       Toast.fail('请先登录');
@@ -67,20 +174,18 @@ const ProductDetail = () => {
       navigate('/login');
       return;
     }
-    if (!exchangeForm.contactName.trim()) {
-      Toast.fail('请输入收货人姓名');
-      return;
-    }
-    if (!exchangeForm.contactPhone.trim()) {
-      Toast.fail('请输入联系电话');
-      return;
-    }
-    if (!exchangeForm.shippingAddress.trim()) {
-      Toast.fail('请输入收货地址');
+
+    // 验证表单
+    const { errors, firstError, isValid } = validateForm(exchangeForm);
+    setFormErrors(errors);
+
+    if (!isValid) {
+      Toast.fail(firstError);
       return;
     }
 
     try {
+      setSubmitting(true);
       await exchangeAPI.create({
         product_id: product.id,
         quantity: exchangeForm.quantity,
@@ -91,6 +196,15 @@ const ProductDetail = () => {
 
       Toast.success('兑换申请已提交');
       setExchangeVisible(false);
+      
+      // 重置表单
+      setExchangeForm({
+        quantity: 1,
+        contactName: '',
+        contactPhone: '',
+        shippingAddress: ''
+      });
+      setFormErrors({});
 
       Dialog.confirm({
         title: '兑换成功',
@@ -103,21 +217,34 @@ const ProductDetail = () => {
     } catch (error) {
       console.error('兑换失败:', error);
       Toast.fail(error?.response?.data?.message || '兑换失败，请稍后重试');
+    } finally {
+      setSubmitting(false);
     }
   };
+
+  // 关闭弹窗时重置表单错误
+  const handleCloseExchange = useCallback(() => {
+    setExchangeVisible(false);
+    setFormErrors({});
+  }, []);
 
   if (loading) {
     return (
       <div className="page-container">
-        <NavBar 
-          title="商品详情" 
+        <NavBar
+          title="商品详情"
           leftArrow={<Icon name="arrow-left" />}
           onClickLeft={() => navigate(-1)}
-          fixed 
+          fixed
           placeholder
         />
-        <div className="loading-container">
-          <div>加载中...</div>
+        <div className="page-content">
+          <div style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden' }}>
+            <Skeleton style={{ height: '220px', width: '100%' }} />
+            <div style={{ padding: '16px' }}>
+              <Skeleton title row={3} />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -246,50 +373,82 @@ const ProductDetail = () => {
       {/* 兑换信息填写 */}
       <ActionSheet
         visible={exchangeVisible}
-        onClose={() => setExchangeVisible(false)}
-        onCancel={() => setExchangeVisible(false)}
+        onClose={handleCloseExchange}
+        onCancel={handleCloseExchange}
         title="填写兑换信息"
         closeable
       >
         <div style={{ padding: 16 }}>
           <Field
             value={exchangeForm.contactName}
-            onChange={(value) => setExchangeForm(prev => ({ ...prev, contactName: value }))}
+            onChange={(value) => handleFieldChange('contactName', value)}
+            onBlur={() => handleFieldBlur('contactName')}
             label="收货人"
-            placeholder="请输入收货人姓名"
+            placeholder="请输入收货人姓名（2-20字符）"
             required
             clearable
+            maxLength={20}
+            error={!!formErrors.contactName}
+            errorMessage={formErrors.contactName}
           />
           <Field
             value={exchangeForm.contactPhone}
-            onChange={(value) => setExchangeForm(prev => ({ ...prev, contactPhone: value }))}
+            onChange={(value) => handleFieldChange('contactPhone', value)}
+            onBlur={() => handleFieldBlur('contactPhone')}
             label="联系电话"
-            placeholder="请输入联系电话"
+            placeholder="请输入11位手机号码"
+            type="tel"
             required
             clearable
+            maxLength={11}
+            error={!!formErrors.contactPhone}
+            errorMessage={formErrors.contactPhone}
           />
           <Field
             value={exchangeForm.shippingAddress}
-            onChange={(value) => setExchangeForm(prev => ({ ...prev, shippingAddress: value }))}
+            onChange={(value) => handleFieldChange('shippingAddress', value)}
+            onBlur={() => handleFieldBlur('shippingAddress')}
             label="收货地址"
-            placeholder="请输入详细收货地址"
+            placeholder="请输入详细收货地址（10-200字符）"
             type="textarea"
             rows={3}
             required
             clearable
+            maxLength={200}
+            showWordLimit
+            error={!!formErrors.shippingAddress}
+            errorMessage={formErrors.shippingAddress}
           />
           
+          {/* 兑换信息提示 */}
+          <div style={{
+            marginTop: 16,
+            padding: '12px',
+            background: '#FFF7E6',
+            borderRadius: '8px',
+            fontSize: '13px',
+            color: '#FA8C16'
+          }}>
+            <div style={{ fontWeight: 600, marginBottom: 4 }}>温馨提示：</div>
+            <div>• 请确保收货信息准确无误</div>
+            <div>• 兑换成功后将扣除 {product ? utils.formatNumber(product.points_required) : 0} 积分</div>
+            <div>• 兑换后不支持退换，请谨慎操作</div>
+          </div>
+          
           <div style={{ marginTop: 24, display: 'flex', gap: 12 }}>
-            <Button 
-              block 
-              onClick={() => setExchangeVisible(false)}
+            <Button
+              block
+              onClick={handleCloseExchange}
+              disabled={submitting}
             >
               取消
             </Button>
-            <Button 
-              type="primary" 
+            <Button
+              type="primary"
               block
               onClick={handleConfirmExchange}
+              loading={submitting}
+              disabled={!canSubmit}
             >
               确认兑换
             </Button>

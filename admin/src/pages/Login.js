@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, Card, message, Typography } from 'antd';
+// {{CODE-Cycle-Integration:
+//   Task_ID: [#T012]
+//   Timestamp: 2025-12-17T01:59:23Z
+//   Phase: D-Develop
+//   Context-Analysis: "更新Login页面，集成Zustand状态管理"
+//   Principle_Applied: "State-Management, Clean-Architecture"
+// }}
+// {{START_MODIFICATIONS}}
+
+import React from 'react';
+import { Form, Input, Button, Card, Typography, Alert } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { authAPI } from '../services/api';
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store';
 
 const { Title, Text } = Typography;
 
-const Login = ({ onLogin, onUserInfo }) => {
-  const [loading, setLoading] = useState(false);
+const Login = () => {
+  const navigate = useNavigate();
+  
+  // 使用Zustand store
+  const { login, loading, error, clearError } = useAuthStore();
 
   const handleSubmit = async (values) => {
-    setLoading(true);
-    try {
-      const response = await authAPI.login(values);
-      const { token, user } = response.data;
-      
-      // 保存token和用户信息
-      localStorage.setItem('token', token);
-      localStorage.setItem('userInfo', JSON.stringify(user));
-      
-      message.success('登录成功');
-      onLogin(true);
-      onUserInfo(user);
-    } catch (error) {
-      console.error('登录失败:', error);
-    } finally {
-      setLoading(false);
+    const result = await login(values);
+    if (result.success) {
+      navigate('/dashboard');
     }
   };
 
@@ -52,6 +52,17 @@ const Login = ({ onLogin, onUserInfo }) => {
           </Title>
           <Text type="secondary">管理员登录</Text>
         </div>
+
+        {error && (
+          <Alert
+            message={error}
+            type="error"
+            showIcon
+            closable
+            onClose={clearError}
+            style={{ marginBottom: 24 }}
+          />
+        )}
 
         <Form
           name="login"
@@ -111,3 +122,5 @@ const Login = ({ onLogin, onUserInfo }) => {
 };
 
 export default Login;
+
+// {{END_MODIFICATIONS}}

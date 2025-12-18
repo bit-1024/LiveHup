@@ -1,29 +1,93 @@
-import React, { useState, useEffect } from 'react';
-import { NavBar, Cell, Grid, Toast } from 'react-vant';
+import React, { useState, useEffect, useCallback } from 'react';
+import { NavBar, Cell, Grid, Toast, Skeleton, PullRefresh } from 'react-vant';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
 import { useAuth } from '../context/AuthContext';
 import { authAPI, utils } from '../services/api';
+
+// 首页骨架屏组件
+const HomeSkeleton = () => (
+  <div className="page-content">
+    {/* 用户积分卡片骨架屏 */}
+    <div className="card">
+      <div style={{ padding: '16px' }}>
+        <Skeleton title row={1} style={{ marginBottom: 20 }} />
+        <div style={{
+          background: 'linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%)',
+          borderRadius: 12,
+          padding: '20px 16px',
+          marginBottom: 16,
+          height: 100
+        }}>
+          <Skeleton title row={1} />
+        </div>
+        <div style={{ display: 'flex', gap: 12 }}>
+          <div style={{ flex: 1, background: '#f2f2f7', borderRadius: 12, padding: '16px 12px' }}>
+            <Skeleton title row={1} />
+          </div>
+          <div style={{ flex: 1, background: '#f2f2f7', borderRadius: 12, padding: '16px 12px' }}>
+            <Skeleton title row={1} />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* 快捷操作骨架屏 */}
+    <div className="card">
+      <div className="card-header">快捷操作</div>
+      <div style={{ padding: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          {[1, 2, 3].map(i => (
+            <div key={i} style={{ textAlign: 'center', width: 80 }}>
+              <Skeleton style={{ width: 48, height: 48, borderRadius: '50%', margin: '0 auto 8px' }} />
+              <Skeleton title style={{ width: 60 }} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* 功能介绍骨架屏 */}
+    <div className="card">
+      <div className="card-header">功能介绍</div>
+      <div style={{ padding: '12px 16px' }}>
+        {[1, 2, 3].map(i => (
+          <div key={i} style={{ padding: '12px 0', borderBottom: i < 3 ? '1px solid #f0f0f0' : 'none' }}>
+            <Skeleton title row={1} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
 
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const loadUserInfo = useCallback(async () => {
+    try {
+      const response = await authAPI.getSummary();
+      setUserInfo(response?.data?.user || null);
+    } catch (error) {
+      Toast.fail('获取积分信息失败');
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const loadUserInfo = async () => {
-      try {
-        const response = await authAPI.getSummary();
-        setUserInfo(response?.data?.user || null);
-      } catch (error) {
-        Toast.fail('获取积分信息失败');
-      } finally {
-        setLoading(false);
-      }
-    };
     loadUserInfo();
-  }, []);
+  }, [loadUserInfo]);
+
+  const handleRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await loadUserInfo();
+  }, [loadUserInfo]);
 
   const quickActions = [
     {
@@ -50,6 +114,20 @@ const Home = () => {
     navigate(path);
   };
 
+  // 首次加载显示骨架屏
+  if (loading) {
+    return (
+      <div className="page-container">
+        <NavBar
+          title="积分系统"
+          fixed
+          placeholder
+        />
+        <HomeSkeleton />
+      </div>
+    );
+  }
+
   return (
     <div className="page-container">
       <NavBar
@@ -58,7 +136,8 @@ const Home = () => {
         placeholder
       />
       
-      <div className="page-content">
+      <PullRefresh onRefresh={handleRefresh} loading={refreshing}>
+        <div className="page-content">
         {/* 用户积分卡片 */}
         <div className="card">
           <div style={{ padding: '16px' }}>
@@ -286,9 +365,10 @@ const Home = () => {
           </div>
         </div>
 
-        {/* 底部安全区域 */}
-        <div style={{ height: '20px' }} />
-      </div>
+          {/* 底部安全区域 */}
+          <div style={{ height: '20px' }} />
+        </div>
+      </PullRefresh>
     </div>
   );
 };
